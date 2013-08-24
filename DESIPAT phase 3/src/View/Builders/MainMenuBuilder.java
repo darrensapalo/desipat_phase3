@@ -5,9 +5,9 @@
 package View.Builders;
 
 import Controller.MainMenuHandler;
+import View.MainMenu;
 import View.AbstractFactories.AbstractButtonFactory;
 import View.AbstractFactories.ConcreteButtonFactory;
-import View.MainMenu;
 
 /**
  *
@@ -25,6 +25,7 @@ public class MainMenuBuilder extends AbstractFormBuilder {
     public void populateForm() {
         
         m = new MainMenu();
+        super.form = this.m;
 		//Buttons use a Factory to set the name and add an ActionListener
 		 
         
@@ -192,13 +193,6 @@ public class MainMenuBuilder extends AbstractFormBuilder {
                     .addComponent(m.getjPanel2(), javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-    }
-
-
-    @Override
-    public Form getForm() {
-        m.pack();
-        return m;
     }
 
     @Override

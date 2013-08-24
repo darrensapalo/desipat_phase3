@@ -5,9 +5,9 @@
 package View.Builders;
 
 import Controller.DeleteAssetHandler;
+import View.DeleteAsset;
 import View.AbstractFactories.AbstractButtonFactory;
 import View.AbstractFactories.ConcreteButtonFactory;
-import View.DeleteAsset;
 
 /**
  *
@@ -22,7 +22,7 @@ public class DeleteAssetBuilder extends AbstractFormBuilder {
     public void populateForm() {
         
         d = new DeleteAsset();
-        
+        super.form = this.d;
 		//Buttons use a Factory to set the name and add an ActionListener
          AbstractButtonFactory btnFactory = new ConcreteButtonFactory();
         
@@ -83,13 +83,6 @@ public class DeleteAssetBuilder extends AbstractFormBuilder {
                 .addComponent(d.getbtnDelete())
                 .addContainerGap(14, Short.MAX_VALUE))
         );
-    }
-
-
-    @Override
-    public Form getForm() {
-        d.pack();
-        return d;
     }
 
     @Override

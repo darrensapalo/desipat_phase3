@@ -6,12 +6,13 @@ package View;
 
 
 import Model.DBHandler;
-import View.Builders.Form;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;

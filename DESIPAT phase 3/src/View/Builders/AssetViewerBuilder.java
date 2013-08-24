@@ -5,9 +5,9 @@
 package View.Builders;
 
 import Controller.AssetViewerHandler;
+import View.AssetViewer;
 import View.AbstractFactories.AbstractButtonFactory;
 import View.AbstractFactories.ConcreteButtonFactory;
-import View.AssetViewer;
 
 /**
  *
@@ -22,6 +22,7 @@ public class AssetViewerBuilder extends AbstractFormBuilder {
     public void populateForm() {
         
         a = new AssetViewer();
+        super.form = this.a;
 		////Buttons use a Factory to set the name and add an ActionListener
 		 
         
@@ -231,13 +232,6 @@ public class AssetViewerBuilder extends AbstractFormBuilder {
                 .addContainerGap())
         );
 
-    }
-
-
-    @Override
-    public Form getForm() {
-        a.pack();
-        return a;
     }
 
     @Override

@@ -3,11 +3,10 @@
  * and open the template in the editor.
  */
 package View.Builders;
-import Controller.ModifyAssetEditHandler;
 import Controller.ModifyAssetHandler;
+import View.ModifyAsset;
 import View.AbstractFactories.AbstractButtonFactory;
 import View.AbstractFactories.ConcreteButtonFactory;
-import View.ModifyAsset;
 /**
  *
  * @author DJ
@@ -21,7 +20,7 @@ public class ModifyAssetBuilder extends AbstractFormBuilder{
     @Override
     public void populateForm() {
          m = new ModifyAsset();
-        
+         super.form = this.m;
 		//Buttons use a Factory to set the name and add an ActionListener
 		 
          ModifyAssetHandler mah = new ModifyAssetHandler(m);
@@ -360,12 +359,5 @@ public class ModifyAssetBuilder extends AbstractFormBuilder{
                 .addContainerGap())
         );
 
-    }
-
-    @Override
-    public Form getForm() {
-         m.pack();
-        return m;
-    }
-    
+    }    
 }

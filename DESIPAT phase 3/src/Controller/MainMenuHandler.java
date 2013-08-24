@@ -4,6 +4,7 @@
  */
 package Controller;
 
+import View.Form;
 import View.MainMenu;
 import View.ModifyAsset;
 import View.AssetViewer;
@@ -12,12 +13,12 @@ import Model.DBHandler;
 import View.Builders.AbstractFormBuilder;
 import View.Builders.AssetViewerBuilder;
 import View.Builders.DeleteAssetBuilder;
-import View.Builders.Form;
 import View.Builders.FormDirector;
 import View.Builders.LoginBuilder;
 import View.Builders.ModifyAssetBuilder;
 import View.Decorators.CustodianModifyAssetDecorator;
 import View.Decorators.ModifyAssetDecorator;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
@@ -25,6 +26,7 @@ import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.swing.JOptionPane;
 
 /**

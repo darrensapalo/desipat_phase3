@@ -4,11 +4,11 @@
  */
 package View.Decorators;
 
-import View.Builders.Form;
 import Controller.ModifyAssetHandler;
-import View.Builders.Form;
+import View.Form;
 import View.MainMenu;
 import View.ModifyAsset;
+
 import java.sql.SQLException;
 
 /**

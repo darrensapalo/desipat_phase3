@@ -4,16 +4,17 @@
  */
 package Controller;
 
+import View.Form;
 import View.Register;
 import View.MainMenu;
 import View.LoginMenu;
 import Model.DBHandler;
 import View.Builders.AbstractFormBuilder;
-import View.Builders.Form;
 import View.Builders.FormDirector;
 import View.Builders.MainMenuBuilder;
 import View.Builders.RegisterBuilder;
 import View.Decorators.MainMenuDecorator;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

@@ -1,13 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package View.Builders;
 
 import Controller.RegisterHandler;
+import View.Register;
 import View.AbstractFactories.AbstractButtonFactory;
 import View.AbstractFactories.ConcreteButtonFactory;
-import View.Register;
 
 /**
  *
@@ -20,7 +16,7 @@ public class RegisterBuilder extends AbstractFormBuilder{
     @Override
     public void populateForm() {
         r = new Register();
-        
+        super.form = this.r;
 		//Buttons use a Factory to set the name and add an ActionListener
 		
         AbstractButtonFactory btnFactory = new ConcreteButtonFactory();
@@ -206,13 +202,5 @@ public class RegisterBuilder extends AbstractFormBuilder{
                 .addComponent(r.getBtSignUp())
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-    }
-
-    @Override
-    public Form getForm() {
-        r.pack();
-        return r;
-        
-    }
-    
+    }   
 }

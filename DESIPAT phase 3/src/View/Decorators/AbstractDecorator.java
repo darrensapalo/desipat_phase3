@@ -4,7 +4,7 @@
  */
 package View.Decorators;
 
-import View.Builders.Form;
+import View.Form;
 
 /**
  *

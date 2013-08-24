@@ -1,10 +1,10 @@
 
 import View.Builders.AbstractFormBuilder;
-import View.Builders.Form;
 import View.Builders.FormDirector;
 import View.Builders.MainMenuBuilder;
 import View.Builders.RegisterBuilder;
 import View.Decorators.MainMenuDecorator;
+import View.Form;
 import View.MainMenu;
 
 /*

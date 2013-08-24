@@ -5,9 +5,9 @@
 package View.Builders;
 
 import Controller.LoginMenuHandler;
+import View.LoginMenu;
 import View.AbstractFactories.AbstractButtonFactory;
 import View.AbstractFactories.ConcreteButtonFactory;
-import View.LoginMenu;
 
 /**
  *
@@ -15,168 +15,161 @@ import View.LoginMenu;
  */
 public class LoginBuilder extends AbstractFormBuilder {
 
-    private LoginMenu l;
+	private LoginMenu form;
     
     @Override
     public void populateForm() {
-         l = new LoginMenu();
+         form = new LoginMenu();
+         super.form = this.form;
          
 		 //Buttons use a Factory to set the name and add an ActionListener
 		 
          AbstractButtonFactory btnFactory = new ConcreteButtonFactory();
-         LoginMenuHandler lh = new LoginMenuHandler(l);
+         LoginMenuHandler lh = new LoginMenuHandler(form);
          
 		 //Instantiate Components of LoginBuilder
 		 
-         l.setBtLogin(btnFactory.createButton("Login",lh));
-         l.setBtnRegister(btnFactory.createButton("Register Now",lh));
-         l.setPfPassword(new javax.swing.JPasswordField());
-         l.setTfUsername(new javax.swing.JTextField());
-         l.setLbError(new javax.swing.JLabel());
-         l.setBtnGrp(new javax.swing.ButtonGroup());
-         l.setjLabel1(new javax.swing.JLabel());
-         l.setjLabel2(new javax.swing.JLabel());
-         l.setjLabel3(new javax.swing.JLabel());
-         l.setjLabel4(new javax.swing.JLabel());
-         l.setjLabel5(new javax.swing.JLabel());
-         l.setjPanel1(new javax.swing.JPanel());
-         l.setjSeparator1(new javax.swing.JSeparator());
-         l.setRbCustodian(new javax.swing.JRadioButton());
-         l.setRbOwner(new javax.swing.JRadioButton());
+         form.setBtLogin(btnFactory.createButton("Login",lh));
+         form.setBtnRegister(btnFactory.createButton("Register Now",lh));
+         form.setPfPassword(new javax.swing.JPasswordField());
+         form.setTfUsername(new javax.swing.JTextField());
+         form.setLbError(new javax.swing.JLabel());
+         form.setBtnGrp(new javax.swing.ButtonGroup());
+         form.setjLabel1(new javax.swing.JLabel());
+         form.setjLabel2(new javax.swing.JLabel());
+         form.setjLabel3(new javax.swing.JLabel());
+         form.setjLabel4(new javax.swing.JLabel());
+         form.setjLabel5(new javax.swing.JLabel());
+         form.setjPanel1(new javax.swing.JPanel());
+         form.setjSeparator1(new javax.swing.JSeparator());
+         form.setRbCustodian(new javax.swing.JRadioButton());
+         form.setRbOwner(new javax.swing.JRadioButton());
          
     }
 
     @Override
     public void setFormProperties() {
-        l.setTitle("Asset Management System");
-        l.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        l.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        l.setResizable(false);
+        form.setTitle("Asset Management System");
+        form.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        form.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        form.setResizable(false);
     }
 
     @Override
     public void setComponentProperties() {
-        l.getjPanel1().setBackground(new java.awt.Color(0, 102, 102));
-        l.getjLabel5().setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        l.getjLabel5().setForeground(new java.awt.Color(255, 255, 255));
-        l.getjLabel5().setText("Asset Management System");
-        l.getjLabel1().setText("Username:");
-        l.getjLabel2().setText("Password:");
-        l.getBtnRegister().setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        l.getjLabel3().setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        l.getjLabel3().setText("Not a user yet?");
+        form.getjPanel1().setBackground(new java.awt.Color(0, 102, 102));
+        form.getjLabel5().setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        form.getjLabel5().setForeground(new java.awt.Color(255, 255, 255));
+        form.getjLabel5().setText("Asset Management System");
+        form.getjLabel1().setText("Username:");
+        form.getjLabel2().setText("Password:");
+        form.getBtnRegister().setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        form.getjLabel3().setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        form.getjLabel3().setText("Not a user yet?");
 
-        l.getjLabel4().setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        l.getjLabel4().setText("Login");
+        form.getjLabel4().setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        form.getjLabel4().setText("Login");
 
-        l.getjSeparator1().setOrientation(javax.swing.SwingConstants.VERTICAL);
+        form.getjSeparator1().setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        l.getLbError().setForeground(new java.awt.Color(255, 51, 0));
+        form.getLbError().setForeground(new java.awt.Color(255, 51, 0));
 
-        l.getBtnGrp().add(l.getRbOwner());
-        l.getRbOwner().setText("Owner");
-        l.getRbOwner().setActionCommand("");
+        form.getBtnGrp().add(form.getRbOwner());
+        form.getRbOwner().setText("Owner");
+        form.getRbOwner().setActionCommand("");
 
-        l.getBtnGrp().add(l.getRbCustodian());
-        l.getRbCustodian().setText("Custodian");
-        l.getRbCustodian().setActionCommand("");
+        form.getBtnGrp().add(form.getRbCustodian());
+        form.getRbCustodian().setText("Custodian");
+        form.getRbCustodian().setActionCommand("");
     }
 
     @Override
     public void setLayout() {
 	//Uses GroupLayout to JPanels to set Layout of the components.
 	
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(l.getjPanel1());
-        l.getjPanel1().setLayout(jPanel1Layout);
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(form.getjPanel1());
+        form.getjPanel1().setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(l.getjLabel5())
+                .addComponent(form.getjLabel5())
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(l.getjLabel5())
+                .addComponent(form.getjLabel5())
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         //To extend user types, put RadioButton components here.
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(l.getContentPane());
-        l.getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(form.getContentPane());
+        form.getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(l.getjPanel1(), javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(form.getjPanel1(), javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(l.getjLabel1())
-                            .addComponent(l.getjLabel4())
-                            .addComponent(l.getTfUsername(), javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(l.getRbOwner())
-                            .addComponent(l.getRbCustodian())
-                            .addComponent(l.getLbError())
-                            .addComponent(l.getPfPassword(), javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(l.getjLabel2())))
+                            .addComponent(form.getjLabel1())
+                            .addComponent(form.getjLabel4())
+                            .addComponent(form.getTfUsername(), javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(form.getRbOwner())
+                            .addComponent(form.getRbCustodian())
+                            .addComponent(form.getLbError())
+                            .addComponent(form.getPfPassword(), javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(form.getjLabel2())))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(77, 77, 77)
-                        .addComponent(l.getBtLogin())))
+                        .addComponent(form.getBtLogin())))
                 .addGap(39, 39, 39)
-                .addComponent(l.getjSeparator1(), javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(form.getjSeparator1(), javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(l.getBtnRegister())
-                    .addComponent(l.getjLabel3()))
+                    .addComponent(form.getBtnRegister())
+                    .addComponent(form.getjLabel3()))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(l.getjPanel1(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(form.getjPanel1(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(l.getjSeparator1())
+                        .addComponent(form.getjSeparator1())
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(49, 49, 49)
-                                .addComponent(l.getjLabel3())
+                                .addComponent(form.getjLabel3())
                                 .addGap(18, 18, 18)
-                                .addComponent(l.getBtnRegister())
+                                .addComponent(form.getBtnRegister())
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(l.getjLabel4())
+                                .addComponent(form.getjLabel4())
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(l.getRbOwner())
+                                .addComponent(form.getRbOwner())
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(l.getRbCustodian())
+                                .addComponent(form.getRbCustodian())
                                 .addGap(17, 17, 17)
-                                .addComponent(l.getjLabel1())
+                                .addComponent(form.getjLabel1())
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(l.getTfUsername(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(form.getTfUsername(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(l.getjLabel2())
+                                .addComponent(form.getjLabel2())
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(l.getPfPassword(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(form.getPfPassword(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(l.getLbError())
+                        .addComponent(form.getLbError())
                         .addGap(25, 25, 25)
-                        .addComponent(l.getBtLogin())
+                        .addComponent(form.getBtLogin())
                         .addGap(42, 42, 42))))
         );
 
-    }
-
-
-    @Override
-    public Form getForm() {
-      l.pack();
-        return l;
-    }
-    
+    }   
 }

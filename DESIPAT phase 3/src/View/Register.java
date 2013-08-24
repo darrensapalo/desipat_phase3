@@ -5,7 +5,7 @@
 package View;
 
 import Controller.RegisterHandler;
-import View.Builders.Form;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;

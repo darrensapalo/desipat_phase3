@@ -4,6 +4,8 @@
  */
 package View.Builders;
 
+import View.Form;
+
 /**
  *
  * @author Jan
@@ -13,10 +15,11 @@ public class FormDirector {
     AbstractFormBuilder b;
 	//Director of all Form Builders.
     
-    public void setBuilder(AbstractFormBuilder b){
+    public void setBuilder(AbstractFormBuilder b) {
         this.b = b;
     }
-    public Form construct(){
+    
+    public Form construct() {
         b.populateForm();
         b.setFormProperties();
         b.setComponentProperties();
