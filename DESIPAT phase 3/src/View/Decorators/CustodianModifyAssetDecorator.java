@@ -4,7 +4,7 @@
  */
 package View.Decorators;
 
-import Controller.ModifyAssetHandler;
+import Controller.listeners.ModifyAssetHandler;
 import View.Form;
 import View.MainMenu;
 import View.ModifyAsset;

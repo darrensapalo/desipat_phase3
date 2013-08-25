@@ -1,4 +1,4 @@
-package Controller;
+package Controller.listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -72,6 +72,10 @@ public class LoginMenuHandler implements ActionListener {
 				mainMenuForm.setLocationRelativeTo(null);
 					
 				DBHandler.addActivityLog("Logged In", userType, loginMenu.getUsernameField().getText());
+			}
+			
+			else {
+				this.loginMenu.displayErrorMessage("Invalid username/password combination.");
 			}
 		} 
 		

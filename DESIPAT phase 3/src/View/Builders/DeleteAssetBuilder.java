@@ -4,7 +4,7 @@
  */
 package View.Builders;
 
-import Controller.DeleteAssetHandler;
+import Controller.listeners.DeleteAssetHandler;
 import View.DeleteAsset;
 import View.AbstractFactories.AbstractButtonFactory;
 import View.AbstractFactories.ConcreteButtonFactory;

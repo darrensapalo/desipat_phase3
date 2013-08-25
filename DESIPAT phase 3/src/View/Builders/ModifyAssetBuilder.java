@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 package View.Builders;
-import Controller.ModifyAssetHandler;
+import Controller.listeners.ModifyAssetHandler;
 import View.ModifyAsset;
 import View.AbstractFactories.AbstractButtonFactory;
 import View.AbstractFactories.ConcreteButtonFactory;

@@ -4,7 +4,7 @@
  */
 package View.Builders;
 
-import Controller.MainMenuHandler;
+import Controller.listeners.MainMenuHandler;
 import View.MainMenu;
 import View.AbstractFactories.AbstractButtonFactory;
 import View.AbstractFactories.ConcreteButtonFactory;

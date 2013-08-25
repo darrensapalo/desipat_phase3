@@ -1,6 +1,6 @@
 package View.Builders;
 
-import Controller.LoginMenuHandler;
+import Controller.listeners.LoginMenuHandler;
 import View.LoginMenu;
 import View.AbstractFactories.AbstractButtonFactory;
 import View.AbstractFactories.ConcreteButtonFactory;

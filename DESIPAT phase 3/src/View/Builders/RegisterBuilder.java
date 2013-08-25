@@ -1,6 +1,6 @@
 package View.Builders;
 
-import Controller.RegisterHandler;
+import Controller.listeners.RegisterHandler;
 import View.Register;
 import View.AbstractFactories.AbstractButtonFactory;
 import View.AbstractFactories.ConcreteButtonFactory;

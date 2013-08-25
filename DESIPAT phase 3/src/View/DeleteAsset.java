@@ -5,7 +5,7 @@
 package View;
 
 
-import Controller.DeleteAssetHandler;
+import Controller.listeners.DeleteAssetHandler;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

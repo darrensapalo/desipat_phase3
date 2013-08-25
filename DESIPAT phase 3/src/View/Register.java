@@ -4,7 +4,7 @@
  */
 package View;
 
-import Controller.RegisterHandler;
+import Controller.listeners.RegisterHandler;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;

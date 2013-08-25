@@ -4,7 +4,7 @@
  */
 package View.Builders;
 
-import Controller.AssetViewerHandler;
+import Controller.listeners.AssetViewerHandler;
 import View.AssetViewer;
 import View.AbstractFactories.AbstractButtonFactory;
 import View.AbstractFactories.ConcreteButtonFactory;
