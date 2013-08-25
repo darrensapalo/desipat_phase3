@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package View.Builders;
 
 import View.Form;
@@ -10,10 +6,11 @@ import View.Form;
  *
  * @author Jan
  */
+
+// Director of all Form Builders.
 public class FormDirector {
     
     AbstractFormBuilder b;
-	//Director of all Form Builders.
     
     public void setBuilder(AbstractFormBuilder b) {
         this.b = b;

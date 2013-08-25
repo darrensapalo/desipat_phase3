@@ -59,12 +59,6 @@ public class MainMenu extends Form {
       lbUserType.setText("Logged in as Owner");
 
     }
-    
-    public MainMenu() {
-      //initComponents();
-      
-        
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.

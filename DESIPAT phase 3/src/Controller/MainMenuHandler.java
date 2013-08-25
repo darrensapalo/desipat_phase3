@@ -160,7 +160,7 @@ public class MainMenuHandler implements ActionListener{
                     }
                     else if(e.getSource().equals(m.getBtRefresh())){
                         
-                        ResultSet assetList = b.listAsset(m.getUserType(), m.getLbName().getText());
+                        ResultSet assetList = b.getAssetList(m.getUserType(), m.getLbName().getText());
                         
                         Vector<String> res = new Vector<String>();
                         

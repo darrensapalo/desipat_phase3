@@ -1,26 +1,34 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Jan
  */
-public abstract class Form extends JFrame{
+// Superclass of all forms.
 
-//superclass of all forms.
-    
+@SuppressWarnings("serial")
+public abstract class Form extends JFrame {
+
     protected String userType; //stores the userType (owner or custodian)
     protected String username; //stores username
     protected String password; //stores password
     
-    public Form getForm(){
-        return this;
+    private void displayMessage(String message, int messageType) {
+    	JOptionPane.showMessageDialog(this, message, this.getTitle(), messageType);
     }
     
+    public void displayInformationMessage(String message) {
+    	this.displayMessage(message, JOptionPane.INFORMATION_MESSAGE);
+    }
     
+    public void displayErrorMessage(String message) {
+    	this.displayMessage(message, JOptionPane.ERROR_MESSAGE);
+    }
+    
+    public Form getForm() {
+    	return this;
+    }
 }

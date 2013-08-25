@@ -14,7 +14,6 @@ public abstract class AbstractDecorator extends Form {
     
     Form toDecorate;
     
-    @Override
     public abstract Form getForm();
     
 }

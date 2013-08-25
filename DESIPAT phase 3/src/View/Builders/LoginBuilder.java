@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package View.Builders;
 
 import Controller.LoginMenuHandler;
@@ -23,12 +19,10 @@ public class LoginBuilder extends AbstractFormBuilder {
          super.form = this.form;
          
 		 //Buttons use a Factory to set the name and add an ActionListener
-		 
          AbstractButtonFactory btnFactory = new ConcreteButtonFactory();
          LoginMenuHandler lh = new LoginMenuHandler(form);
          
 		 //Instantiate Components of LoginBuilder
-		 
          form.setBtLogin(btnFactory.createButton("Login",lh));
          form.setBtnRegister(btnFactory.createButton("Register Now",lh));
          form.setPfPassword(new javax.swing.JPasswordField());
@@ -63,7 +57,7 @@ public class LoginBuilder extends AbstractFormBuilder {
         form.getjLabel5().setText("Asset Management System");
         form.getjLabel1().setText("Username:");
         form.getjLabel2().setText("Password:");
-        form.getBtnRegister().setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        form.getRegisterButton().setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         form.getjLabel3().setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         form.getjLabel3().setText("Not a user yet?");
 
@@ -116,20 +110,20 @@ public class LoginBuilder extends AbstractFormBuilder {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(form.getjLabel1())
                             .addComponent(form.getjLabel4())
-                            .addComponent(form.getTfUsername(), javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(form.getUsernameField(), javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(form.getRbOwner())
                             .addComponent(form.getRbCustodian())
                             .addComponent(form.getLbError())
-                            .addComponent(form.getPfPassword(), javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(form.getPasswordField(), javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(form.getjLabel2())))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(77, 77, 77)
-                        .addComponent(form.getBtLogin())))
+                        .addComponent(form.getLoginButton())))
                 .addGap(39, 39, 39)
                 .addComponent(form.getjSeparator1(), javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(form.getBtnRegister())
+                    .addComponent(form.getRegisterButton())
                     .addComponent(form.getjLabel3()))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
@@ -148,7 +142,7 @@ public class LoginBuilder extends AbstractFormBuilder {
                                 .addGap(49, 49, 49)
                                 .addComponent(form.getjLabel3())
                                 .addGap(18, 18, 18)
-                                .addComponent(form.getBtnRegister())
+                                .addComponent(form.getRegisterButton())
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(form.getjLabel4())
@@ -159,15 +153,15 @@ public class LoginBuilder extends AbstractFormBuilder {
                                 .addGap(17, 17, 17)
                                 .addComponent(form.getjLabel1())
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(form.getTfUsername(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(form.getUsernameField(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(form.getjLabel2())
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(form.getPfPassword(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(form.getPasswordField(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(form.getLbError())
                         .addGap(25, 25, 25)
-                        .addComponent(form.getBtLogin())
+                        .addComponent(form.getLoginButton())
                         .addGap(42, 42, 42))))
         );
 
