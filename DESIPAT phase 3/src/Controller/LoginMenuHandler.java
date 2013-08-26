@@ -10,6 +10,7 @@ import Model.User;
 import View.Page;
 import View.LoginMenu;
 import View.MainMenu;
+import View.Register;
 import View.Builders.MainMenuBuilder;
 import View.Builders.RegisterBuilder;
 import View.Decorators.MainMenuDecorator;
@@ -77,7 +78,8 @@ public class LoginMenuHandler implements ActionListener {
 		} 
 		
 		else if (e.getSource().equals(loginMenu.getRegisterButton())) {    // Handler for register button
-			Page registrationForm = PageDirector.buildPage(new RegisterBuilder());
+		    Page registrationForm = PageDirector.buildPage(new RegisterBuilder());
+		    registrationForm.addActionListener(new RegisterHandler((Register) registrationForm));
 			registrationForm.setVisible(true);
 			registrationForm.setLocationRelativeTo(null);
 		}

@@ -133,10 +133,10 @@ public class AssetViewer extends Page {
      public void setbtnEdit(JButton btnEdit) {
         this.btnEdit = btnEdit;
     }
-     
-     public void addBtnEditListener(ActionListener listener) {
-         btnEdit.addActionListener(listener);
-     }
+ 
+    public void addActionListener(ActionListener listener) {
+        btnEdit.addActionListener(listener);
+    }
      
      
      public void setlistPreviousOwners(JList listPreviousOwners) {

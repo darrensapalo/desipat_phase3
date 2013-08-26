@@ -151,7 +151,7 @@ public class MainMenuHandler implements ActionListener {
                         Page view = PageDirector.buildPage(form);
                         
                         AssetViewer a = (AssetViewer) view;
-                        a.addBtnEditListener(new AssetViewerHandler(a));
+                        a.addActionListener(new AssetViewerHandler(a));
                         
                         ControllerUtility.SetValues(a, b.viewAsset(n), b.getPreviousOwner(n), m.getUserType(), m.getLbName().getText());
                         view=a;
