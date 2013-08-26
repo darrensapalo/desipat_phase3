@@ -52,7 +52,9 @@ public class LoginMenuHandler implements ActionListener {
 				loginMenu.dispose();
 				Page mainMenuForm = PageDirector.buildPage(new MainMenuBuilder());
 				
-				((MainMenu)mainMenuForm).setValuesSHOULDBECHANGEDSOONNNN3(
+				// TODO: change this soon
+				/*
+				((MainMenu)mainMenuForm).setValues(
 						userType, 
 						b.getAssetList(userType, loginMenu.getUsernameField().getText()), 
 						loginMenu.getUsernameField().getText(), 
@@ -66,7 +68,7 @@ public class LoginMenuHandler implements ActionListener {
 				
 				mainMenuForm.setVisible(true);
 				mainMenuForm.setLocationRelativeTo(null);
-					
+				*/	
 				DBHandler.addActivityLog("Logged In", userType, loginMenu.getUsernameField().getText());
 			}
 			

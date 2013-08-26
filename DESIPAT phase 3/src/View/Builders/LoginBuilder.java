@@ -2,6 +2,7 @@ package View.Builders;
 
 import Controller.LoginMenuHandler;
 import View.LoginMenu;
+import View.Page;
 import View.AbstractFactories.AbstractButtonFactory;
 import View.AbstractFactories.ConcreteButtonFactory;
 
@@ -11,159 +12,153 @@ import View.AbstractFactories.ConcreteButtonFactory;
  */
 public class LoginBuilder extends AbstractPageBuilder {
 
-	private LoginMenu form;
+	private LoginMenu loginMenu;
     
-    @Override
-    public void populateForm() {
-         form = new LoginMenu();
-         super.page = this.form;
-         
+	@Override
+	protected void initializeComponents() {        
 		 //Buttons use a Factory to set the name and add an ActionListener
-         AbstractButtonFactory btnFactory = new ConcreteButtonFactory();
-         LoginMenuHandler lh = new LoginMenuHandler(form);
-         
+        AbstractButtonFactory btnFactory = new ConcreteButtonFactory();
+        LoginMenuHandler lh = new LoginMenuHandler(loginMenu);
+        
 		 //Instantiate Components of LoginBuilder
-         form.setBtLogin(btnFactory.createButton("Login",lh));
-         form.setBtnRegister(btnFactory.createButton("Register Now",lh));
-         form.setPfPassword(new javax.swing.JPasswordField());
-         form.setTfUsername(new javax.swing.JTextField());
-         form.setLbError(new javax.swing.JLabel());
-         form.setBtnGrp(new javax.swing.ButtonGroup());
-         form.setjLabel1(new javax.swing.JLabel());
-         form.setjLabel2(new javax.swing.JLabel());
-         form.setjLabel3(new javax.swing.JLabel());
-         form.setjLabel4(new javax.swing.JLabel());
-         form.setjLabel5(new javax.swing.JLabel());
-         form.setjPanel1(new javax.swing.JPanel());
-         form.setjSeparator1(new javax.swing.JSeparator());
-         form.setRbCustodian(new javax.swing.JRadioButton());
-         form.setRbOwner(new javax.swing.JRadioButton());
-         
-    }
+        loginMenu.setBtLogin(btnFactory.createButton("Login",lh));
+        loginMenu.setBtnRegister(btnFactory.createButton("Register Now",lh));
+        loginMenu.setPfPassword(new javax.swing.JPasswordField());
+        loginMenu.setTfUsername(new javax.swing.JTextField());
+        loginMenu.setLbError(new javax.swing.JLabel());
+        loginMenu.setBtnGrp(new javax.swing.ButtonGroup());
+        loginMenu.setjLabel1(new javax.swing.JLabel());
+        loginMenu.setjLabel2(new javax.swing.JLabel());
+        loginMenu.setjLabel3(new javax.swing.JLabel());
+        loginMenu.setjLabel4(new javax.swing.JLabel());
+        loginMenu.setjLabel5(new javax.swing.JLabel());
+        loginMenu.setjPanel1(new javax.swing.JPanel());
+        loginMenu.setjSeparator1(new javax.swing.JSeparator());
+        loginMenu.setRbCustodian(new javax.swing.JRadioButton());
+        loginMenu.setRbOwner(new javax.swing.JRadioButton());
+        
+        loginMenu.setTitle("Asset Management System");
+        loginMenu.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        loginMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        loginMenu.setResizable(false);
+		
+        loginMenu.getjPanel1().setBackground(new java.awt.Color(0, 102, 102));
+        loginMenu.getjLabel5().setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        loginMenu.getjLabel5().setForeground(new java.awt.Color(255, 255, 255));
+        loginMenu.getjLabel5().setText("Asset Management System");
+        loginMenu.getjLabel1().setText("Username:");
+        loginMenu.getjLabel2().setText("Password:");
+        loginMenu.getRegisterButton().setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        loginMenu.getjLabel3().setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        loginMenu.getjLabel3().setText("Not a user yet?");
 
-    @Override
-    public void setFormProperties() {
-        form.setTitle("Asset Management System");
-        form.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        form.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        form.setResizable(false);
-    }
+        loginMenu.getjLabel4().setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        loginMenu.getjLabel4().setText("Login");
 
-    @Override
-    public void setComponentProperties() {
-        form.getjPanel1().setBackground(new java.awt.Color(0, 102, 102));
-        form.getjLabel5().setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        form.getjLabel5().setForeground(new java.awt.Color(255, 255, 255));
-        form.getjLabel5().setText("Asset Management System");
-        form.getjLabel1().setText("Username:");
-        form.getjLabel2().setText("Password:");
-        form.getRegisterButton().setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        form.getjLabel3().setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        form.getjLabel3().setText("Not a user yet?");
+        loginMenu.getjSeparator1().setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        form.getjLabel4().setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        form.getjLabel4().setText("Login");
+        loginMenu.getLbError().setForeground(new java.awt.Color(255, 51, 0));
 
-        form.getjSeparator1().setOrientation(javax.swing.SwingConstants.VERTICAL);
+        loginMenu.getBtnGrp().add(loginMenu.getRbOwner());
+        loginMenu.getRbOwner().setText("Owner");
+        loginMenu.getRbOwner().setActionCommand("");
 
-        form.getLbError().setForeground(new java.awt.Color(255, 51, 0));
+        loginMenu.getBtnGrp().add(loginMenu.getRbCustodian());
+        loginMenu.getRbCustodian().setText("Custodian");
+        loginMenu.getRbCustodian().setActionCommand("");
+	}
 
-        form.getBtnGrp().add(form.getRbOwner());
-        form.getRbOwner().setText("Owner");
-        form.getRbOwner().setActionCommand("");
-
-        form.getBtnGrp().add(form.getRbCustodian());
-        form.getRbCustodian().setText("Custodian");
-        form.getRbCustodian().setActionCommand("");
-    }
-
-    @Override
-    public void setLayout() {
-	//Uses GroupLayout to JPanels to set Layout of the components.
-	
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(form.getjPanel1());
-        form.getjPanel1().setLayout(jPanel1Layout);
+	@Override
+	protected void initializePageLayout() {
+		//Uses GroupLayout to JPanels to set Layout of the components.
+		
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(loginMenu.getjPanel1());
+        loginMenu.getjPanel1().setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(form.getjLabel5())
+                .addComponent(loginMenu.getjLabel5())
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(form.getjLabel5())
+                .addComponent(loginMenu.getjLabel5())
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         //To extend user types, put RadioButton components here.
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(form.getContentPane());
-        form.getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(loginMenu.getContentPane());
+        loginMenu.getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(form.getjPanel1(), javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(loginMenu.getjPanel1(), javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(form.getjLabel1())
-                            .addComponent(form.getjLabel4())
-                            .addComponent(form.getUsernameField(), javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(form.getRbOwner())
-                            .addComponent(form.getRbCustodian())
-                            .addComponent(form.getLbError())
-                            .addComponent(form.getPasswordField(), javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(form.getjLabel2())))
+                            .addComponent(loginMenu.getjLabel1())
+                            .addComponent(loginMenu.getjLabel4())
+                            .addComponent(loginMenu.getUsernameField(), javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(loginMenu.getRbOwner())
+                            .addComponent(loginMenu.getRbCustodian())
+                            .addComponent(loginMenu.getLbError())
+                            .addComponent(loginMenu.getPasswordField(), javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(loginMenu.getjLabel2())))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(77, 77, 77)
-                        .addComponent(form.getLoginButton())))
+                        .addComponent(loginMenu.getLoginButton())))
                 .addGap(39, 39, 39)
-                .addComponent(form.getjSeparator1(), javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(loginMenu.getjSeparator1(), javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(form.getRegisterButton())
-                    .addComponent(form.getjLabel3()))
+                    .addComponent(loginMenu.getRegisterButton())
+                    .addComponent(loginMenu.getjLabel3()))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(form.getjPanel1(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(loginMenu.getjPanel1(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(form.getjSeparator1())
+                        .addComponent(loginMenu.getjSeparator1())
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(49, 49, 49)
-                                .addComponent(form.getjLabel3())
+                                .addComponent(loginMenu.getjLabel3())
                                 .addGap(18, 18, 18)
-                                .addComponent(form.getRegisterButton())
+                                .addComponent(loginMenu.getRegisterButton())
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(form.getjLabel4())
+                                .addComponent(loginMenu.getjLabel4())
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(form.getRbOwner())
+                                .addComponent(loginMenu.getRbOwner())
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(form.getRbCustodian())
+                                .addComponent(loginMenu.getRbCustodian())
                                 .addGap(17, 17, 17)
-                                .addComponent(form.getjLabel1())
+                                .addComponent(loginMenu.getjLabel1())
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(form.getUsernameField(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(loginMenu.getUsernameField(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(form.getjLabel2())
+                                .addComponent(loginMenu.getjLabel2())
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(form.getPasswordField(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(loginMenu.getPasswordField(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(form.getLbError())
+                        .addComponent(loginMenu.getLbError())
                         .addGap(25, 25, 25)
-                        .addComponent(form.getLoginButton())
+                        .addComponent(loginMenu.getLoginButton())
                         .addGap(42, 42, 42))))
         );
+	}
 
-    }   
+	@Override
+	protected Page selectConcretePage() {
+		return loginMenu = new LoginMenu();
+	}   
 }

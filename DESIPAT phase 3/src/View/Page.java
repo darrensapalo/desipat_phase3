@@ -16,38 +16,6 @@ public abstract class Page extends JFrame {
     protected String username; //stores username
     protected String password; //stores password
     
-    public void setUsername(String username) {
-        this.username = username;
-    }
-    
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    
-    public void setUsertype(String usertype) {
-        this.userType = usertype;
-    }
-    
-    private void displayMessage(String message, int messageType) {
-    	JOptionPane.showMessageDialog(this, message, this.getTitle(), messageType);
-    }
-    
-    public void displayInformationMessage(String message) {
-    	this.displayMessage(message, JOptionPane.INFORMATION_MESSAGE);
-    }
-    
-    public void displayErrorMessage(String message) {
-    	this.displayMessage(message, JOptionPane.ERROR_MESSAGE);
-    }
-
-	public String getUserType() {
-		return userType;
-	}
-
-	public void setUserType(String userType) {
-		this.userType = userType;
-	}
-
 	public String getUsername() {
 		return username;
 	}
@@ -63,4 +31,24 @@ public abstract class Page extends JFrame {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public String getUserType() {
+		return userType;
+	}
+
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+    
+    private void displayMessage(String message, int messageType) {
+    	JOptionPane.showMessageDialog(this, message, this.getTitle(), messageType);
+    }
+    
+    public void displayInformationMessage(String message) {
+    	this.displayMessage(message, JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public void displayErrorMessage(String message) {
+    	this.displayMessage(message, JOptionPane.ERROR_MESSAGE);
+    }
 }
