@@ -75,7 +75,7 @@ public class MainMenuHandler implements ActionListener {
                         
                         DeleteAsset d = (DeleteAsset) del;
                         //d.setValues(b.viewAsset(n),m.getPassword(), m.getUserType(),m.getLbName().getText());
-                        
+                        d.addBtnDeleteListener(new DeleteAssetHandler(d));
                         
                         d.setUsertype(m.getUserType());
                         d.setUsername(m.getLbName().getText());

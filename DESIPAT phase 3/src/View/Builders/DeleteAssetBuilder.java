@@ -4,8 +4,10 @@
  */
 package View.Builders;
 
-import Controller.DeleteAssetHandler;
+//import Controller.DeleteAssetHandler;
+import View.AssetViewer;
 import View.DeleteAsset;
+import View.Page;
 import View.AbstractFactories.AbstractButtonFactory;
 import View.AbstractFactories.ConcreteButtonFactory;
 
@@ -19,33 +21,38 @@ public class DeleteAssetBuilder extends AbstractPageBuilder {
     
 
     @Override
-    public void populateForm() {
+    public void initializeComponents() {
         
         d = new DeleteAsset();
         super.page = this.d;
 		//Buttons use a Factory to set the name and add an ActionListener
-         AbstractButtonFactory btnFactory = new ConcreteButtonFactory();
+        //AbstractButtonFactory btnFactory = new ConcreteButtonFactory();
         
         d.setLbAssetName(new javax.swing.JLabel());
         d.setPasswordField(new javax.swing.JPasswordField());
-        d.setbtnDelete(btnFactory.createButton("Delete Asset", new DeleteAssetHandler(d)));
+        //d.setbtnDelete(btnFactory.createButton("Delete Asset", new DeleteAssetHandler(d)));
+        d.setbtnDelete(new javax.swing.JButton("Delete Asset"));
         d.setjLabel1(new javax.swing.JLabel());
         d.setjLabel2(new javax.swing.JLabel());
         d.setjLabel3(new javax.swing.JLabel());
         
-    
-    }
-
-    @Override
-    public void setFormProperties() {
         d.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         d.setTitle("Delete Asset");
         d.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         d.setResizable(false);
+        
+        d.getjLabel1().setText("Name of Asset:");
+
+        d.getjLabel2().setText("Password:");
+
+        d.getLbAssetName().setOpaque(true);
+
+        d.getjLabel3().setText("Please enter Password to confirm");
+        
     }
 
     @Override
-    public void setLayout() {
+    public void initializePageLayout() {
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(d.getContentPane());
         d.getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -86,13 +93,7 @@ public class DeleteAssetBuilder extends AbstractPageBuilder {
     }
 
     @Override
-    public void setComponentProperties() {
-        d.getjLabel1().setText("Name of Asset:");
-
-        d.getjLabel2().setText("Password:");
-
-        d.getLbAssetName().setOpaque(true);
-
-        d.getjLabel3().setText("Please enter Password to confirm");
+    public Page selectConcretePage() {
+        return d = new DeleteAsset();
     }
 }
