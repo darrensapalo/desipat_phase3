@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import Model.Template.AddUserQuery;
+import Model.Template.GetUserIDQuery;
 import Model.Template.Query;
 import Model.Template.UserLoginQuery;
 
@@ -52,6 +53,32 @@ public abstract class User {
 		}
 		
 		return false;
+	}
+	
+	public String fetchUserID(String userType, String username) {
+		/*
+		String id = "Error";
+		ResultSet rs = null;
+
+		try {
+			Query getUserID = new GetUserIDQuery(userType, username);
+			getUserID.createQuery();
+			rs = connection.prepareStatement(getUserID.getQuery())
+					.executeQuery();
+			rs.next();
+
+			if (userType.equalsIgnoreCase("Owner"))
+				id = rs.getString("ownerid");
+			else if (userType.equalsIgnoreCase("Custodian"))
+				id = rs.getString("custodianid");
+
+			rs.close();
+			connection.close();
+		} catch (SQLException err) {
+			System.out.println(err);
+		}
+		return id;
+		*/
 	}
 	
 	/*

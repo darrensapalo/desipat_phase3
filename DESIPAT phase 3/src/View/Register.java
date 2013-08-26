@@ -182,6 +182,7 @@ public class Register extends Page {
         return s;
     }
     
+    
     public boolean allFieldsValid() {
     	if (tfFirst.getText().trim().length() == 0 ||
 				tfLast.getText().trim().length() == 0 ||
