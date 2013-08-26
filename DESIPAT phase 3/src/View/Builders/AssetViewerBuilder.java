@@ -1,14 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package View.Builders;
 
-//import Controller.AssetViewerHandler;
+import java.awt.event.ActionListener;
+
 import View.AssetViewer;
 import View.Page;
-import View.AbstractFactories.AbstractButtonFactory;
-import View.AbstractFactories.ConcreteButtonFactory;
 
 /**
  *
@@ -23,14 +18,14 @@ public class AssetViewerBuilder extends AbstractPageBuilder {
 
     @Override
     public void initializeComponents() {
+    	/* 
+    	 * Removing button factory
+    	 * AbstractButtonFactory btnFactory = new ConcreteButtonFactory(); 
+    	 * assetViewer.setbtnEdit(btnFactory.createButton("Edit Asset", new AssetViewerHandler(assetViewer)));
+    	 */
         
-		////Buttons use a Factory to set the name and add an ActionListener
-		 
-        
-        AbstractButtonFactory btnFactory = new ConcreteButtonFactory();
-        
-        //assetViewer.setbtnEdit(btnFactory.createButton("Edit Asset", new AssetViewerHandler(assetViewer)));
-        assetViewer.setbtnEdit(new javax.swing.JButton("Edit Asset"));
+        //
+        assetViewer.setEditButton(new javax.swing.JButton("Edit Asset"));
         assetViewer.setjLabel1(new javax.swing.JLabel());  
         assetViewer.setjLabel10(new javax.swing.JLabel());  
         assetViewer.setjLabel11(new javax.swing.JLabel());  
@@ -111,7 +106,7 @@ public class AssetViewerBuilder extends AbstractPageBuilder {
         assetViewer.getjLabel12().setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         assetViewer.getjLabel12().setText("Storage Location:");
 
-        assetViewer.getbtnEdit().setText("Edit Asset");
+        assetViewer.getEditButton().setText("Edit Asset");
 
         assetViewer.getjLabel22().setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         assetViewer.getjLabel22().setText("Confidentiality Value:");
@@ -234,7 +229,7 @@ public class AssetViewerBuilder extends AbstractPageBuilder {
                             .addComponent(assetViewer.getLbIntegrity())
                             .addComponent(assetViewer.getLbPreviousOwner()))
                         .addGap(0, 11, Short.MAX_VALUE))
-                    .addComponent(assetViewer.getbtnEdit(), javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(assetViewer.getEditButton(), javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(assetViewer.getjPanel2(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -303,7 +298,7 @@ public class AssetViewerBuilder extends AbstractPageBuilder {
                             .addComponent(assetViewer.getjLabel12())
                             .addComponent(assetViewer.getLbStorage()))
                         .addGap(27, 27, 27)
-                        .addComponent(assetViewer.getbtnEdit()))
+                        .addComponent(assetViewer.getEditButton()))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(assetViewer.getjPanel2(), javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -315,6 +310,11 @@ public class AssetViewerBuilder extends AbstractPageBuilder {
 	@Override
 	public Page selectConcretePage() {
 		return assetViewer = new AssetViewer();
+	}
+
+	@Override
+	protected void setActionListener(ActionListener listener) {
+		assetViewer.getEditButton().addActionListener(listener);
 	}
     
 }

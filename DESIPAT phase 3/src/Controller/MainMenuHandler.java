@@ -109,8 +109,8 @@ public class MainMenuHandler implements ActionListener {
                             form = new ModifyAssetBuilder();
                             Page edit = PageDirector.buildPage(form);
                             
-                            Page Deco = new ModifyAssetDecorator(edit, b.viewAsset(n));
-                            edit = Deco;
+                            ModifyAssetDecorator Deco = new ModifyAssetDecorator(edit, b.viewAsset(n));
+                            edit = Deco.getForm();
                             
                             ModifyAsset editing = (ModifyAsset)edit;
                             editing.setValues(m.getUserType(), m.getLbName().getText(),m.getUserID());
@@ -120,8 +120,8 @@ public class MainMenuHandler implements ActionListener {
                             
                             if (m.getUserType() == "custodian"){
                                 
-                                Deco = new CustodianModifyAssetDecorator(edit);
-                                edit = Deco;
+                            	CustodianModifyAssetDecorator Decor = new CustodianModifyAssetDecorator(edit);
+                                edit = Decor.getForm();
                                 edit.setVisible(true);
                                 edit.setLocationRelativeTo(null);
                                 

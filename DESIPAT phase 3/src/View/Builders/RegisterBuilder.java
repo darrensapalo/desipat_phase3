@@ -1,10 +1,10 @@
 package View.Builders;
 
 //import Controller.RegisterHandler;
+import java.awt.event.ActionListener;
+
 import View.Page;
 import View.Register;
-import View.AbstractFactories.AbstractButtonFactory;
-import View.AbstractFactories.ConcreteButtonFactory;
 
 /**
  *
@@ -203,5 +203,10 @@ public class RegisterBuilder extends AbstractPageBuilder{
 	@Override
 	protected Page selectConcretePage() {
 		return register = new Register();
+	}
+
+	@Override
+	protected void setActionListener(ActionListener listener) {
+		register.getBtSignUp().addActionListener(listener);
 	}   
 }

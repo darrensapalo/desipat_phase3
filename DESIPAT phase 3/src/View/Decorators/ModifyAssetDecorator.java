@@ -79,39 +79,43 @@ public class ModifyAssetDecorator extends AbstractDecorator {
                 
                 dateRetention = d.parse(tempDate);
                 
+
+                Calendar acquired = Calendar.getInstance(); //date goes to Calendar, which DateChooser need to set the date.
+                acquired.setTime(dateAcquired);
+                
+                Calendar retention = Calendar.getInstance(); //same is true for Retention Period.
+                retention.setTime(dateRetention);
+                
+                asset.first();
+                
+                ma.getTfAssetName().setText((asset.getString("assetname")));
+                ma.getTfType().setText((asset.getString("assettype")));
+                ma.getTfCustodian().setText(Integer.toString(asset.getInt("asset_custodianid")));
+                ma.getTfOwner().setText(Integer.toString(asset.getInt("asset_ownerid")));
+                ma.getTfStorage().setText((asset.getString("storagelocation")));
+                ma.getTfFinancial().setText((asset.getString("financialval")));
+                ma.getDccDateAcquired().setSelectedDate(acquired);
+                ma.getDccRetentionPeriod().setSelectedDate(retention);
+                ma.getCbMaintenance().setSelectedItem((asset.getString("mainsched")));
+                ma.getCbClassification().setSelectedItem((asset.getString("classification")));
+                ma.getCbConfidentiality().setSelectedItem((asset.getString("confidentialityval")));
+                ma.getCbIntegrity().setSelectedItem((asset.getString("integrityval")));
+                ma.getCbAvailability().setSelectedItem((asset.getString("availabilityval")));
+                ma.setAssetID(asset.getInt("assetid"));
+                ma.setPreviousOwnerID(asset.getInt("asset_ownerid"));
+                ma.getTfOwner().setEnabled(true);
+                
             } catch (ParseException ex) {
                 Logger.getLogger(ModifyAssetDecorator.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
             }
             
-            Calendar acquired = Calendar.getInstance(); //date goes to Calendar, which DateChooser need to set the date.
-            acquired.setTime(dateAcquired);
-            
-            Calendar retention = Calendar.getInstance(); //same is true for Retention Period.
-            retention.setTime(dateRetention);
-            
-            asset.first();
-            
-            ma.getTfAssetName().setText((asset.getString("assetname")));
-            ma.getTfType().setText((asset.getString("assettype")));
-            ma.getTfCustodian().setText(Integer.toString(asset.getInt("asset_custodianid")));
-            ma.getTfOwner().setText(Integer.toString(asset.getInt("asset_ownerid")));
-            ma.getTfStorage().setText((asset.getString("storagelocation")));
-            ma.getTfFinancial().setText((asset.getString("financialval")));
-            ma.getDccDateAcquired().setSelectedDate(acquired);
-            ma.getDccRetentionPeriod().setSelectedDate(retention);
-            ma.getCbMaintenance().setSelectedItem((asset.getString("mainsched")));
-            ma.getCbClassification().setSelectedItem((asset.getString("classification")));
-            ma.getCbConfidentiality().setSelectedItem((asset.getString("confidentialityval")));
-            ma.getCbIntegrity().setSelectedItem((asset.getString("integrityval")));
-            ma.getCbAvailability().setSelectedItem((asset.getString("availabilityval")));
-            ma.setAssetID(asset.getInt("assetid"));
-            ma.setPreviousOwnerID(asset.getInt("asset_ownerid"));
-            ma.getTfOwner().setEnabled(true);
             
             
             
        } catch (SQLException ex) {
             Logger.getLogger(ModifyAssetDecorator.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
        
        ModifyAssetEditHandler mae = new ModifyAssetEditHandler(ma);

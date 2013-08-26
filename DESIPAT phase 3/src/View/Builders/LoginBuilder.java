@@ -1,10 +1,9 @@
 package View.Builders;
 
-import Controller.LoginMenuHandler;
+import java.awt.event.ActionListener;
+
 import View.LoginMenu;
 import View.Page;
-import View.AbstractFactories.AbstractButtonFactory;
-import View.AbstractFactories.ConcreteButtonFactory;
 
 /**
  *
@@ -17,12 +16,14 @@ public class LoginBuilder extends AbstractPageBuilder {
 	@Override
 	protected void initializeComponents() {        
 		 //Buttons use a Factory to set the name and add an ActionListener
-        AbstractButtonFactory btnFactory = new ConcreteButtonFactory();
-        LoginMenuHandler lh = new LoginMenuHandler(loginMenu);
+        //AbstractButtonFactory btnFactory = new ConcreteButtonFactory();
+        //LoginMenuHandler lh = new LoginMenuHandler(loginMenu);
         
 		 //Instantiate Components of LoginBuilder
-        loginMenu.setBtLogin(btnFactory.createButton("Login",lh));
-        loginMenu.setBtnRegister(btnFactory.createButton("Register Now",lh));
+        //loginMenu.setBtLogin(btnFactory.createButton("Login",lh));
+        //loginMenu.setBtnRegister(btnFactory.createButton("Register Now",lh));
+		loginMenu.setBtLogin(new javax.swing.JButton("Login"));
+        loginMenu.setBtnRegister(new javax.swing.JButton("Register Now"));
         loginMenu.setPfPassword(new javax.swing.JPasswordField());
         loginMenu.setTfUsername(new javax.swing.JTextField());
         loginMenu.setLbError(new javax.swing.JLabel());
@@ -160,5 +161,11 @@ public class LoginBuilder extends AbstractPageBuilder {
 	@Override
 	protected Page selectConcretePage() {
 		return loginMenu = new LoginMenu();
+	}
+
+	@Override
+	protected void setActionListener(ActionListener listener) {
+		loginMenu.getLoginButton().addActionListener(listener);
+		loginMenu.getRegisterButton().addActionListener(listener);
 	}   
 }
