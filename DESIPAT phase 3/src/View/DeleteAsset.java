@@ -178,4 +178,10 @@ public class DeleteAsset extends Page {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void addActionListener(ActionListener listener) {
+        // TODO Auto-generated method stub
+        
+    }
 }

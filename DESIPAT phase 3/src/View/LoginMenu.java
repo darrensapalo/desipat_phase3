@@ -3,6 +3,8 @@
  * and open the template in the editor.
  */
 package View;
+import java.awt.event.ActionListener;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -175,6 +177,12 @@ public class LoginMenu extends Page {
     private javax.swing.JRadioButton rbOwner;
     private javax.swing.JTextField tfUsername;
     // End of variables declaration//GEN-END:variables
+    
+    @Override
+    public void addActionListener(ActionListener listener) {
+        btLogin.addActionListener(listener);
+        btnRegister.addActionListener(listener);
+    }
 
     
 

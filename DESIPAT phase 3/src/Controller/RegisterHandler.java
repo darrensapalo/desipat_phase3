@@ -22,6 +22,7 @@ public class RegisterHandler implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
+        System.out.println("lol here");
     if(e.getSource().equals(r.getBtSignUp())){
        //this area of the code checks if the user that wants to register is an owner or a custodian
         if(r.getRbOwner().isSelected()){

@@ -1,4 +1,6 @@
+import Controller.LoginMenuHandler;
 import Controller.PageDirector;
+import View.LoginMenu;
 import View.Page;
 import View.Builders.LoginBuilder;
 
@@ -16,6 +18,7 @@ public class ProgramMain {
 	public static void main(String args[]) {
 		
 		Page login = PageDirector.buildPage(new LoginBuilder());
+		login.addActionListener(new LoginMenuHandler((LoginMenu) login));
 		login.setLocationRelativeTo(null);
 		login.setVisible(true);
 	}

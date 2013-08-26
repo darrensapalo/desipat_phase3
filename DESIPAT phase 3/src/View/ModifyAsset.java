@@ -415,4 +415,10 @@ public class ModifyAsset extends Page {
     private javax.swing.JTextField tfStorage;
     private javax.swing.JTextField tfType;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void addActionListener(ActionListener listener) {
+        // TODO Auto-generated method stub
+        
+    }
 }

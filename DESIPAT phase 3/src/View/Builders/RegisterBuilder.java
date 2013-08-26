@@ -18,7 +18,7 @@ public class RegisterBuilder extends AbstractPageBuilder{
 	protected void initializeComponents() {
 		//Buttons use a Factory to set the name and add an ActionListener
 
-		AbstractButtonFactory btnFactory = new ConcreteButtonFactory();
+		//AbstractButtonFactory btnFactory = new ConcreteButtonFactory();
 		//RegisterHandler rh = new RegisterHandler(register);
 
 		register.setButtonGroup1(new javax.swing.ButtonGroup());

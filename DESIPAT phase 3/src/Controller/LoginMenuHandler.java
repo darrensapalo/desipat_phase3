@@ -78,6 +78,7 @@ public class LoginMenuHandler implements ActionListener {
 		} 
 		
 		else if (e.getSource().equals(loginMenu.getRegisterButton())) {    // Handler for register button
+		    System.out.println("building register button");
 		    Page registrationForm = PageDirector.buildPage(new RegisterBuilder());
 		    registrationForm.addActionListener(new RegisterHandler((Register) registrationForm));
 			registrationForm.setVisible(true);
