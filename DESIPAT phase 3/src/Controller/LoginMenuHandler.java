@@ -18,7 +18,7 @@ import View.Decorators.MainMenuDecorator;
  * 
  * @author Renz
  */
-public class LoginMenuHandler extends Controller {
+public class LoginMenuHandler implements ActionListener {
 	private LoginMenu loginMenu;
 
 	public LoginMenuHandler(LoginMenu loginMenu) {

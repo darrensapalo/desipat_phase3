@@ -13,6 +13,7 @@ import View.Decorators.CustodianModifyAssetDecorator;
 import View.Decorators.ModifyAssetDecorator;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
@@ -22,7 +23,7 @@ import javax.swing.JButton;
  */
 
 
-public class AssetViewerHandler extends Controller {
+public class AssetViewerHandler implements ActionListener {
     
 	private AssetViewer assetViewer;
 	private JButton edit;
@@ -36,7 +37,6 @@ public class AssetViewerHandler extends Controller {
     	
     }
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
     	

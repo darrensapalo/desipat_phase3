@@ -32,7 +32,7 @@ import javax.swing.JOptionPane;
  *
  * @author Jan
  */
-public class MainMenuHandler extends Controller{
+public class MainMenuHandler implements ActionListener {
     
     private MainMenu m;
     

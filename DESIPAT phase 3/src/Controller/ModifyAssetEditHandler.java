@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  *
  * @author Jan
  */
-public class ModifyAssetEditHandler extends Controller{
+public class ModifyAssetEditHandler implements ActionListener {
     
     private ModifyAsset m;
     
