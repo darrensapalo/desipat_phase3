@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 package View.Builders;
-import Controller.ModifyAssetHandler;
+//import Controller.ModifyAssetHandler;
 import View.ModifyAsset;
 import View.Page;
 import View.AbstractFactories.AbstractButtonFactory;
@@ -21,12 +21,13 @@ public class ModifyAssetBuilder extends AbstractPageBuilder{
 	protected void initializeComponents() {
 		//Buttons use a Factory to set the name and add an ActionListener
 		 
-        ModifyAssetHandler mah = new ModifyAssetHandler(m);
-        AbstractButtonFactory btnFactory = new ConcreteButtonFactory();
+        //ModifyAssetHandler mah = new ModifyAssetHandler(m);
+        //AbstractButtonFactory btnFactory = new ConcreteButtonFactory();
         
        m.setjScrollPane1(new javax.swing.JScrollPane());
        m.setjList1(new javax.swing.JList());
-       m.setBtnAddEdit(btnFactory.createButton("Add this Asset",mah));
+       //m.setBtnAddEdit(btnFactory.createButton("Add this Asset",mah));
+       m.setBtnAddEdit(new javax.swing.JButton("Add this Asset"));
        m.setjPanel1(new javax.swing.JPanel());
        m.setTfType(new javax.swing.JTextField());
        m.setjLabel1(new javax.swing.JLabel());
