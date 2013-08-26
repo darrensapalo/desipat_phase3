@@ -84,4 +84,31 @@ public class ControllerUtility {
         view.setVisible(true);
         view.setLocationRelativeTo(null);
 	}
+
+	public static void SetValues(MainMenu mainMenu, String userType,
+			ResultSet rAssets, String username, String password, int userID) {
+		
+		mainMenu.setUsername(username);
+		mainMenu.setUserType(userType);
+		mainMenu.setUserID(userID);
+		mainMenu.setPassword(password);
+        
+               Vector<String> res = new Vector<String>();
+                    try {
+                        while (rAssets.next()) {
+                        res.add(rAssets.getString("assetname")+", Type: "+rAssets.getString("assettype"));
+                        mainMenu.getAssetIDs().add(rAssets.getString("assetID"));
+                        }
+                    } catch (SQLException ex) {
+                        Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                
+                    
+                    
+      mainMenu.getLbName().setText(username);
+      mainMenu.getLbID().setText("Owner ID: " + userID);
+      mainMenu.getListOfAsset().setListData(res);
+      mainMenu.getLbUserType().setText("Logged in as Owner");
+		
+	}
 }

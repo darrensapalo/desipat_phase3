@@ -6,6 +6,7 @@ package View.Builders;
 
 import Controller.MainMenuHandler;
 import View.MainMenu;
+import View.Page;
 import View.AbstractFactories.AbstractButtonFactory;
 import View.AbstractFactories.ConcreteButtonFactory;
 
@@ -20,12 +21,9 @@ public class MainMenuBuilder extends AbstractPageBuilder {
     
     private MainMenu m;
     
-
-    @Override
-    public void populateForm() {
-        
-        m = new MainMenu();
-        super.page = this.m;
+	@Override
+	protected void initializeComponents() {
+		
 		//Buttons use a Factory to set the name and add an ActionListener
 		 
         
@@ -53,18 +51,57 @@ public class MainMenuBuilder extends AbstractPageBuilder {
         m.setjScrollPane2(new javax.swing.JScrollPane());
         m.setListOfAsset(new javax.swing.JList());
         m.setBtRefresh(btnFactory.createButton("Refresh",mh));
-    }
+		
+		// TODO Auto-generated method stub
+        m.getjPanel2().setBackground(new java.awt.Color(255, 255, 255));
+        m.getjPanel2().setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-    @Override
-    public void setFormProperties() {
+        m.getjLabel5().setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        m.getjLabel5().setText("Asset Management");
+        
+        m.getjLabel1().setText("For Owners Only");
+
+        m.getjPanel3().setBackground(new java.awt.Color(0, 102, 102));
+
+        m.getLbName().setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        m.getLbName().setForeground(new java.awt.Color(255, 255, 255));
+        m.getLbName().setText("Custodian");
+
+        m.getLbUserType().setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        m.getLbUserType().setForeground(new java.awt.Color(255, 255, 255));
+        m.getLbUserType().setText("Login ID");
+
+        m.getLbID().setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        m.getLbID().setForeground(new java.awt.Color(255, 255, 255));
+        m.getLbID().setText("m.getjLabel1()");
+
+        m.getBtLogout().setText("Logout");
+        
+        m.getjLabel2().setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        m.getjLabel2().setText("Your Assets");
+
+        m.getjPanel1().setBackground(new java.awt.Color(0, 102, 102));
+
+        m.getjLabel3().setFont(new java.awt.Font("Segoe UI", 0, 28)); // NOI18N
+        m.getjLabel3().setForeground(new java.awt.Color(255, 255, 255));
+        m.getjLabel3().setText("Main Menu");
+        
+        m.getListOfAsset().setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        m.getjScrollPane2().setViewportView(m.getListOfAsset());
+	}
+
+	@Override
+	protected void initializePageLayout() {
+
         m.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         m.setTitle("Main Menu - Asset Management System");
         m.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         m.setResizable(false);
-    }
-
-    @Override
-    public void setLayout() {
+    	
 	//Uses group layout to set components' arrangement in the form.
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(m.getjPanel3());
         m.getjPanel3().setLayout(jPanel3Layout);
@@ -193,49 +230,11 @@ public class MainMenuBuilder extends AbstractPageBuilder {
                     .addComponent(m.getjPanel2(), javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-    }
+	}
 
-    @Override
-    public void setComponentProperties() {
-        m.getjPanel2().setBackground(new java.awt.Color(255, 255, 255));
-        m.getjPanel2().setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        m.getjLabel5().setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        m.getjLabel5().setText("Asset Management");
-        
-        m.getjLabel1().setText("For Owners Only");
-
-        m.getjPanel3().setBackground(new java.awt.Color(0, 102, 102));
-
-        m.getLbName().setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        m.getLbName().setForeground(new java.awt.Color(255, 255, 255));
-        m.getLbName().setText("Custodian");
-
-        m.getLbUserType().setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        m.getLbUserType().setForeground(new java.awt.Color(255, 255, 255));
-        m.getLbUserType().setText("Login ID");
-
-        m.getLbID().setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        m.getLbID().setForeground(new java.awt.Color(255, 255, 255));
-        m.getLbID().setText("m.getjLabel1()");
-
-        m.getBtLogout().setText("Logout");
-        
-        m.getjLabel2().setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        m.getjLabel2().setText("Your Assets");
-
-        m.getjPanel1().setBackground(new java.awt.Color(0, 102, 102));
-
-        m.getjLabel3().setFont(new java.awt.Font("Segoe UI", 0, 28)); // NOI18N
-        m.getjLabel3().setForeground(new java.awt.Color(255, 255, 255));
-        m.getjLabel3().setText("Main Menu");
-        
-        m.getListOfAsset().setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        m.getjScrollPane2().setViewportView(m.getListOfAsset());
-    }
+	@Override
+	protected Page selectConcretePage() {
+		return m = new MainMenu();
+	}
     
 }
