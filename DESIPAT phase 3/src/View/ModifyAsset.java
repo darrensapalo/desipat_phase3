@@ -1,5 +1,7 @@
 package View;
 
+import java.awt.event.ActionListener;
+
 import datechooser.beans.DateChooserCombo;
 
 import javax.swing.JButton;
@@ -89,7 +91,11 @@ public class ModifyAsset extends Page {
     public void setBtnAddEdit(JButton btnAddEdit) {
         this.btnAddEdit = btnAddEdit;
     }
-
+    
+    public void addBtnAddEditListener(ActionListener listener) {
+        btnAddEdit.addActionListener(listener);
+    }
+    
     public JComboBox getCbAvailability() {
         return cbAvailability;
     }

@@ -54,8 +54,9 @@ public class MainMenuHandler implements ActionListener {
                         
                         ModifyAsset a = (ModifyAsset)add;
                         a.setValues(m.getUserType(), m.getLbName().getText(),m.getUserID());
-                        add = a;
+                        a.addBtnAddEditListener(new ModifyAssetHandler(a));
                         
+                        add = a;
                         add.setVisible(true);
                         add.setLocationRelativeTo(null);
                         
