@@ -1,6 +1,6 @@
 package View.Builders;
 
-import Controller.listeners.LoginMenuHandler;
+import Controller.LoginMenuHandler;
 import View.LoginMenu;
 import View.AbstractFactories.AbstractButtonFactory;
 import View.AbstractFactories.ConcreteButtonFactory;
@@ -9,14 +9,14 @@ import View.AbstractFactories.ConcreteButtonFactory;
  *
  * @author DJ
  */
-public class LoginBuilder extends AbstractFormBuilder {
+public class LoginBuilder extends AbstractPageBuilder {
 
 	private LoginMenu form;
     
     @Override
     public void populateForm() {
          form = new LoginMenu();
-         super.form = this.form;
+         super.page = this.form;
          
 		 //Buttons use a Factory to set the name and add an ActionListener
          AbstractButtonFactory btnFactory = new ConcreteButtonFactory();

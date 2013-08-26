@@ -4,8 +4,8 @@
  */
 package View.Decorators;
 
-import Controller.listeners.ModifyAssetEditHandler;
-import View.Form;
+import Controller.ModifyAssetEditHandler;
+import View.Page;
 import View.ModifyAsset;
 
 import java.sql.ResultSet;
@@ -24,16 +24,16 @@ import java.util.logging.Logger;
  */
 public class ModifyAssetDecorator extends AbstractDecorator {
     //This decorator turns Add Asset into Edit Asset
-    private Form toD;
+    private Page toD;
     private ResultSet asset;
     
-    public ModifyAssetDecorator(Form f, ResultSet r){
+    public ModifyAssetDecorator(Page f, ResultSet r){
         toD = f;
         asset = r;
     }
 
     @Override
-    public Form getForm() {
+    public Page getForm() {
         ModifyAsset ma = (ModifyAsset)toD;
        
          ma.getBtnAddEdit().setText("Edit Asset");

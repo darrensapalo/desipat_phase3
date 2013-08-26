@@ -1,6 +1,6 @@
 package View.Builders;
 
-import Controller.listeners.RegisterHandler;
+import Controller.RegisterHandler;
 import View.Register;
 import View.AbstractFactories.AbstractButtonFactory;
 import View.AbstractFactories.ConcreteButtonFactory;
@@ -9,14 +9,14 @@ import View.AbstractFactories.ConcreteButtonFactory;
  *
  * @author Jan
  */
-public class RegisterBuilder extends AbstractFormBuilder{
+public class RegisterBuilder extends AbstractPageBuilder{
     
     private Register r;
 
     @Override
     public void populateForm() {
         r = new Register();
-        super.form = this.r;
+        super.page = this.r;
 		//Buttons use a Factory to set the name and add an ActionListener
 		
         AbstractButtonFactory btnFactory = new ConcreteButtonFactory();

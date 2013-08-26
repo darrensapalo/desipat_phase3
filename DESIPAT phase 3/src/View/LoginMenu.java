@@ -19,7 +19,7 @@ import javax.swing.JTextField;
  */
 
 @SuppressWarnings("serial")
-public class LoginMenu extends Form {
+public class LoginMenu extends Page {
     
 	
 	

@@ -2,14 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller.listeners;
+package Controller;
 
-import View.Form;
+import View.Page;
 import View.Register;
 import View.LoginMenu;
 import Model.DBHandler;
-import View.Builders.AbstractFormBuilder;
-import View.Builders.FormDirector;
+import View.Builders.AbstractPageBuilder;
 import View.Builders.LoginBuilder;
 
 import java.awt.event.ActionEvent;

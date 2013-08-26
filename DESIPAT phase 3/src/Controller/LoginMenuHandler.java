@@ -1,4 +1,4 @@
-package Controller.listeners;
+package Controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,10 +7,9 @@ import Model.Custodian;
 import Model.DBHandler;
 import Model.Owner;
 import Model.User;
-import View.Form;
+import View.Page;
 import View.LoginMenu;
 import View.MainMenu;
-import View.Builders.FormDirector;
 import View.Builders.MainMenuBuilder;
 import View.Builders.RegisterBuilder;
 import View.Decorators.MainMenuDecorator;
@@ -51,10 +50,10 @@ public class LoginMenuHandler implements ActionListener {
 			
 			if (user.login()) {
 				loginMenu.dispose();
-				FormDirector fd = new FormDirector();
+				PageDirector fd = new PageDirector();
 				fd.setBuilder(new MainMenuBuilder());
 				
-				Form mainMenuForm = fd.construct();
+				Page mainMenuForm = fd.construct();
 				
 				((MainMenu)mainMenuForm).setValues(
 						userType, 
@@ -80,9 +79,9 @@ public class LoginMenuHandler implements ActionListener {
 		} 
 		
 		else if (e.getSource().equals(loginMenu.getRegisterButton())) {    // Handler for register button
-			FormDirector fd = new FormDirector();
+			PageDirector fd = new PageDirector();
 			fd.setBuilder(new RegisterBuilder());
-			Form registrationForm = fd.construct();
+			Page registrationForm = fd.construct();
 
 			registrationForm.setVisible(true);
 			registrationForm.setLocationRelativeTo(null);

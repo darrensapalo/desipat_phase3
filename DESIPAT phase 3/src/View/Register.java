@@ -4,7 +4,7 @@
  */
 package View;
 
-import Controller.listeners.RegisterHandler;
+import Controller.RegisterHandler;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -18,7 +18,7 @@ import javax.swing.JTextField;
  *
  * @author DJ
  */
-public class Register extends Form {
+public class Register extends Page {
 
     /**
      * Creates new form Register

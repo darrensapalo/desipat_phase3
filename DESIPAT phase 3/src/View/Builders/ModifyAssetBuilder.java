@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 package View.Builders;
-import Controller.listeners.ModifyAssetHandler;
+import Controller.ModifyAssetHandler;
 import View.ModifyAsset;
 import View.AbstractFactories.AbstractButtonFactory;
 import View.AbstractFactories.ConcreteButtonFactory;
@@ -13,14 +13,14 @@ import View.AbstractFactories.ConcreteButtonFactory;
  */
  //By default, this builder builds an Add Asset form for owners. For Editing, we use a ModifyAssetDecorator to alter some
  //of the components. For Editing as a custodian, there is another decorator for that.
-public class ModifyAssetBuilder extends AbstractFormBuilder{
+public class ModifyAssetBuilder extends AbstractPageBuilder{
     
     private ModifyAsset m;
 
     @Override
     public void populateForm() {
          m = new ModifyAsset();
-         super.form = this.m;
+         super.page = this.m;
 		//Buttons use a Factory to set the name and add an ActionListener
 		 
          ModifyAssetHandler mah = new ModifyAssetHandler(m);

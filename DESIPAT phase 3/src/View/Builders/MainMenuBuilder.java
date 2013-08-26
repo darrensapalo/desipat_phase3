@@ -4,7 +4,7 @@
  */
 package View.Builders;
 
-import Controller.listeners.MainMenuHandler;
+import Controller.MainMenuHandler;
 import View.MainMenu;
 import View.AbstractFactories.AbstractButtonFactory;
 import View.AbstractFactories.ConcreteButtonFactory;
@@ -16,7 +16,7 @@ import View.AbstractFactories.ConcreteButtonFactory;
  
  //By default, this builder builds a MainMenu form for the owner. For custodians, the program uses
  //a decorator to alter the properties of some components.
-public class MainMenuBuilder extends AbstractFormBuilder {
+public class MainMenuBuilder extends AbstractPageBuilder {
     
     private MainMenu m;
     
@@ -25,7 +25,7 @@ public class MainMenuBuilder extends AbstractFormBuilder {
     public void populateForm() {
         
         m = new MainMenu();
-        super.form = this.m;
+        super.page = this.m;
 		//Buttons use a Factory to set the name and add an ActionListener
 		 
         

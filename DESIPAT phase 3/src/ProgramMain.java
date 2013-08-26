@@ -1,5 +1,5 @@
-import View.Form;
-import View.Builders.FormDirector;
+import Controller.PageDirector;
+import View.Page;
 import View.Builders.LoginBuilder;
 
 //PROGRAM STARTS HERE
@@ -15,10 +15,10 @@ public class ProgramMain {
 
 	public static void main(String args[]) {
 		
-		FormDirector f = new FormDirector();
+		PageDirector f = new PageDirector();
 		f.setBuilder(new LoginBuilder());
 		
-		Form login = f.construct();
+		Page login = f.construct();
 		login.setLocationRelativeTo(null);
 		login.setVisible(true);
 	}

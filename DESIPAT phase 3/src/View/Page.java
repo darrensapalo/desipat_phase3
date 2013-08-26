@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 // Superclass of all forms.
 
 @SuppressWarnings("serial")
-public abstract class Form extends JFrame {
+public abstract class Page extends JFrame {
 
     protected String userType; //stores the userType (owner or custodian)
     protected String username; //stores username
@@ -28,7 +28,7 @@ public abstract class Form extends JFrame {
     	this.displayMessage(message, JOptionPane.ERROR_MESSAGE);
     }
     
-    public Form getForm() {
+    public Page getForm() {
     	return this;
     }
 }

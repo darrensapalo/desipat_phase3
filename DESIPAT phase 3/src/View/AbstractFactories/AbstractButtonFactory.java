@@ -12,7 +12,7 @@ import javax.swing.JButton;
  * @author Jan
  */
 public interface AbstractButtonFactory {
-    
     public JButton createButton(String text, ActionListener al);
+    
     
 }

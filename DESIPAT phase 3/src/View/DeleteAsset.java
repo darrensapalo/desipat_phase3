@@ -5,7 +5,7 @@
 package View;
 
 
-import Controller.listeners.DeleteAssetHandler;
+import Controller.DeleteAssetHandler;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,7 +17,7 @@ import javax.swing.JPasswordField;
  *
  * @author DJ
  */
-public class DeleteAsset extends Form {
+public class DeleteAsset extends Page {
 
     /**
      * Creates new form DeleteAsset

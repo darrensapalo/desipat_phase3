@@ -1,10 +1,10 @@
 
-import View.Builders.AbstractFormBuilder;
-import View.Builders.FormDirector;
+import Controller.PageDirector;
+import View.Builders.AbstractPageBuilder;
 import View.Builders.MainMenuBuilder;
 import View.Builders.RegisterBuilder;
 import View.Decorators.MainMenuDecorator;
-import View.Form;
+import View.Page;
 import View.MainMenu;
 
 /*
@@ -26,10 +26,10 @@ public class TestingMain {
     public static void main(String args[]){
         
         //MAINMENU
-         AbstractFormBuilder builder = new MainMenuBuilder();
-         FormDirector f = new FormDirector();
+         AbstractPageBuilder builder = new MainMenuBuilder();
+         PageDirector f = new PageDirector();
          f.setBuilder(builder);
-         Form mainmenu = f.construct();
+         Page mainmenu = f.construct();
          mainmenu.setVisible(true);
          mainmenu.setLocationRelativeTo(null);
          
@@ -37,12 +37,12 @@ public class TestingMain {
          //REGISTER
          builder = new RegisterBuilder();
          f.setBuilder(builder);
-         Form register = f.construct();
+         Page register = f.construct();
          register.setVisible(true);
          register.setLocationRelativeTo(null);
          
          //DECORATOR MAINMENU
-         Form Deco = new MainMenuDecorator(mainmenu);
+         Page Deco = new MainMenuDecorator(mainmenu);
          mainmenu = Deco.getForm();
          mainmenu.setVisible(true);
          mainmenu.setLocationRelativeTo(null);

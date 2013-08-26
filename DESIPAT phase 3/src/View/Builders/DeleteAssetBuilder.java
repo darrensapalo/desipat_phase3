@@ -4,7 +4,7 @@
  */
 package View.Builders;
 
-import Controller.listeners.DeleteAssetHandler;
+import Controller.DeleteAssetHandler;
 import View.DeleteAsset;
 import View.AbstractFactories.AbstractButtonFactory;
 import View.AbstractFactories.ConcreteButtonFactory;
@@ -13,7 +13,7 @@ import View.AbstractFactories.ConcreteButtonFactory;
  *
  * @author Jan
  */
-public class DeleteAssetBuilder extends AbstractFormBuilder {
+public class DeleteAssetBuilder extends AbstractPageBuilder {
     
     private DeleteAsset d;
     
@@ -22,7 +22,7 @@ public class DeleteAssetBuilder extends AbstractFormBuilder {
     public void populateForm() {
         
         d = new DeleteAsset();
-        super.form = this.d;
+        super.page = this.d;
 		//Buttons use a Factory to set the name and add an ActionListener
          AbstractButtonFactory btnFactory = new ConcreteButtonFactory();
         

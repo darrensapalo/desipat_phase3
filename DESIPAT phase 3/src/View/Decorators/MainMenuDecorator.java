@@ -4,7 +4,7 @@
  */
 package View.Decorators;
 
-import View.Form;
+import View.Page;
 import View.MainMenu;
 
 /**
@@ -13,14 +13,14 @@ import View.MainMenu;
  */
 public class MainMenuDecorator extends AbstractDecorator {
     //Decorator to turn owner menu to custodian menu.
-    public Form toD; //Form to Decorate
+    public Page toD; //Form to Decorate
     
-    public MainMenuDecorator(Form f){
+    public MainMenuDecorator(Page f){
         toD = f;
     }
 
     @Override
-    public Form getForm() {
+    public Page getForm() {
         MainMenu m = (MainMenu)toD;
         m.getBtAdd().setVisible(false);
         m.getBtDelete().setEnabled(false);

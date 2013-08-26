@@ -4,16 +4,16 @@
  */
 package View.Decorators;
 
-import View.Form;
+import View.Page;
 
 /**
  *
  * @author Jan
  */
-public abstract class AbstractDecorator extends Form {
+public abstract class AbstractDecorator extends Page {
     
-    Form toDecorate;
+    Page toDecorate;
     
-    public abstract Form getForm();
+    public abstract Page getForm();
     
 }

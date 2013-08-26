@@ -4,8 +4,8 @@
  */
 package View.Decorators;
 
-import Controller.listeners.ModifyAssetHandler;
-import View.Form;
+import Controller.ModifyAssetHandler;
+import View.Page;
 import View.MainMenu;
 import View.ModifyAsset;
 
@@ -17,14 +17,14 @@ import java.sql.SQLException;
  */
 public class CustodianModifyAssetDecorator extends AbstractDecorator {
     //This decorator turns ModifyAsset for owners to ModifyAsset for custodians.
-    public Form toD;
+    public Page toD;
     
-    public CustodianModifyAssetDecorator(Form f){
+    public CustodianModifyAssetDecorator(Page f){
         toD = f;
     }
 
     @Override
-    public Form getForm() {
+    public Page getForm() {
         ModifyAsset cma = (ModifyAsset)toD;
 		
 		//To allow the custodian to modify more fields, add the textfield you wish to be editable here.

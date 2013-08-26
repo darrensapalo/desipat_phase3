@@ -23,7 +23,7 @@ import javax.swing.JScrollPane;
  *
  * @author Jan
  */
-public class AssetViewer extends Form {
+public class AssetViewer extends Page {
 
     /**
      * Creates new form AssetViewer

@@ -23,7 +23,7 @@ import javax.swing.JSeparator;
  *
  * @author Jan
  */
-public class MainMenu extends Form {
+public class MainMenu extends Page {
 
     /**
      * Creates new form MainMenu

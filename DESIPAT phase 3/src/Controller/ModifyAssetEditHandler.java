@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller.listeners;
+package Controller;
 
 import Model.DBHandler;
 import View.ModifyAsset;

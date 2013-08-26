@@ -20,7 +20,7 @@ import javax.swing.JScrollPane;
  *
  * @author Renz
  */
-public class ModifyAsset extends Form {
+public class ModifyAsset extends Page {
 
     /**
      * Creates new form ModifyAsset

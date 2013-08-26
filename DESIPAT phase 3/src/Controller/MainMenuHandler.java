@@ -2,18 +2,17 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller.listeners;
+package Controller;
 
-import View.Form;
+import View.Page;
 import View.MainMenu;
 import View.ModifyAsset;
 import View.AssetViewer;
 import View.DeleteAsset;
 import Model.DBHandler;
-import View.Builders.AbstractFormBuilder;
+import View.Builders.AbstractPageBuilder;
 import View.Builders.AssetViewerBuilder;
 import View.Builders.DeleteAssetBuilder;
-import View.Builders.FormDirector;
 import View.Builders.LoginBuilder;
 import View.Builders.ModifyAssetBuilder;
 import View.Decorators.CustodianModifyAssetDecorator;
@@ -46,15 +45,15 @@ public class MainMenuHandler implements ActionListener{
                 DBHandler b;
                 b = new DBHandler();
                 
-                    FormDirector f = new FormDirector();
-                    AbstractFormBuilder form;
+                    PageDirector f = new PageDirector();
+                    AbstractPageBuilder form;
                     
                        
                     if(e.getSource().equals(m.getBtAdd())){
                        
                         form = new ModifyAssetBuilder();
                         f.setBuilder(form);
-                        Form add = f.construct();
+                        Page add = f.construct();
                         
                         ModifyAsset a = (ModifyAsset)add;
                         a.setValues(m.getUserType(), m.getLbName().getText(),m.getUserID());
@@ -76,7 +75,7 @@ public class MainMenuHandler implements ActionListener{
                        int n = Integer.parseInt(rAssets.elementAt(index));
                        form= new DeleteAssetBuilder();
                         f.setBuilder(form);
-                        Form del = f.construct();
+                        Page del = f.construct();
                         
                         DeleteAsset d = (DeleteAsset) del;
                         d.setValues(b.viewAsset(n),m.getPassword(), m.getUserType(),m.getLbName().getText());
@@ -95,9 +94,9 @@ public class MainMenuHandler implements ActionListener{
                             int n = Integer.parseInt(rAssets.elementAt(index));
                             form = new ModifyAssetBuilder();
                             f.setBuilder(form);
-                            Form edit = f.construct();
+                            Page edit = f.construct();
                             
-                            Form Deco = new ModifyAssetDecorator(edit, b.viewAsset(n));
+                            Page Deco = new ModifyAssetDecorator(edit, b.viewAsset(n));
                             edit = Deco.getForm();
                             
                             ModifyAsset editing = (ModifyAsset)edit;
@@ -137,7 +136,7 @@ public class MainMenuHandler implements ActionListener{
                         
                          form=new AssetViewerBuilder();
                         f.setBuilder(form);
-                        Form view = f.construct();
+                        Page view = f.construct();
                         
                         AssetViewer a = (AssetViewer) view;
                         a.setValues(b.viewAsset(n),b.getPreviousOwner(n),m.getUserType(), m.getLbName().getText());
@@ -149,9 +148,9 @@ public class MainMenuHandler implements ActionListener{
                     }
                     else if(e.getSource().equals(m.getBtLogout())){
                         form = new LoginBuilder();
-                        f = new FormDirector();
+                        f = new PageDirector();
                         f.setBuilder(form);
-                        Form login = f.construct();
+                        Page login = f.construct();
                         
                         m.dispose();
                         
