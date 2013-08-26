@@ -3,11 +3,12 @@
  * and open the template in the editor.
  */
 package View.Builders;
+
+import java.awt.event.ActionListener;
+
 //import Controller.ModifyAssetHandler;
 import View.ModifyAsset;
 import View.Page;
-import View.AbstractFactories.AbstractButtonFactory;
-import View.AbstractFactories.ConcreteButtonFactory;
 /**
  *
  * @author DJ
@@ -358,5 +359,10 @@ public class ModifyAssetBuilder extends AbstractPageBuilder{
 	@Override
 	protected Page selectConcretePage() {
 		return m = new ModifyAsset();
+	}
+
+	@Override
+	protected void setActionListener(ActionListener listener) {
+		m.getBtnAddEdit().addActionListener(listener);
 	}    
 }

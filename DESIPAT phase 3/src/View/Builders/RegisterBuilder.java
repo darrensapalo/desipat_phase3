@@ -1,10 +1,9 @@
 package View.Builders;
 
-import Controller.RegisterHandler;
+import java.awt.event.ActionListener;
+
 import View.Page;
 import View.Register;
-import View.AbstractFactories.AbstractButtonFactory;
-import View.AbstractFactories.ConcreteButtonFactory;
 
 /**
  *
@@ -18,12 +17,13 @@ public class RegisterBuilder extends AbstractPageBuilder{
 	protected void initializeComponents() {
 		//Buttons use a Factory to set the name and add an ActionListener
 
-		AbstractButtonFactory btnFactory = new ConcreteButtonFactory();
-		RegisterHandler rh = new RegisterHandler(register);
+		//AbstractButtonFactory btnFactory = new ConcreteButtonFactory();
+		//RegisterHandler rh = new RegisterHandler(register);
 
 		register.setButtonGroup1(new javax.swing.ButtonGroup());
 		register.setButtonGroup2(new javax.swing.ButtonGroup());
-		register.setBtSignUp(btnFactory.createButton("Register",rh));
+		//register.setBtSignUp(btnFactory.createButton("Register",rh));
+		register.setBtSignUp(new javax.swing.JButton("Register"));
 		register.setRbOwner(new javax.swing.JRadioButton());
 		register.setRbCustodian(new javax.swing.JRadioButton());
 		register.setjLabel5(new javax.swing.JLabel());
@@ -201,5 +201,10 @@ public class RegisterBuilder extends AbstractPageBuilder{
 	@Override
 	protected Page selectConcretePage() {
 		return register = new Register();
+	}
+
+	@Override
+	protected void setActionListener(ActionListener listener) {
+		register.getBtSignUp().addActionListener(listener);
 	}   
 }

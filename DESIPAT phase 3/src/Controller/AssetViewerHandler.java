@@ -33,7 +33,7 @@ public class AssetViewerHandler implements ActionListener {
     {    
     	// You must set this class' reference
     	assetViewer = currentView;
-    	edit = assetViewer.getbtnEdit();
+    	edit = assetViewer.getEditButton();
     	
     	
     }

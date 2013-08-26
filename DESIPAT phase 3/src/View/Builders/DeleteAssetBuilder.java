@@ -4,12 +4,10 @@
  */
 package View.Builders;
 
-//import Controller.DeleteAssetHandler;
-import View.AssetViewer;
+import java.awt.event.ActionListener;
+
 import View.DeleteAsset;
 import View.Page;
-import View.AbstractFactories.AbstractButtonFactory;
-import View.AbstractFactories.ConcreteButtonFactory;
 
 /**
  *
@@ -17,73 +15,49 @@ import View.AbstractFactories.ConcreteButtonFactory;
  */
 public class DeleteAssetBuilder extends AbstractPageBuilder {
     
-    private DeleteAsset d;
+    private DeleteAsset deleteAsset;
 
     @Override
     public void initializeComponents() {
-        
-		//Buttons use a Factory to set the name and add an ActionListener
-        //AbstractButtonFactory btnFactory = new ConcreteButtonFactory();
-        
-        d.setLbAssetName(new javax.swing.JLabel());
-        d.setPasswordField(new javax.swing.JPasswordField());
+        deleteAsset.setLbAssetName(new javax.swing.JLabel());
+        deleteAsset.setPasswordField(new javax.swing.JPasswordField());
         //d.setbtnDelete(btnFactory.createButton("Delete Asset", new DeleteAssetHandler(d)));
-        d.setbtnDelete(new javax.swing.JButton("Delete Asset"));
-        d.setjLabel1(new javax.swing.JLabel());
-        d.setjLabel2(new javax.swing.JLabel());
-        d.setjLabel3(new javax.swing.JLabel());
+        deleteAsset.setbtnDelete(new javax.swing.JButton("Delete Asset"));
+        deleteAsset.setjLabel1(new javax.swing.JLabel());
+        deleteAsset.setjLabel2(new javax.swing.JLabel());
+        deleteAsset.setjLabel3(new javax.swing.JLabel());
+        deleteAsset.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        deleteAsset.setTitle("Delete Asset");
+        deleteAsset.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        deleteAsset.setResizable(false);
         
-        d.getjLabel1().setText("Name of Asset:");
+        deleteAsset.getjLabel1().setText("Name of Asset:");
 
-        d.getjLabel2().setText("Password:");
+        deleteAsset.getjLabel2().setText("Password:");
 
-        d.getLbAssetName().setOpaque(true);
+        deleteAsset.getLbAssetName().setOpaque(true);
 
-        d.getjLabel3().setText("Please enter Password to confirm");
-        
-        d.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        d.setTitle("Delete Asset");
-        d.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        d.setResizable(false);
-        
-        d.getjLabel1().setText("Name of Asset:");
-
-        d.getjLabel2().setText("Password:");
-
-        d.getLbAssetName().setOpaque(true);
-
-        d.getjLabel3().setText("Please enter Password to confirm");
-        
-        
-        d.getjLabel1().setText("Name of Asset:");
-
-        d.getjLabel2().setText("Password:");
-
-        d.getLbAssetName().setOpaque(true);
-
-        d.getjLabel3().setText("Please enter Password to confirm");
-        
-        
+        deleteAsset.getjLabel3().setText("Please enter Password to confirm");
 	}
     @Override
     public void initializePageLayout() {
-    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(d.getContentPane());
-        d.getContentPane().setLayout(layout);
+    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(deleteAsset.getContentPane());
+        deleteAsset.getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(d.getbtnDelete())
+                    .addComponent(deleteAsset.getbtnDelete())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(d.getjLabel1())
-                            .addComponent(d.getjLabel2()))
+                            .addComponent(deleteAsset.getjLabel1())
+                            .addComponent(deleteAsset.getjLabel2()))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(d.getLbAssetName(), javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(d.getPasswordField(), javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(d.getjLabel3()))))
+                            .addComponent(deleteAsset.getLbAssetName(), javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deleteAsset.getPasswordField(), javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deleteAsset.getjLabel3()))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         
@@ -92,22 +66,27 @@ public class DeleteAssetBuilder extends AbstractPageBuilder {
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(d.getjLabel1())
-                    .addComponent(d.getLbAssetName(), javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(deleteAsset.getjLabel1())
+                    .addComponent(deleteAsset.getLbAssetName(), javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
-                .addComponent(d.getjLabel3(), javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(deleteAsset.getjLabel3(), javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(d.getjLabel2())
-                    .addComponent(d.getPasswordField(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(deleteAsset.getjLabel2())
+                    .addComponent(deleteAsset.getPasswordField(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
-                .addComponent(d.getbtnDelete())
+                .addComponent(deleteAsset.getbtnDelete())
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 	}
 
     @Override
     public Page selectConcretePage() {
-        return d = new DeleteAsset();
+        return deleteAsset = new DeleteAsset();
     }
+
+	@Override
+	protected void setActionListener(ActionListener listener) {
+		deleteAsset.getbtnDelete().addActionListener(listener);	
+	}
 }

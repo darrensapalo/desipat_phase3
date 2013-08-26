@@ -48,11 +48,6 @@ public class AssetViewer extends Page {
     public String getUsername() {
         return username;
     }
-
-    
-    public JButton getbtnEdit() {
-        return btnEdit;
-    }
     
     public void setjLabel1(JLabel jLabel1) {
         this.jLabel1 = jLabel1;
@@ -130,7 +125,7 @@ public class AssetViewer extends Page {
         this.jScrollPane1 = jScrollPane1;
     }
     
-     public void setbtnEdit(JButton btnEdit) {
+     public void setEditButton(JButton btnEdit) {
         this.btnEdit = btnEdit;
     }
      
@@ -212,7 +207,7 @@ public class AssetViewer extends Page {
      
      
 
-    public JButton getBtnEdit() {
+    public JButton getEditButton() {
         return btnEdit;
     }
 

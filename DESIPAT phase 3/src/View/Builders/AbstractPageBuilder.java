@@ -1,5 +1,7 @@
 package View.Builders;
 
+import java.awt.event.ActionListener;
+
 import View.Page;
 
 /**
@@ -29,7 +31,10 @@ public abstract class AbstractPageBuilder {
 	 */
 	protected abstract Page selectConcretePage(); 
 	
-	
+	/**
+	 * Sets the ActionListener to handle events in the page.
+	 */
+	protected abstract void setActionListener(ActionListener listener);
 	
     public Page constructPage() {
     	page = selectConcretePage();
