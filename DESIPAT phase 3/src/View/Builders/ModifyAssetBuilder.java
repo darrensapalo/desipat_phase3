@@ -5,6 +5,7 @@
 package View.Builders;
 import Controller.ModifyAssetHandler;
 import View.ModifyAsset;
+import View.Page;
 import View.AbstractFactories.AbstractButtonFactory;
 import View.AbstractFactories.ConcreteButtonFactory;
 /**
@@ -16,123 +17,114 @@ import View.AbstractFactories.ConcreteButtonFactory;
 public class ModifyAssetBuilder extends AbstractPageBuilder{
     
     private ModifyAsset m;
-
-    @Override
-    public void populateForm() {
-         m = new ModifyAsset();
-         super.page = this.m;
+	@Override
+	protected void initializeComponents() {
 		//Buttons use a Factory to set the name and add an ActionListener
 		 
-         ModifyAssetHandler mah = new ModifyAssetHandler(m);
-         AbstractButtonFactory btnFactory = new ConcreteButtonFactory();
-         
-        m.setjScrollPane1(new javax.swing.JScrollPane());
-        m.setjList1(new javax.swing.JList());
-        m.setBtnAddEdit(btnFactory.createButton("Add this Asset",mah));
-        m.setjPanel1(new javax.swing.JPanel());
-        m.setTfType(new javax.swing.JTextField());
-        m.setjLabel1(new javax.swing.JLabel());
-        m.setTfAssetName(new javax.swing.JTextField());
-        m.setjLabel4(new javax.swing.JLabel());
-        m.setjPanel2(new javax.swing.JPanel());
-        m.setTfCustodian(new javax.swing.JTextField());
-        m.setjLabel3(new javax.swing.JLabel());
-        m.setTfStorage(new javax.swing.JTextField());
-        m.setjLabel10(new javax.swing.JLabel());
-        m.setjLabel2(new javax.swing.JLabel());
-        m.setTfOwner(new javax.swing.JTextField());
-        m.setjPanel3(new javax.swing.JPanel());
-        m.setjLabel6(new javax.swing.JLabel());
-        m.setjLabel5(new javax.swing.JLabel());
-        m.setjLabel7(new javax.swing.JLabel());
-        m.setCbMaintenance(new javax.swing.JComboBox());
-        m.setDccDateAcquired(new datechooser.beans.DateChooserCombo());
-        m.setDccRetentionPeriod(new datechooser.beans.DateChooserCombo());
-        m.setjPanel4(new javax.swing.JPanel());
-        m.setjLabel13(new javax.swing.JLabel());
-        m.setCbConfidentiality(new javax.swing.JComboBox());
-        m.setCbAvailability(new javax.swing.JComboBox());
-        m.setCbIntegrity(new javax.swing.JComboBox());
-        m.setjLabel12(new javax.swing.JLabel());
-        m.setjLabel8(new javax.swing.JLabel());
-        m.setjLabel11(new javax.swing.JLabel());
-        m.setTfFinancial(new javax.swing.JTextField());
-        m.setjPanel5(new javax.swing.JPanel());
-        m.setCbClassification(new javax.swing.JComboBox());
-        m.setjLabel9(new javax.swing.JLabel());
-        m.setLbReminder(new javax.swing.JLabel());
-    }
+        ModifyAssetHandler mah = new ModifyAssetHandler(m);
+        AbstractButtonFactory btnFactory = new ConcreteButtonFactory();
+        
+       m.setjScrollPane1(new javax.swing.JScrollPane());
+       m.setjList1(new javax.swing.JList());
+       m.setBtnAddEdit(btnFactory.createButton("Add this Asset",mah));
+       m.setjPanel1(new javax.swing.JPanel());
+       m.setTfType(new javax.swing.JTextField());
+       m.setjLabel1(new javax.swing.JLabel());
+       m.setTfAssetName(new javax.swing.JTextField());
+       m.setjLabel4(new javax.swing.JLabel());
+       m.setjPanel2(new javax.swing.JPanel());
+       m.setTfCustodian(new javax.swing.JTextField());
+       m.setjLabel3(new javax.swing.JLabel());
+       m.setTfStorage(new javax.swing.JTextField());
+       m.setjLabel10(new javax.swing.JLabel());
+       m.setjLabel2(new javax.swing.JLabel());
+       m.setTfOwner(new javax.swing.JTextField());
+       m.setjPanel3(new javax.swing.JPanel());
+       m.setjLabel6(new javax.swing.JLabel());
+       m.setjLabel5(new javax.swing.JLabel());
+       m.setjLabel7(new javax.swing.JLabel());
+       m.setCbMaintenance(new javax.swing.JComboBox());
+       m.setDccDateAcquired(new datechooser.beans.DateChooserCombo());
+       m.setDccRetentionPeriod(new datechooser.beans.DateChooserCombo());
+       m.setjPanel4(new javax.swing.JPanel());
+       m.setjLabel13(new javax.swing.JLabel());
+       m.setCbConfidentiality(new javax.swing.JComboBox());
+       m.setCbAvailability(new javax.swing.JComboBox());
+       m.setCbIntegrity(new javax.swing.JComboBox());
+       m.setjLabel12(new javax.swing.JLabel());
+       m.setjLabel8(new javax.swing.JLabel());
+       m.setjLabel11(new javax.swing.JLabel());
+       m.setTfFinancial(new javax.swing.JTextField());
+       m.setjPanel5(new javax.swing.JPanel());
+       m.setCbClassification(new javax.swing.JComboBox());
+       m.setjLabel9(new javax.swing.JLabel());
+       m.setLbReminder(new javax.swing.JLabel());
+       
+       m.getjList1().setModel(new javax.swing.AbstractListModel() {
+           String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+           public int getSize() { return strings.length; }
+           public Object getElementAt(int i) { return strings[i]; }
+       });
+       m.getjScrollPane1().setViewportView(m.getjList1());
 
-    @Override
-    public void setFormProperties() {
-        m.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+       m.getjPanel1().setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+       m.getjLabel1().setText("Name of Asset:");
+
+       m.getjLabel4().setText("Type of Asset:");
+       
+       m.getjLabel3().setText("Custodian ID:");
+
+       m.getjLabel10().setText("Storage Location:");
+
+       m.getjLabel2().setText("Owner ID:");
+       
+       m.getjPanel3().setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+       m.getjLabel6().setText("Retention Period:");
+
+       m.getjLabel5().setText("Date Acquired:");
+
+       m.getjLabel7().setText("Maintenance Schedule:");
+
+       m.getCbMaintenance().setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Every week", "Every month", "Every year" }));
+       
+       m.getjPanel4().setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+       m.getjLabel13().setText("Availability Value:");
+
+       m.getCbConfidentiality().setModel(new javax.swing.DefaultComboBoxModel(new String[] { "High", "Mid", "Low" }));
+
+       m.getCbAvailability().setModel(new javax.swing.DefaultComboBoxModel(new String[] { "High", "Mid", "Low" }));
+
+       m.getCbIntegrity().setModel(new javax.swing.DefaultComboBoxModel(new String[] { "High", "Mid", "Low" }));
+
+       m.getjLabel12().setText("Integrity Value:");
+
+       m.getjLabel8().setText("Financial Value:");
+
+       m.getjLabel11().setText("Confidentiality Value:");
+       
+       m.getjPanel5().setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+       m.getCbClassification().setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sensitive", "Confidential", "Internal", "Public" }));
+
+       m.getjLabel9().setText("Classification:");
+       
+       m.getLbReminder().setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+       
+       m.getLbReminder().setForeground(new java.awt.Color(255, 0, 0));
+       
+       m.getTfOwner().setEnabled(false);
+	}
+
+	@Override
+	protected void initializePageLayout() {
+		m.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         m.setTitle("Add Asset");
         m.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         m.setResizable(false);
-    }
-
-    @Override
-    public void setComponentProperties() {
-       m.getjList1().setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        m.getjScrollPane1().setViewportView(m.getjList1());
-
-        m.getjPanel1().setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        m.getjLabel1().setText("Name of Asset:");
-
-        m.getjLabel4().setText("Type of Asset:");
         
-        m.getjLabel3().setText("Custodian ID:");
-
-        m.getjLabel10().setText("Storage Location:");
-
-        m.getjLabel2().setText("Owner ID:");
-        
-        m.getjPanel3().setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        m.getjLabel6().setText("Retention Period:");
-
-        m.getjLabel5().setText("Date Acquired:");
-
-        m.getjLabel7().setText("Maintenance Schedule:");
-
-        m.getCbMaintenance().setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Every week", "Every month", "Every year" }));
-        
-        m.getjPanel4().setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        m.getjLabel13().setText("Availability Value:");
-
-        m.getCbConfidentiality().setModel(new javax.swing.DefaultComboBoxModel(new String[] { "High", "Mid", "Low" }));
-
-        m.getCbAvailability().setModel(new javax.swing.DefaultComboBoxModel(new String[] { "High", "Mid", "Low" }));
-
-        m.getCbIntegrity().setModel(new javax.swing.DefaultComboBoxModel(new String[] { "High", "Mid", "Low" }));
-
-        m.getjLabel12().setText("Integrity Value:");
-
-        m.getjLabel8().setText("Financial Value:");
-
-        m.getjLabel11().setText("Confidentiality Value:");
-        
-        m.getjPanel5().setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        m.getCbClassification().setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sensitive", "Confidential", "Internal", "Public" }));
-
-        m.getjLabel9().setText("Classification:");
-        
-        m.getLbReminder().setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        
-        m.getLbReminder().setForeground(new java.awt.Color(255, 0, 0));
-        
-        m.getTfOwner().setEnabled(false);
-    }
-
-    @Override
-    public void setLayout() {
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(m.getjPanel1());
         m.getjPanel1().setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -359,5 +351,11 @@ public class ModifyAssetBuilder extends AbstractPageBuilder{
                 .addContainerGap())
         );
 
-    }    
+		
+	}
+
+	@Override
+	protected Page selectConcretePage() {
+		return m = new ModifyAsset();
+	}    
 }

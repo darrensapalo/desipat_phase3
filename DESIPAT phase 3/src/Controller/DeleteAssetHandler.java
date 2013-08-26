@@ -18,7 +18,7 @@ import java.sql.ResultSet;
  *
  * @author DJ
  */
-public class DeleteAssetHandler implements ActionListener {
+public class DeleteAssetHandler extends Controller {
     private DeleteAsset del;
     
     public DeleteAssetHandler(DeleteAsset del)

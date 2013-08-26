@@ -32,7 +32,7 @@ import javax.swing.JOptionPane;
  *
  * @author Jan
  */
-public class MainMenuHandler implements ActionListener{
+public class MainMenuHandler extends Controller{
     
     private MainMenu m;
     
@@ -52,7 +52,7 @@ public class MainMenuHandler implements ActionListener{
                     if(e.getSource().equals(m.getBtAdd())){
                        
                         form = new ModifyAssetBuilder();
-                        f.setBuilder(form);
+                        f.buildPage(form);
                         Page add = f.construct();
                         
                         ModifyAsset a = (ModifyAsset)add;
@@ -74,7 +74,7 @@ public class MainMenuHandler implements ActionListener{
 			{
                        int n = Integer.parseInt(rAssets.elementAt(index));
                        form= new DeleteAssetBuilder();
-                        f.setBuilder(form);
+                        f.buildPage(form);
                         Page del = f.construct();
                         
                         DeleteAsset d = (DeleteAsset) del;
@@ -93,7 +93,7 @@ public class MainMenuHandler implements ActionListener{
 			else{
                             int n = Integer.parseInt(rAssets.elementAt(index));
                             form = new ModifyAssetBuilder();
-                            f.setBuilder(form);
+                            f.buildPage(form);
                             Page edit = f.construct();
                             
                             Page Deco = new ModifyAssetDecorator(edit, b.viewAsset(n));
@@ -135,7 +135,7 @@ public class MainMenuHandler implements ActionListener{
 			int n = Integer.parseInt(rAssets.elementAt(index));
                         
                          form=new AssetViewerBuilder();
-                        f.setBuilder(form);
+                        f.buildPage(form);
                         Page view = f.construct();
                         
                         AssetViewer a = (AssetViewer) view;
@@ -149,7 +149,7 @@ public class MainMenuHandler implements ActionListener{
                     else if(e.getSource().equals(m.getBtLogout())){
                         form = new LoginBuilder();
                         f = new PageDirector();
-                        f.setBuilder(form);
+                        f.buildPage(form);
                         Page login = f.construct();
                         
                         m.dispose();

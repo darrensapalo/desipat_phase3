@@ -27,8 +27,4 @@ public abstract class Page extends JFrame {
     public void displayErrorMessage(String message) {
     	this.displayMessage(message, JOptionPane.ERROR_MESSAGE);
     }
-    
-    public Page getForm() {
-    	return this;
-    }
 }

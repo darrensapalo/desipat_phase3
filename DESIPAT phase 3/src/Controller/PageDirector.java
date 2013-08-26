@@ -10,16 +10,12 @@ import View.Builders.AbstractPageBuilder;
 
 // Director of all Form Builders.
 public class PageDirector {
+    public static Page buildPage(AbstractPageBuilder b) {
+        return b.constructPage();
+    }
     
-    AbstractPageBuilder b;
-    
-    public Page setBuilder(AbstractPageBuilder b) {
-        this.b = b;
-        b.populateForm();
-        b.setFormProperties();
-        b.setComponentProperties();
-        b.setLayout();
-        return b.getPage();
+    private PageDirector(){
+    	
     }
     
 }

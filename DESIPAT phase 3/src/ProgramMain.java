@@ -16,7 +16,7 @@ public class ProgramMain {
 	public static void main(String args[]) {
 		
 		PageDirector f = new PageDirector();
-		f.setBuilder(new LoginBuilder());
+		f.buildPage(new LoginBuilder());
 		
 		Page login = f.construct();
 		login.setLocationRelativeTo(null);

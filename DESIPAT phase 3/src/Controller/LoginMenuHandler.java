@@ -18,7 +18,7 @@ import View.Decorators.MainMenuDecorator;
  * 
  * @author Renz
  */
-public class LoginMenuHandler implements ActionListener {
+public class LoginMenuHandler extends Controller {
 	private LoginMenu loginMenu;
 
 	public LoginMenuHandler(LoginMenu loginMenu) {
@@ -51,7 +51,7 @@ public class LoginMenuHandler implements ActionListener {
 			if (user.login()) {
 				loginMenu.dispose();
 				PageDirector fd = new PageDirector();
-				fd.setBuilder(new MainMenuBuilder());
+				fd.buildPage(new MainMenuBuilder());
 				
 				Page mainMenuForm = fd.construct();
 				
@@ -80,7 +80,7 @@ public class LoginMenuHandler implements ActionListener {
 		
 		else if (e.getSource().equals(loginMenu.getRegisterButton())) {    // Handler for register button
 			PageDirector fd = new PageDirector();
-			fd.setBuilder(new RegisterBuilder());
+			fd.buildPage(new RegisterBuilder());
 			Page registrationForm = fd.construct();
 
 			registrationForm.setVisible(true);

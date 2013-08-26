@@ -18,7 +18,7 @@ import java.awt.event.ActionListener;
  *
  * @author DJ
  */
-public class RegisterHandler implements ActionListener {
+public class RegisterHandler extends Controller{
     private Register r;
     
     public RegisterHandler(Register r){

@@ -28,7 +28,7 @@ public class TestingMain {
         //MAINMENU
          AbstractPageBuilder builder = new MainMenuBuilder();
          PageDirector f = new PageDirector();
-         f.setBuilder(builder);
+         f.buildPage(builder);
          Page mainmenu = f.construct();
          mainmenu.setVisible(true);
          mainmenu.setLocationRelativeTo(null);
@@ -36,7 +36,7 @@ public class TestingMain {
          
          //REGISTER
          builder = new RegisterBuilder();
-         f.setBuilder(builder);
+         f.buildPage(builder);
          Page register = f.construct();
          register.setVisible(true);
          register.setLocationRelativeTo(null);

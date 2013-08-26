@@ -7,15 +7,17 @@ package Controller;
 
 import View.ModifyAsset;
 import Model.DBHandler;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author ED
  */
-public class ModifyAssetHandler implements ActionListener {
+public class ModifyAssetHandler extends Controller{
     
     private ModifyAsset m;
     
