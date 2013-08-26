@@ -63,30 +63,47 @@ public class MainMenuHandler implements ActionListener {
                     }
                     else if(e.getSource().equals(m.getBtDelete())){
                         Vector<String> rAssets = m.getAssetIDs();
-			int index = m.getListOfAsset().getSelectedIndex();
-						
-			if (index == -1)
-			JOptionPane.showMessageDialog(null, "Please select an asset from the list.", "Error", JOptionPane.ERROR_MESSAGE);
-			else
-			{
-                       int n = Integer.parseInt(rAssets.elementAt(index));
-                       form= new DeleteAssetBuilder();
+            int index = m.getListOfAsset().getSelectedIndex();
+                        
+            if (index == -1)
+            JOptionPane.showMessageDialog(null, "Please select an asset from the list.", "Error", JOptionPane.ERROR_MESSAGE);
+            else
+            {
+                        int n = Integer.parseInt(rAssets.elementAt(index));
+                        form= new DeleteAssetBuilder();
                         Page del = PageDirector.buildPage(form);
                         
                         DeleteAsset d = (DeleteAsset) del;
-                        d.setValues(b.viewAsset(n),m.getPassword(), m.getUserType(),m.getLbName().getText());
+                        //d.setValues(b.viewAsset(n),m.getPassword(), m.getUserType(),m.getLbName().getText());
+                        
+                        
+                        d.setUsertype(m.getUserType());
+                        d.setUsername(m.getLbName().getText());
+                        d.setPW(m.getPassword());
+                        
+                        ResultSet asset = b.viewAsset(n);
+                        try {
+                            asset.next();
+                            d.setAssetName((asset.getString("assetname")));
+                            d.setaID(asset.getInt("assetID"));
+                        }
+                        catch (SQLException e1) {
+                            // TODO Auto-generated catch block
+                            e1.printStackTrace();
+                        }
+                        
                         del=d;
                         del.setVisible(true);
-			}
+            }
                     }
                     else if(e.getSource().equals(m.getBtEdit())){
                         Vector<String> rAssets = m.getAssetIDs();
-			int index = m.getListOfAsset().getSelectedIndex();
-						
-			if (index == -1) 
+            int index = m.getListOfAsset().getSelectedIndex();
+                        
+            if (index == -1) 
                             JOptionPane.showMessageDialog(null, "Please select an asset from the list.", "Error", JOptionPane.ERROR_MESSAGE);
                                           
-			else{
+            else{
                             int n = Integer.parseInt(rAssets.elementAt(index));
                             form = new ModifyAssetBuilder();
                             Page edit = PageDirector.buildPage(form);
@@ -117,17 +134,17 @@ public class MainMenuHandler implements ActionListener {
                                 edit.setVisible(true);
                                 edit.setLocationRelativeTo(null);
                             } 
-			}
+            }
                     }
                     else if(e.getSource().equals(m.getBtView())){
                         Vector<String> rAssets = m.getAssetIDs();
-			int index = m.getListOfAsset().getSelectedIndex();
-						
-			if (index == -1)
-			JOptionPane.showMessageDialog(null, "Please select an asset from the list.", "Error", JOptionPane.ERROR_MESSAGE);
-			else
-			{
-			int n = Integer.parseInt(rAssets.elementAt(index));
+            int index = m.getListOfAsset().getSelectedIndex();
+                        
+            if (index == -1)
+            JOptionPane.showMessageDialog(null, "Please select an asset from the list.", "Error", JOptionPane.ERROR_MESSAGE);
+            else
+            {
+            int n = Integer.parseInt(rAssets.elementAt(index));
                         
                         form = new AssetViewerBuilder();
                         Page view = PageDirector.buildPage(form);
@@ -138,7 +155,7 @@ public class MainMenuHandler implements ActionListener {
                         view.setVisible(true);
                         
                         a.setVisible(true);
-			}
+            }
                     }
                     else if(e.getSource().equals(m.getBtLogout())){
                         form = new LoginBuilder();
