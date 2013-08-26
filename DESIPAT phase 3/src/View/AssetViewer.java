@@ -3,6 +3,8 @@
  * and open the template in the editor.
  */
 package View;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -131,6 +133,11 @@ public class AssetViewer extends Page {
      public void setbtnEdit(JButton btnEdit) {
         this.btnEdit = btnEdit;
     }
+     
+     public void addBtnEditListener(ActionListener listener) {
+         btnEdit.addActionListener(listener);
+     }
+     
      
      public void setlistPreviousOwners(JList listPreviousOwners) {
         this.listPreviousOwners = listPreviousOwners;

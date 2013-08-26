@@ -4,7 +4,7 @@
  */
 package View.Builders;
 
-import Controller.AssetViewerHandler;
+//import Controller.AssetViewerHandler;
 import View.AssetViewer;
 import View.Page;
 import View.AbstractFactories.AbstractButtonFactory;
@@ -14,6 +14,8 @@ import View.AbstractFactories.ConcreteButtonFactory;
  *
  * @author Jan
  */
+
+
 public class AssetViewerBuilder extends AbstractPageBuilder {
     
     private AssetViewer assetViewer;
@@ -27,7 +29,8 @@ public class AssetViewerBuilder extends AbstractPageBuilder {
         
         AbstractButtonFactory btnFactory = new ConcreteButtonFactory();
         
-        assetViewer.setbtnEdit(btnFactory.createButton("Edit Asset", new AssetViewerHandler(assetViewer)));  
+        //assetViewer.setbtnEdit(btnFactory.createButton("Edit Asset", new AssetViewerHandler(assetViewer)));
+        assetViewer.setbtnEdit(new javax.swing.JButton("Edit Asset"));
         assetViewer.setjLabel1(new javax.swing.JLabel());  
         assetViewer.setjLabel10(new javax.swing.JLabel());  
         assetViewer.setjLabel11(new javax.swing.JLabel());  
