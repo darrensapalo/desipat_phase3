@@ -133,7 +133,7 @@ public class MainMenuHandler implements ActionListener {
                         Page view = PageDirector.buildPage(form);
                         
                         AssetViewer a = (AssetViewer) view;
-                        a.setValuesTHATNEEDTOBEREPLACED2(b.viewAsset(n), b.getPreviousOwner(n), m.getUserType(), m.getLbName().getText());
+                        ControllerUtility.SetValues(a, b.viewAsset(n), b.getPreviousOwner(n), m.getUserType(), m.getLbName().getText());
                         view=a;
                         view.setVisible(true);
                         
