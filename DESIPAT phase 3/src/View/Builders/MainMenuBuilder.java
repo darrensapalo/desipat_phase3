@@ -4,7 +4,7 @@
  */
 package View.Builders;
 
-import Controller.MainMenuHandler;
+//import Controller.MainMenuHandler;
 import View.MainMenu;
 import View.Page;
 import View.AbstractFactories.AbstractButtonFactory;
@@ -29,29 +29,38 @@ public class MainMenuBuilder extends AbstractPageBuilder {
         
 		
         AbstractButtonFactory btnFactory = new ConcreteButtonFactory();
-        MainMenuHandler mh = new MainMenuHandler(m);
+        //MainMenuHandler mh = new MainMenuHandler(m);
         
 		//Instantiate components of MainMenu. To set the values of some components like listOfAsset, use setValues in MainMenu class.
         m.setjPanel2(new javax.swing.JPanel());
         m.setjLabel5(new javax.swing.JLabel());
-        m.setBtAdd(btnFactory.createButton("Add Asset",mh));
+        //m.setBtAdd(btnFactory.createButton("Add Asset",mh));
+        m.setBtAdd(new javax.swing.JButton("Add Asset"));
         m.setjSeparator1(new javax.swing.JSeparator());
         m.setjLabel1(new javax.swing.JLabel());
         m.setjPanel3(new javax.swing.JPanel());
         m.setLbName(new javax.swing.JLabel());
         m.setLbUserType(new javax.swing.JLabel());
         m.setLbID(new javax.swing.JLabel());
-        m.setBtLogout(btnFactory.createButton("Logout",mh));
+        //m.setBtLogout(btnFactory.createButton("Logout",mh));
+        m.setBtLogout(new javax.swing.JButton("Logout"));
         m.setjLabel2(new javax.swing.JLabel());
         m.setjPanel1(new javax.swing.JPanel());
         m.setjLabel3(new javax.swing.JLabel());
-        m.setBtEdit(btnFactory.createButton("Edit Asset",mh));
-        m.setBtDelete(btnFactory.createButton("Delete Asset",mh));
-        m.setBtView(btnFactory.createButton("View Asset",mh));
+        //m.setBtEdit(btnFactory.createButton("Edit Asset",mh));
+        //m.setBtDelete(btnFactory.createButton("Delete Asset",mh));
+        //m.setBtView(btnFactory.createButton("View Asset",mh));
+        
+        m.setBtEdit(new javax.swing.JButton("Edit Asset"));
+        m.setBtDelete(new javax.swing.JButton("Delete Asset"));
+        m.setBtView(new javax.swing.JButton("View Asset"));
+        
         m.setjScrollPane2(new javax.swing.JScrollPane());
         m.setListOfAsset(new javax.swing.JList());
-        m.setBtRefresh(btnFactory.createButton("Refresh",mh));
-		
+        //m.setBtRefresh(btnFactory.createButton("Refresh",mh));
+        m.setBtRefresh(new javax.swing.JButton("Refresh"));
+        
+        
 		// TODO Auto-generated method stub
         m.getjPanel2().setBackground(new java.awt.Color(255, 255, 255));
         m.getjPanel2().setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));

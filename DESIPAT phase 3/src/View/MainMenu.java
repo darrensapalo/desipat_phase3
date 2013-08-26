@@ -4,6 +4,7 @@
  */
 package View;
 
+import java.awt.event.ActionListener;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -152,7 +153,7 @@ public class MainMenu extends Page {
     public void setBtAdd(JButton btAdd) {
         this.btAdd = btAdd;
     }
-
+    
     public void setBtDelete(JButton btDelete) {
         this.btDelete = btDelete;
     }
@@ -173,6 +174,15 @@ public class MainMenu extends Page {
         this.btView = btView;
     }
 
+    public void addActionListener(ActionListener listener) {
+        btAdd.addActionListener(listener);
+        btDelete.addActionListener(listener);
+        btEdit.addActionListener(listener);
+        btLogout.addActionListener(listener);
+        btRefresh.addActionListener(listener);
+        btView.addActionListener(listener);
+    }
+    
     public void setjLabel1(JLabel jLabel1) {
         this.jLabel1 = jLabel1;
     }

@@ -50,7 +50,9 @@ public class LoginMenuHandler implements ActionListener {
 			
 			if (user.login()) {
 				loginMenu.dispose();
-				Page mainMenuForm = PageDirector.buildPage(new MainMenuBuilder());
+				MainMenu mm = (MainMenu) PageDirector.buildPage(new MainMenuBuilder());
+				mm.addActionListener(new MainMenuHandler(mm));
+				Page mainMenuForm = mm;
 				
 				ControllerUtility.SetValues((MainMenu)mainMenuForm, userType, 
 						b.getAssetList(userType, loginMenu.getUsernameField().getText()), 
