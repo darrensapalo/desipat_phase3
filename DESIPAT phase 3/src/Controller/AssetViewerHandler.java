@@ -13,6 +13,7 @@ import View.Decorators.CustodianModifyAssetDecorator;
 import View.Decorators.ModifyAssetDecorator;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
@@ -22,7 +23,7 @@ import javax.swing.JButton;
  */
 
 
-public class AssetViewerHandler extends Controller {
+public class AssetViewerHandler implements ActionListener {
     
 	private AssetViewer assetViewer;
 	private JButton edit;
@@ -36,7 +37,6 @@ public class AssetViewerHandler extends Controller {
     	
     }
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
     	
@@ -48,14 +48,14 @@ public class AssetViewerHandler extends Controller {
            Page Deco = new ModifyAssetDecorator(edit, assetViewer.getAsset());
            edit = Deco;
            
+           // Set the page's current user, user type, and asset owner id
            ModifyAsset editing = (ModifyAsset)edit;
-           editing.setValues(assetViewer.getUserType(), assetViewer.getUsername(), assetViewer.getUserID());
-           edit = editing;
            
+           ControllerUtility.SetValues(editing, assetViewer);
+           
+           // depending on what kind of page, decorate as necessary
            if (assetViewer.getUserType() == "custodian"){
-               
                assetViewer.dispose();
-               
                Deco = new CustodianModifyAssetDecorator(edit);
                edit = Deco;
                edit.setVisible(true);
@@ -63,9 +63,7 @@ public class AssetViewerHandler extends Controller {
                
            }
            else if (assetViewer.getUserType() == "owner"){
-               
                assetViewer.dispose();
-               
                edit.setVisible(true);
                edit.setLocationRelativeTo(null);
            }
@@ -73,5 +71,7 @@ public class AssetViewerHandler extends Controller {
         }
          
       }
+	
+	
 
 }
