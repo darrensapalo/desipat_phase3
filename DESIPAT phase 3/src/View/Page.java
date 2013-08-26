@@ -1,5 +1,7 @@
 package View;
 
+import java.awt.event.ActionListener;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -19,7 +21,9 @@ public abstract class Page extends JFrame {
 	public String getUsername() {
 		return username;
 	}
-
+	
+	public abstract void addActionListener(ActionListener listener);
+	
 	public void setUsername(String username) {
 		this.username = username;
 	}

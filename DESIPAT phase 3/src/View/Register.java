@@ -1,5 +1,7 @@
 package View;
 
+import java.awt.event.ActionListener;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -26,7 +28,11 @@ public class Register extends Page {
     public void setBtSignUp(JButton btSignUp) {
         this.btSignUp = btSignUp;
     }
-
+    
+    public void addActionListener(ActionListener listener) {
+        btSignUp.addActionListener(listener);
+    }
+    
     public ButtonGroup getButtonGroup1() {
         return buttonGroup1;
     }
