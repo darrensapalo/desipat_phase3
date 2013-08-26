@@ -6,6 +6,7 @@ package View.Builders;
 
 import Controller.DeleteAssetHandler;
 import View.DeleteAsset;
+import View.Page;
 import View.AbstractFactories.AbstractButtonFactory;
 import View.AbstractFactories.ConcreteButtonFactory;
 
@@ -16,13 +17,12 @@ import View.AbstractFactories.ConcreteButtonFactory;
 public class DeleteAssetBuilder extends AbstractPageBuilder {
     
     private DeleteAsset d;
-    
+   
 
-    @Override
-    public void populateForm() {
+	@Override
+	protected void initializeComponents() {
+
         
-        d = new DeleteAsset();
-        super.page = this.d;
 		//Buttons use a Factory to set the name and add an ActionListener
          AbstractButtonFactory btnFactory = new ConcreteButtonFactory();
         
@@ -33,20 +33,24 @@ public class DeleteAssetBuilder extends AbstractPageBuilder {
         d.setjLabel2(new javax.swing.JLabel());
         d.setjLabel3(new javax.swing.JLabel());
         
-    
-    }
+        d.getjLabel1().setText("Name of Asset:");
 
-    @Override
-    public void setFormProperties() {
+        d.getjLabel2().setText("Password:");
+
+        d.getLbAssetName().setOpaque(true);
+
+        d.getjLabel3().setText("Please enter Password to confirm");
+        
         d.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         d.setTitle("Delete Asset");
         d.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         d.setResizable(false);
-    }
+        
+	}
 
-    @Override
-    public void setLayout() {
-    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(d.getContentPane());
+	@Override
+	protected void initializePageLayout() {
+	    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(d.getContentPane());
         d.getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,16 +87,10 @@ public class DeleteAssetBuilder extends AbstractPageBuilder {
                 .addComponent(d.getbtnDelete())
                 .addContainerGap(14, Short.MAX_VALUE))
         );
-    }
+	}
 
-    @Override
-    public void setComponentProperties() {
-        d.getjLabel1().setText("Name of Asset:");
-
-        d.getjLabel2().setText("Password:");
-
-        d.getLbAssetName().setOpaque(true);
-
-        d.getjLabel3().setText("Please enter Password to confirm");
-    }
+	@Override
+	protected Page selectConcretePage() {
+		return d = new DeleteAsset();
+	}
 }

@@ -31,8 +31,8 @@ public class ModifyAssetHandler implements ActionListener {
                  
                  if (m.getTfAssetName().getText().trim().length() != 0 && m.getTfType().getText().trim().length() != 0 && m.getTfOwner().getText().trim().length() != 0 && m.getTfStorage().getText().trim().length() != 0 && m.getTfFinancial().getText().trim().length() != 0){
                                
-                     DBHandler b = new DBHandler();    
-                     b.addAsset(m);
+                     DBHandler b = new DBHandler();
+                     ControllerUtility.AddAsset(b, m);
                      b.addActivityLog("Add Asset", m.getUserType(), m.getUsername());
                      m.dispose();
                  }

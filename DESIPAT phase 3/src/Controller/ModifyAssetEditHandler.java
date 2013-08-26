@@ -32,7 +32,7 @@ public class ModifyAssetEditHandler implements ActionListener {
         if(e.getSource().equals(m.getBtnAddEdit())){
             if (m.getTfAssetName().getText().trim().length() != 0 && m.getTfType().getText().trim().length() != 0 && m.getTfOwner().getText().trim().length() != 0 && m.getTfStorage().getText().trim().length() != 0 && m.getTfFinancial().getText().trim().length() != 0){
             DBHandler b = new DBHandler();
-            b.editAsset(m, m.getAssetID());
+            ControllerUtility.EditAsset(b, m, m.getAssetID());
             b.addActivityLog("Edit Asset:"+m.getTfAssetName().getText(), m.getUserType(), m.getUsername());
       
       

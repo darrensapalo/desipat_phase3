@@ -77,7 +77,7 @@ public class MainMenuHandler implements ActionListener {
                         //d.setValues(b.viewAsset(n),m.getPassword(), m.getUserType(),m.getLbName().getText());
                         
                         
-                        d.setUsertype(m.getUserType());
+                        d.setUserType(m.getUserType());
                         d.setUsername(m.getLbName().getText());
                         d.setPW(m.getPassword());
                         
