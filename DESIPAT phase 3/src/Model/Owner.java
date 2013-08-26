@@ -24,4 +24,10 @@ public class Owner extends User {
 		return super.login("owner");
 	}
 
+
+	@Override
+	protected void fetchUserId() {
+		super.fetchUserId("owner");
+	}
+
 }

@@ -11,7 +11,7 @@ import Model.Template.AddActivityLogQuery;
 import Model.Template.AddPreviousOwnerQuery;
 import Model.Template.DeleteAssetQuery;
 import Model.Template.GetPreviousOwnerQuery;
-import Model.Template.GetUserIDQuery;
+import Model.Template.FetchUserIdQuery;
 import Model.Template.ListAssetQuery;
 import Model.Template.ViewAssetQuery;
 
@@ -224,14 +224,14 @@ public class DBHandler {
 		}
 		return rs;
 	}
-
+	/*
 	public String getUserID(String userType, String username) {
 		createConnection();
 		String id = "Error";
 		ResultSet rs = null;
 
 		try {
-			Query getUserID = new GetUserIDQuery(userType, username);
+			Query getUserID = new FetchUserIdQuery(userType, username);
 			getUserID.createQuery();
 			rs = connection.prepareStatement(getUserID.getQuery())
 					.executeQuery();
@@ -250,4 +250,5 @@ public class DBHandler {
 		return id;
 
 	}
+	*/
 }

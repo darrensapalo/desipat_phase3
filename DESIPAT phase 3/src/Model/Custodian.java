@@ -21,5 +21,10 @@ public class Custodian extends User {
 	@Override
 	public boolean login() {
 		return super.login("custodian");
-	}	
+	}
+	
+	@Override
+	protected void fetchUserId() {
+		super.fetchUserId("custodian");
+	}
 }

@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import Model.Template.AddUserQuery;
-import Model.Template.GetUserIDQuery;
+import Model.Template.FetchUserIdQuery;
 import Model.Template.Query;
 import Model.Template.UserLoginQuery;
 
@@ -45,6 +45,7 @@ public abstract class User {
 			ResultSet rs = DBHandler.executeQuery(loginQuery);
 			
 			if (rs.first()) {
+				this.fetchUserInfo();
 				return true;
 			}	
 		}
@@ -55,30 +56,28 @@ public abstract class User {
 		return false;
 	}
 	
-	public String fetchUserID(String userType, String username) {
-		/*
-		String id = "Error";
-		ResultSet rs = null;
-
+	private void fetchUserInfo() {
+		fetchUserId();
+	}
+	
+	protected abstract void fetchUserId();
+	protected void fetchUserId(String userType) {
 		try {
-			Query getUserID = new GetUserIDQuery(userType, username);
-			getUserID.createQuery();
-			rs = connection.prepareStatement(getUserID.getQuery())
-					.executeQuery();
-			rs.next();
-
-			if (userType.equalsIgnoreCase("Owner"))
-				id = rs.getString("ownerid");
-			else if (userType.equalsIgnoreCase("Custodian"))
-				id = rs.getString("custodianid");
-
-			rs.close();
-			connection.close();
-		} catch (SQLException err) {
-			System.out.println(err);
+			Query fetchUserIdQuery = new FetchUserIdQuery(this.username, userType);
+			ResultSet rs = DBHandler.executeQuery(fetchUserIdQuery);
+			
+			if (rs.first()) {
+				if (userType.equalsIgnoreCase("Owner")) {
+					this.id = rs.getInt("ownerid");
+				}
+				else if (userType.equalsIgnoreCase("Custodian")) {
+					this.id = rs.getInt("custodianid");
+				}
+			}
 		}
-		return id;
-		*/
+		catch (SQLException ex) {
+			ex.printStackTrace();
+		}
 	}
 	
 	/*
