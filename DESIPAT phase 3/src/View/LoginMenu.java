@@ -3,7 +3,10 @@
  * and open the template in the editor.
  */
 package View;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -21,7 +24,7 @@ import javax.swing.JTextField;
  */
 
 @SuppressWarnings("serial")
-public class LoginMenu extends Page {
+public class LoginMenu extends Page implements KeyListener{
     
 	
 	
@@ -176,13 +179,37 @@ public class LoginMenu extends Page {
     private javax.swing.JRadioButton rbCustodian;
     private javax.swing.JRadioButton rbOwner;
     private javax.swing.JTextField tfUsername;
+	private ActionListener listener;
     // End of variables declaration//GEN-END:variables
     
     @Override
     public void addActionListener(ActionListener listener) {
         btLogin.addActionListener(listener);
         btnRegister.addActionListener(listener);
+        tfUsername.addKeyListener(this);
+        pfPassword.addKeyListener(this);
+        this.listener = listener;
     }
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_ENTER){
+			ActionEvent customEvent = new ActionEvent(btLogin, ActionEvent.ACTION_FIRST, "login");
+			listener.actionPerformed(customEvent);
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 
     
 
