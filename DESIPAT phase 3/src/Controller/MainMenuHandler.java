@@ -72,13 +72,26 @@ public class MainMenuHandler extends Controller{
 			JOptionPane.showMessageDialog(null, "Please select an asset from the list.", "Error", JOptionPane.ERROR_MESSAGE);
 			else
 			{
-                       int n = Integer.parseInt(rAssets.elementAt(index));
-                       form= new DeleteAssetBuilder();
+			            int n = Integer.parseInt(rAssets.elementAt(index));
+			            form= new DeleteAssetBuilder();
                         f.buildPage(form);
                         Page del = f.construct();
                         
                         DeleteAsset d = (DeleteAsset) del;
-                        d.setValues(b.viewAsset(n),m.getPassword(), m.getUserType(),m.getLbName().getText());
+                        //d.setValues(b.viewAsset(n),m.getPassword(), m.getUserType(),m.getLbName().getText());
+                        
+                        
+                        d.setUsertype(m.getUserType());
+                        d.setUsername(m.getLbName().getText());
+                        d.setPW(m.getPassword());
+                        
+                        ResultSet asset = b.viewAsset(n);
+                        asset.next();
+                        
+                        d.setAssetName((asset.getString("assetname")));
+                        d.setaID(asset.getInt("assetID"));
+                        
+                        
                         del=d;
                         del.setVisible(true);
 			}

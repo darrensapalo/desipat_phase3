@@ -5,10 +5,10 @@
 package View;
 
 
-import Controller.DeleteAssetHandler;
+//import Controller.DeleteAssetHandler;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+//import java.sql.ResultSet;
+//import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -25,6 +25,11 @@ public class DeleteAsset extends Page {
     private String PW;
     private Integer aID;
     
+    public void setPW(String pw) {
+        PW = pw;
+    }
+
+    /*  
     public void setValues(ResultSet Asset, String confirmPassword, String userType, String username) {
         
         this.userType = userType;
@@ -32,8 +37,6 @@ public class DeleteAsset extends Page {
         
         
         //initComponents();
-        this.setVisible(true);
-        this.setLocationRelativeTo(null);
         this.PW = confirmPassword;
         
          try
@@ -49,16 +52,14 @@ public class DeleteAsset extends Page {
                     System.out.println("\tSQL Error code: "+s.getErrorCode());
                     System.out.println("\tSQL State: "+s.getSQLState());
                 }
-        
-        
     }
-
+*/
     
     public DeleteAsset() {
       //initComponents();
-      
-      this.setLocationRelativeTo(null);
         
+      this.setLocationRelativeTo(null);
+      this.setVisible(true);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -93,7 +94,11 @@ public class DeleteAsset extends Page {
     public Integer getaID() {
         return aID;
     }
-
+    
+    public void setaID(int aid) {
+        aID = aid;
+    }
+    
     public String getUserType() {
         return userType;
     }
@@ -105,7 +110,11 @@ public class DeleteAsset extends Page {
     public JLabel getAssetName() {
         return AssetName;
     }
-
+    
+    public void setAssetName(String value) {
+        AssetName.setText(value);
+    }
+    
     public JButton getBtDelete() {
         return btDelete;
     }
