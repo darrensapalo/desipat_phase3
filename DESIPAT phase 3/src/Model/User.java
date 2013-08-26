@@ -15,23 +15,34 @@ public abstract class User {
 	protected String username;
 	protected String password;
 	
+	protected String[] userColumns;
+	
+	public User() {	}
 	public User(String username, String password) {
 		this.username = username;
 		this.password = password;
 	}
-	
-	public abstract void addToDatabase();
-	protected void addToDatabase(String userType) {
-		Query addUserQuery = new AddUserQuery(this, userType);
-		DBHandler.executeQuery(addUserQuery);
+
+	public abstract boolean addToDatabase();
+	protected boolean addToDatabase(String userType) {
+		try {
+			Query addUserQuery = new AddUserQuery(this, userType, userColumns);
+			DBHandler.executeUpdate(addUserQuery);
+			return true;
+		}
+		catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+		return false;
 	}
 	
 	public abstract boolean login();
 	protected boolean login(String userType) {
-		Query loginQuery = new UserLoginQuery(username, password, userType);
-		ResultSet rs = DBHandler.executeQuery(loginQuery);
-		
 		try {
+			Query loginQuery = new UserLoginQuery(username, password, userType);
+			ResultSet rs = DBHandler.executeQuery(loginQuery);
+			
 			if (rs.first()) {
 				return true;
 			}	
@@ -77,7 +88,11 @@ public abstract class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
+	public String[] getUserColumns() {
+		return userColumns;
+	}
+	public void setUserColumns(String[] userColumns) {
+		this.userColumns = userColumns;
+	}
 
 }

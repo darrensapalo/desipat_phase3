@@ -41,17 +41,18 @@ public class DBHandler {
 		}
 	}
 
-	public static ResultSet executeQuery(Query query) {
+	public static ResultSet executeQuery(Query query) throws SQLException {
 		createConnection();
 		
-		try {
-			PreparedStatement ps = connection.prepareStatement(query.getQuery());
-			return ps.executeQuery();
-		} catch (SQLException ex) {
-			ex.printStackTrace();
-		}
+		PreparedStatement ps = connection.prepareStatement(query.getQuery());
+		return ps.executeQuery();
+	}
+	
+	public static void executeUpdate(Query query) throws SQLException {
+		createConnection();
 		
-		return null;
+		PreparedStatement ps = connection.prepareStatement(query.getQuery());
+		ps.executeUpdate();
 	}
 	/*
 	public boolean userLogin(LoginMenu l, String userType) {

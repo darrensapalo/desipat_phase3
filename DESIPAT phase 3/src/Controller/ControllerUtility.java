@@ -122,7 +122,7 @@ public class ControllerUtility {
       mainMenu.getLbUserType().setText("Logged in as Owner");
 		
 	}
-
+	/*
 	public static boolean AddUser(DBHandler db, Register r) {
 		// Uses Strategy Pattern to for adding a user. The strategy swtiches
 		// between adding user or custodian.
@@ -154,7 +154,7 @@ public class ControllerUtility {
 		}
 		return b;
 	}
-
+	*/
 	public static boolean AddAsset(DBHandler dbHandler, ModifyAsset m) {
 		DBHandler.createConnection();
 		boolean b = false;

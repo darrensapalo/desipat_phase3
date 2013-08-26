@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 @SuppressWarnings("serial")
 public class Register extends Page {
 
-    public void setLbError(String error) {
+    public void setErrorMessage(String error) {
         this.lbError.setText(error);
     }
 
@@ -153,7 +153,7 @@ public class Register extends Page {
         this.rbOwner = rbOwner;
     }
 
-    public JTextField getTfFirst() {
+    public JTextField getFirstNameField() {
         return tfFirst;
     }
 
@@ -161,7 +161,7 @@ public class Register extends Page {
         this.tfFirst = tfFirst;
     }
 
-    public JTextField getTfLast() {
+    public JTextField getLastNameField() {
         return tfLast;
     }
 
@@ -180,7 +180,18 @@ public class Register extends Page {
         char[] c = pf.getPassword();
         String s = String.valueOf(c);
         return s;
-    }    
+    }
+    
+    public boolean allFieldsValid() {
+    	if (tfFirst.getText().trim().length() == 0 ||
+				tfLast.getText().trim().length() == 0 ||
+				tfUsername.getText().trim().length() == 0 ||
+				getDecipheredPassword(pfPassword).length() == 0 || 
+				getDecipheredPassword(pfConfirmPassword).length() == 0) {
+			return false;
+		}
+		return true;
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
