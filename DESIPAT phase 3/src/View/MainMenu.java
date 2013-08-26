@@ -4,13 +4,7 @@
  */
 package View;
 
-import Model.DBHandler;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -32,33 +26,6 @@ public class MainMenu extends Page {
     private String password;
     private int userID;
     private Vector<String> assetIDs = new Vector<String>();
-    private DBHandler db;
-    
-    public void setValues(String userType, ResultSet rAssets, String username, String password, int userID){
-        this.username = username;
-        this.userType = userType;
-        this.userID = userID;
-        this.password = password;
-        
-               Vector<String> res = new Vector<String>();
-                    try {
-                        while (rAssets.next()) {
-                        res.add(rAssets.getString("assetname")+", Type: "+rAssets.getString("assettype"));
-                        assetIDs.add(rAssets.getString("assetID"));
-                        }
-                    } catch (SQLException ex) {
-                        Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                
-                    
-                    
-      lbName.setText(username);
-      lbID.setText("Owner ID: " + userID);
-      listOfAsset.setListData(res);
-      
-      lbUserType.setText("Logged in as Owner");
-
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.

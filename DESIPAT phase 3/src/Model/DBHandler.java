@@ -5,25 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.swing.JOptionPane;
-
 import Model.AbstractFactory.DBConnectionFactory;
-import Model.Strategy.Add;
-import Model.Strategy.AddCustodian;
-import Model.Strategy.AddOwner;
 import Model.Template.Query;
 import Model.Template.addActivityLogQuery;
-import Model.Template.addAssetQuery;
 import Model.Template.addPreviousOwnerQuery;
-import Model.Template.addUserQuery;
 import Model.Template.deleteAssetQuery;
-import Model.Template.editAssetQuery;
 import Model.Template.getPreviousOwnerQuery;
 import Model.Template.getUserIDQuery;
 import Model.Template.ListAssetQuery;
 import Model.Template.viewAssetQuery;
-import View.ModifyAsset;
-import View.Register;
 
 /**
  * 
@@ -42,7 +32,7 @@ public class DBHandler {
 
 	// Factory pattern for creating the connection.
 
-	private static void createConnection() {
+	public static void createConnection() {
 		try {
 			DBConnectionFactory myFactory = DBConnectionFactory.getInstance();
 			connection = myFactory.getConnection();
@@ -108,79 +98,7 @@ public class DBHandler {
 		return b;
 	}
 	*/
-	public boolean addAsset(ModifyAsset m) {
-		createConnection();
-		boolean b = false;
-
-		try {
-			Query a = new addAssetQuery(m);
-			a.createQuery();
-
-			if (connection.prepareStatement(a.getQuery()).executeUpdate() == 1) {
-				b = true;
-				System.out.println("Insert Successful");
-			}
-			connection.close();
-		} catch (SQLException sqlErr) {
-			System.out.println(sqlErr);
-		}
-
-		return b;
-	}
-
-	// Owner has full access.
-	// Custodian has limited access.
-	public boolean editAsset(ModifyAsset m, int assetid) {
-		createConnection();
-		boolean b = false;
-
-		try {
-			Query edit = new editAssetQuery(m, assetid);
-			edit.createQuery();
-
-			if (connection.prepareStatement(edit.getQuery()).executeUpdate() == 1) {
-				b = true;
-				System.out.println("Edit Successful");
-			}
-			connection.close();
-		} catch (SQLException sqlErr) {
-			System.out.println(sqlErr);
-		}
-
-		return b;
-	}
-
-	public boolean addUser(Register r) {
-		// Uses Strategy Pattern to for adding a user. The strategy swtiches
-		// between adding user or custodian.
-		createConnection();
-		Add regStrategy = null;
-		boolean b = false;
-		if (r.getRbOwner().isSelected()) {
-			regStrategy = new AddOwner();
-		} else if (r.getRbCustodian().isSelected()) {
-			regStrategy = new AddCustodian();
-		}
-
-		try {
-			Query addUser = new addUserQuery(r, regStrategy.getTable(),
-					regStrategy.getColumns());
-			addUser.createQuery();
-
-			if (connection.prepareStatement(addUser.getQuery()).executeUpdate() == 1) {
-				b = true;
-				JOptionPane.showMessageDialog(null,
-						"Thank you for Registering " + r.getTfFirst().getText()
-								+ " " + r.getTfLast().getText() + ".",
-						"User Registration Successful",
-						JOptionPane.INFORMATION_MESSAGE);
-			}
-
-		} catch (SQLException sqlErr) {
-			System.out.println(sqlErr);
-		}
-		return b;
-	}
+	
 
 	// if the user is the owner / custodian
 	public ResultSet getAssetList(String userType, String userName) {

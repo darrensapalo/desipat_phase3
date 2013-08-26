@@ -6,6 +6,17 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.JOptionPane;
+
+import Model.DBHandler;
+import View.Register;
+import Model.Strategy.Add;
+import Model.Strategy.AddCustodian;
+import Model.Strategy.AddOwner;
+import Model.Template.Query;
+import Model.Template.addAssetQuery;
+import Model.Template.addUserQuery;
+import Model.Template.editAssetQuery;
 import View.AssetViewer;
 import View.MainMenu;
 import View.ModifyAsset;
@@ -84,4 +95,106 @@ public class ControllerUtility {
         view.setVisible(true);
         view.setLocationRelativeTo(null);
 	}
+
+	public static void SetValues(MainMenu mainMenu, String userType,
+			ResultSet rAssets, String username, String password, int userID) {
+		
+		mainMenu.setUsername(username);
+		mainMenu.setUserType(userType);
+		mainMenu.setUserID(userID);
+		mainMenu.setPassword(password);
+        
+               Vector<String> res = new Vector<String>();
+                    try {
+                        while (rAssets.next()) {
+                        res.add(rAssets.getString("assetname")+", Type: "+rAssets.getString("assettype"));
+                        mainMenu.getAssetIDs().add(rAssets.getString("assetID"));
+                        }
+                    } catch (SQLException ex) {
+                        Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                
+                    
+                    
+      mainMenu.getLbName().setText(username);
+      mainMenu.getLbID().setText("Owner ID: " + userID);
+      mainMenu.getListOfAsset().setListData(res);
+      mainMenu.getLbUserType().setText("Logged in as Owner");
+		
+	}
+
+	public static boolean AddUser(DBHandler db, Register r) {
+		// Uses Strategy Pattern to for adding a user. The strategy swtiches
+		// between adding user or custodian.
+		DBHandler.createConnection();
+		Add regStrategy = null;
+		boolean b = false;
+		if (r.getRbOwner().isSelected()) {
+			regStrategy = new AddOwner();
+		} else if (r.getRbCustodian().isSelected()) {
+			regStrategy = new AddCustodian();
+		}
+
+		try {
+			Query addUser = new addUserQuery(r, regStrategy.getTable(),
+					regStrategy.getColumns());
+			addUser.createQuery();
+
+			if (db.connection.prepareStatement(addUser.getQuery()).executeUpdate() == 1) {
+				b = true;
+				JOptionPane.showMessageDialog(null,
+						"Thank you for Registering " + r.getTfFirst().getText()
+								+ " " + r.getTfLast().getText() + ".",
+						"User Registration Successful",
+						JOptionPane.INFORMATION_MESSAGE);
+			}
+
+		} catch (SQLException sqlErr) {
+			System.out.println(sqlErr);
+		}
+		return b;
+	}
+
+	public static boolean AddAsset(DBHandler dbHandler, ModifyAsset m) {
+		DBHandler.createConnection();
+		boolean b = false;
+
+		try {
+			Query a = new addAssetQuery(m);
+			a.createQuery();
+
+			if (dbHandler.connection.prepareStatement(a.getQuery()).executeUpdate() == 1) {
+				b = true;
+				System.out.println("Insert Successful");
+			}
+			dbHandler.connection.close();
+		} catch (SQLException sqlErr) {
+			System.out.println(sqlErr);
+		}
+
+		return b;
+	}
+
+	public static boolean EditAsset(DBHandler dbHandler, ModifyAsset m, int assetid) {
+		DBHandler.createConnection();
+		boolean b = false;
+
+		try {
+			Query edit = new editAssetQuery(m, assetid);
+			edit.createQuery();
+
+			if (dbHandler.connection.prepareStatement(edit.getQuery()).executeUpdate() == 1) {
+				b = true;
+				System.out.println("Edit Successful");
+			}
+			dbHandler.connection.close();
+		} catch (SQLException sqlErr) {
+			System.out.println(sqlErr);
+		}
+
+		return b;
+	}
+	
+	
+	
 }

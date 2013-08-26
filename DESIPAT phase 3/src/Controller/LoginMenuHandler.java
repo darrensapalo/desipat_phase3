@@ -52,7 +52,7 @@ public class LoginMenuHandler implements ActionListener {
 				loginMenu.dispose();
 				Page mainMenuForm = PageDirector.buildPage(new MainMenuBuilder());
 				
-				((MainMenu)mainMenuForm).setValues(
+				((MainMenu)mainMenuForm).setValuesSHOULDBECHANGEDSOONNNN3(
 						userType, 
 						b.getAssetList(userType, loginMenu.getUsernameField().getText()), 
 						loginMenu.getUsernameField().getText(), 
