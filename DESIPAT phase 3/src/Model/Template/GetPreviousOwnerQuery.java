@@ -8,11 +8,11 @@ package Model.Template;
  *
  * @author Renz
  */
-public class getPreviousOwnerQuery extends Query{
+public class GetPreviousOwnerQuery extends Query{
     
     int assetID;
     
-    public getPreviousOwnerQuery(int assetid){
+    public GetPreviousOwnerQuery(int assetid){
         assetID = assetid;
     }
     

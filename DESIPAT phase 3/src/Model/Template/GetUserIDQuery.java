@@ -4,11 +4,11 @@ package Model.Template;
  * 
  * @author Renz
  */
-public class getUserIDQuery extends Query {
+public class GetUserIDQuery extends Query {
 
 	String userType, userName;
 
-	public getUserIDQuery(String uType, String uName) {
+	public GetUserIDQuery(String uType, String uName) {
 		userType = uType;
 		userName = uName;
 	}

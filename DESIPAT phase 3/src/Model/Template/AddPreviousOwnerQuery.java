@@ -12,11 +12,11 @@ import java.util.Date;
  *
  * @author Renz
  */
-public class addPreviousOwnerQuery extends Query{
+public class AddPreviousOwnerQuery extends Query{
     
     int assetID, previousOwnerID;
     
-    public addPreviousOwnerQuery(int assetid, int prevOwnerID){
+    public AddPreviousOwnerQuery(int assetid, int prevOwnerID){
         assetID = assetid;
         previousOwnerID = prevOwnerID;
     }

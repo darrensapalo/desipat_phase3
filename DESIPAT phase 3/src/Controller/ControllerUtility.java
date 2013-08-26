@@ -122,39 +122,7 @@ public class ControllerUtility {
       mainMenu.getLbUserType().setText("Logged in as Owner");
 		
 	}
-	/*
-	public static boolean AddUser(DBHandler db, Register r) {
-		// Uses Strategy Pattern to for adding a user. The strategy swtiches
-		// between adding user or custodian.
-		DBHandler.createConnection();
-		Add regStrategy = null;
-		boolean b = false;
-		if (r.getRbOwner().isSelected()) {
-			regStrategy = new AddOwner();
-		} else if (r.getRbCustodian().isSelected()) {
-			regStrategy = new AddCustodian();
-		}
 
-		try {
-			Query addUser = new AddUserQuery(r, regStrategy.getTable(),
-					regStrategy.getColumns());
-			addUser.createQuery();
-
-			if (db.connection.prepareStatement(addUser.getQuery()).executeUpdate() == 1) {
-				b = true;
-				JOptionPane.showMessageDialog(null,
-						"Thank you for Registering " + r.getTfFirst().getText()
-								+ " " + r.getTfLast().getText() + ".",
-						"User Registration Successful",
-						JOptionPane.INFORMATION_MESSAGE);
-			}
-
-		} catch (SQLException sqlErr) {
-			System.out.println(sqlErr);
-		}
-		return b;
-	}
-	*/
 	public static boolean AddAsset(DBHandler dbHandler, ModifyAsset m) {
 		DBHandler.createConnection();
 		boolean b = false;

@@ -12,11 +12,11 @@ import java.util.Date;
  *
  * @author Renz
  */
-public class addActivityLogQuery extends Query{
+public class AddActivityLogQuery extends Query{
     
     String activityName, userType, userName;
     
-    public addActivityLogQuery(String actName, String uType, String uName){
+    public AddActivityLogQuery(String actName, String uType, String uName){
         activityName = actName;
         userType = uType;
         userName = uName;

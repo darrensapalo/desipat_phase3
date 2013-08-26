@@ -7,13 +7,13 @@ import java.sql.SQLException;
 
 import Model.AbstractFactory.DBConnectionFactory;
 import Model.Template.Query;
-import Model.Template.addActivityLogQuery;
-import Model.Template.addPreviousOwnerQuery;
-import Model.Template.deleteAssetQuery;
-import Model.Template.getPreviousOwnerQuery;
-import Model.Template.getUserIDQuery;
+import Model.Template.AddActivityLogQuery;
+import Model.Template.AddPreviousOwnerQuery;
+import Model.Template.DeleteAssetQuery;
+import Model.Template.GetPreviousOwnerQuery;
+import Model.Template.GetUserIDQuery;
 import Model.Template.ListAssetQuery;
-import Model.Template.viewAssetQuery;
+import Model.Template.ViewAssetQuery;
 
 /**
  * 
@@ -123,7 +123,7 @@ public class DBHandler {
 		ResultSet rs = null;
 		createConnection();
 		try {
-			Query viewAsset = new viewAssetQuery(assetid);
+			Query viewAsset = new ViewAssetQuery(assetid);
 			viewAsset.createQuery();
 			rs = connection.prepareStatement(viewAsset.getQuery())
 					.executeQuery();
@@ -139,7 +139,7 @@ public class DBHandler {
 		boolean b = false;
 
 		try {
-			Query deleteAsset = new deleteAssetQuery(assetid);
+			Query deleteAsset = new DeleteAssetQuery(assetid);
 			deleteAsset.createQuery();
 			if (connection.prepareStatement(deleteAsset.getQuery())
 					.executeUpdate() == 1) {
@@ -163,7 +163,7 @@ public class DBHandler {
 		boolean b = false;
 
 		try {
-			Query addActivity = new addActivityLogQuery(activityName, userType,
+			Query addActivity = new AddActivityLogQuery(activityName, userType,
 					userName);
 			addActivity.createQuery();
 
@@ -191,7 +191,7 @@ public class DBHandler {
 		boolean b = false;
 
 		try {
-			Query addPreviousOwner = new addPreviousOwnerQuery(assetID,
+			Query addPreviousOwner = new AddPreviousOwnerQuery(assetID,
 					previousOwnerID);
 			addPreviousOwner.createQuery();
 
@@ -215,7 +215,7 @@ public class DBHandler {
 		ResultSet rs = null;
 
 		try {
-			Query getPreviousOwner = new getPreviousOwnerQuery(assetID);
+			Query getPreviousOwner = new GetPreviousOwnerQuery(assetID);
 			getPreviousOwner.createQuery();
 			rs = connection.prepareStatement(getPreviousOwner.getQuery())
 					.executeQuery();
@@ -231,7 +231,7 @@ public class DBHandler {
 		ResultSet rs = null;
 
 		try {
-			Query getUserID = new getUserIDQuery(userType, username);
+			Query getUserID = new GetUserIDQuery(userType, username);
 			getUserID.createQuery();
 			rs = connection.prepareStatement(getUserID.getQuery())
 					.executeQuery();

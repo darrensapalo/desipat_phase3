@@ -1,27 +1,22 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model.Template;
 
 /**
  *
  * @author Renz
  */
-public class deleteAssetQuery extends Query{
+public class ViewAssetQuery extends Query {
     
     int assetID;
     
-    public deleteAssetQuery(int assetid){
+    public ViewAssetQuery(int assetid){
         assetID = assetid;
     }
     
-    String tableUsed = "asset";
+    String[] tablesUsed = {"asset", "owner", "custodian"};
     
     boolean queryNeedsInsert(){ return false; }
     boolean queryNeedsUpdate(){ return false; }
-    boolean queryNeedsSelect(){ return false; }
-    boolean queryNeedsInnerJoin(){ return false; }
+    boolean queryNeedsDelete(){ return false; }
     boolean queryNeedsInto(){ return false; }
     boolean queryNeedsSet(){ return false; }
     boolean queryNeedsValues(){ return false; }
@@ -29,13 +24,21 @@ public class deleteAssetQuery extends Query{
     boolean queryNeedsOrderBy(){ return false; }
     
     @Override
-    String addDelete() {
-        return "DELETE";
+    String addSelect() {
+        return "SELECT *";
     }
 
     @Override
     String addFrom() {
-        return "FROM " + tableUsed;
+        return "FROM " + tablesUsed[0];
+    }
+    
+    @Override
+    String addInnerJoin() {
+        String s = "INNER JOIN " + tablesUsed[1] + " ON asset_ownerid = ownerid "
+        + "LEFT JOIN " + tablesUsed[2] + " ON asset_custodianid = custodianid";
+        
+        return s;
     }
     
     @Override
@@ -53,7 +56,7 @@ public class deleteAssetQuery extends Query{
     String addUpdate() {return null;}
 
     @Override
-    String addSelect() {return null;}
+    String addDelete() {return null;}
 
     @Override
     String addInto() {return null;}
@@ -66,8 +69,5 @@ public class deleteAssetQuery extends Query{
 
     @Override
     String addGroupBy() {return null;}
-
-    @Override
-    String addInnerJoin() {return null;}
     
 }
