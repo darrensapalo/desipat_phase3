@@ -41,6 +41,7 @@ public class ModifyAssetEditHandler implements ActionListener {
                    b.addPreviousOwner(m.getAssetID(), m.getPreviousOwnerID());
                 }
             m.dispose();
+            ControllerUtility.Update(b);
             }
             else
                 JOptionPane.showMessageDialog(null, "Please complete all required fields", "Error", JOptionPane.ERROR_MESSAGE);

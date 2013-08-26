@@ -7,10 +7,13 @@ package Controller;
 
 import View.DeleteAsset;
 import Model.DBHandler;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+
 import javax.swing.JOptionPane;
+
 import java.sql.ResultSet;
 
 
@@ -35,6 +38,7 @@ public class DeleteAssetHandler implements ActionListener {
               b.deleteAsset(del.getaID());
               //b.addActivityLog("Delete Asset:"+del.getAssetName().getText(), del.getUserType(), del.getUsername());
               del.dispose();
+              ControllerUtility.Update(b);
            }
           else
               JOptionPane.showMessageDialog(null, "Error: Please enter the correct Password", "Error", JOptionPane.ERROR_MESSAGE);

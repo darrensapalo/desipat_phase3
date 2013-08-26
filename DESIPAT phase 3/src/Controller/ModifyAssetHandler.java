@@ -34,6 +34,7 @@ public class ModifyAssetHandler implements ActionListener {
                      DBHandler b = new DBHandler();
                      ControllerUtility.AddAsset(b, m);
                      b.addActivityLog("Add Asset", m.getUserType(), m.getUsername());
+                     ControllerUtility.Update(b);
                      m.dispose();
                  }
                  else
