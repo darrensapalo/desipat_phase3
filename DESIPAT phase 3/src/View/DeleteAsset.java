@@ -10,6 +10,8 @@ package View;
 //import java.sql.ResultSet;
 //import java.sql.SQLException;
 
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
@@ -131,6 +133,10 @@ public class DeleteAsset extends Page {
         this.btDelete = btDelete;
     }
 
+    public void addBtnDeleteListener(ActionListener listener) {
+        btDelete.addActionListener(listener);
+    }
+    
     public JLabel getjLabel1() {
         return jLabel1;
     }
