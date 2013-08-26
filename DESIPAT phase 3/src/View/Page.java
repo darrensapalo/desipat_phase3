@@ -27,4 +27,28 @@ public abstract class Page extends JFrame {
     public void displayErrorMessage(String message) {
     	this.displayMessage(message, JOptionPane.ERROR_MESSAGE);
     }
+
+	public String getUserType() {
+		return userType;
+	}
+
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 }

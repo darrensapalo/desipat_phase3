@@ -48,14 +48,14 @@ public class AssetViewerHandler implements ActionListener {
            Page Deco = new ModifyAssetDecorator(edit, assetViewer.getAsset());
            edit = Deco;
            
+           // Set the page's current user, user type, and asset owner id
            ModifyAsset editing = (ModifyAsset)edit;
-           editing.setValues(assetViewer.getUserType(), assetViewer.getUsername(), assetViewer.getUserID());
-           edit = editing;
            
+           ControllerUtility.SetValues(editing, assetViewer);
+           
+           // depending on what kind of page, decorate as necessary
            if (assetViewer.getUserType() == "custodian"){
-               
                assetViewer.dispose();
-               
                Deco = new CustodianModifyAssetDecorator(edit);
                edit = Deco;
                edit.setVisible(true);
@@ -63,9 +63,7 @@ public class AssetViewerHandler implements ActionListener {
                
            }
            else if (assetViewer.getUserType() == "owner"){
-               
                assetViewer.dispose();
-               
                edit.setVisible(true);
                edit.setLocationRelativeTo(null);
            }
@@ -73,5 +71,7 @@ public class AssetViewerHandler implements ActionListener {
         }
          
       }
+	
+	
 
 }

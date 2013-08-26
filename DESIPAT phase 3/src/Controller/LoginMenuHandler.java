@@ -50,10 +50,7 @@ public class LoginMenuHandler implements ActionListener {
 			
 			if (user.login()) {
 				loginMenu.dispose();
-				PageDirector fd = new PageDirector();
-				fd.buildPage(new MainMenuBuilder());
-				
-				Page mainMenuForm = fd.construct();
+				Page mainMenuForm = PageDirector.buildPage(new MainMenuBuilder());
 				
 				((MainMenu)mainMenuForm).setValues(
 						userType, 
@@ -79,10 +76,7 @@ public class LoginMenuHandler implements ActionListener {
 		} 
 		
 		else if (e.getSource().equals(loginMenu.getRegisterButton())) {    // Handler for register button
-			PageDirector fd = new PageDirector();
-			fd.buildPage(new RegisterBuilder());
-			Page registrationForm = fd.construct();
-
+			Page registrationForm = PageDirector.buildPage(new RegisterBuilder());
 			registrationForm.setVisible(true);
 			registrationForm.setLocationRelativeTo(null);
 		}

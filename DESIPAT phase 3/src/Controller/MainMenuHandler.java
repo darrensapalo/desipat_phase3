@@ -44,16 +44,13 @@ public class MainMenuHandler implements ActionListener {
       public void actionPerformed(ActionEvent e) {
                 DBHandler b;
                 b = new DBHandler();
-                
-                    PageDirector f = new PageDirector();
-                    AbstractPageBuilder form;
+                AbstractPageBuilder form;
                     
                        
                     if(e.getSource().equals(m.getBtAdd())){
                        
                         form = new ModifyAssetBuilder();
-                        f.buildPage(form);
-                        Page add = f.construct();
+                        Page add = PageDirector.buildPage(form);
                         
                         ModifyAsset a = (ModifyAsset)add;
                         a.setValues(m.getUserType(), m.getLbName().getText(),m.getUserID());
@@ -74,8 +71,7 @@ public class MainMenuHandler implements ActionListener {
 			{
                        int n = Integer.parseInt(rAssets.elementAt(index));
                        form= new DeleteAssetBuilder();
-                        f.buildPage(form);
-                        Page del = f.construct();
+                        Page del = PageDirector.buildPage(form);
                         
                         DeleteAsset d = (DeleteAsset) del;
                         d.setValues(b.viewAsset(n),m.getPassword(), m.getUserType(),m.getLbName().getText());
@@ -93,11 +89,10 @@ public class MainMenuHandler implements ActionListener {
 			else{
                             int n = Integer.parseInt(rAssets.elementAt(index));
                             form = new ModifyAssetBuilder();
-                            f.buildPage(form);
-                            Page edit = f.construct();
+                            Page edit = PageDirector.buildPage(form);
                             
                             Page Deco = new ModifyAssetDecorator(edit, b.viewAsset(n));
-                            edit = Deco.getForm();
+                            edit = Deco;
                             
                             ModifyAsset editing = (ModifyAsset)edit;
                             editing.setValues(m.getUserType(), m.getLbName().getText(),m.getUserID());
@@ -108,7 +103,7 @@ public class MainMenuHandler implements ActionListener {
                             if (m.getUserType() == "custodian"){
                                 
                                 Deco = new CustodianModifyAssetDecorator(edit);
-                                edit = Deco.getForm();
+                                edit = Deco;
                                 edit.setVisible(true);
                                 edit.setLocationRelativeTo(null);
                                 
@@ -134,12 +129,11 @@ public class MainMenuHandler implements ActionListener {
 			{
 			int n = Integer.parseInt(rAssets.elementAt(index));
                         
-                         form=new AssetViewerBuilder();
-                        f.buildPage(form);
-                        Page view = f.construct();
+                        form = new AssetViewerBuilder();
+                        Page view = PageDirector.buildPage(form);
                         
                         AssetViewer a = (AssetViewer) view;
-                        a.setValues(b.viewAsset(n),b.getPreviousOwner(n),m.getUserType(), m.getLbName().getText());
+                        a.setValuesTHATNEEDTOBEREPLACED2(b.viewAsset(n), b.getPreviousOwner(n), m.getUserType(), m.getLbName().getText());
                         view=a;
                         view.setVisible(true);
                         
@@ -148,9 +142,7 @@ public class MainMenuHandler implements ActionListener {
                     }
                     else if(e.getSource().equals(m.getBtLogout())){
                         form = new LoginBuilder();
-                        f = new PageDirector();
-                        f.buildPage(form);
-                        Page login = f.construct();
+                        Page login = PageDirector.buildPage(form);
                         
                         m.dispose();
                         

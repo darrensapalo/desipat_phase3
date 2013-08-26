@@ -5,6 +5,7 @@
 package View;
 
 
+import Controller.ControllerUtility;
 import Model.DBHandler;
 
 import java.sql.ResultSet;
@@ -30,76 +31,14 @@ public class AssetViewer extends Page {
      */
     
     private Integer userID;
-    private ResultSet Asset;
     private DBHandler db;
     
     
-    public void setValues(ResultSet Asset, ResultSet prevOwners, String UserType, String UserName) {
-       // initComponents();
-        
-        
-        
-        this.username = UserName;
-        this.userType = UserType;
-        this.Asset = Asset;
-        
-        Vector<String> res = new Vector<String>();
-                    
-        try{ 
-            while (prevOwners.next()) {
-                
-                String oFirstname = prevOwners.getString("ofirstname");
-                String oLastname = prevOwners.getString("olastname");
-                res.add(oFirstname+" "+oLastname);
-            }
-                    
-        } catch (SQLException ex) {
-            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);            
-        }
-            
-        listPreviousOwners.setListData(res);       
-        
-        try
-        {
-            Asset.next();
-            lbAssetName.setText((Asset.getString("assetname")));
-            lbAssetID.setText((Asset.getString("assetid")));
-            String oFirstname = Asset.getString("ofirstname");
-            String oLastname = Asset.getString("olastname");
-            lbOwner.setText(oFirstname+" "+oLastname);
-            String cFirstname = Asset.getString("cfirstname");
-            String cLastname = Asset.getString("clastname");
-            if(cFirstname == null)
-                lbCustodian.setText("N/A");
-            else
-                lbCustodian.setText(cFirstname+" "+cLastname);
-            lbType.setText((Asset.getString("assettype")));
-            lbDate.setText(Asset.getString("dateacquired"));
-            lbRetention.setText((Asset.getString("retentionperiod")));
-            lbMaintenance.setText((Asset.getString("mainsched")));
-            lbFinancial.setText((Asset.getString("financialval")));
-            lbConfidentiality.setText((Asset.getString("confidentialityval")));
-            lbAvailability.setText((Asset.getString("availabilityval")));
-            lbIntegrity.setText((Asset.getString("integrityval")));
-            lbClassification.setText((Asset.getString("classification")));
-            lbStorage.setText((Asset.getString("storagelocation")));
-            
-            userID = Asset.getInt("asset_ownerid");
-            
-            if(res.isEmpty()){
-                lbPreviousOwner.setText("N/A");
-            }else
-                lbPreviousOwner.setText(res.lastElement());
-            
-        }catch(SQLException s){
-                    System.out.println(s);
-                }
-        
-        this.setVisible(true);
-        this.setLocationRelativeTo(null);
+    public void setValuesTHATNEEDTOBEREPLACED2(ResultSet Asset, ResultSet prevOwners, String UserType, String UserName) {
+    	ControllerUtility.SetValues(this, Asset, prevOwners, UserType, UserName);
+    }
         
    
-    }
     
     public AssetViewer() {
       //initComponents();
@@ -124,9 +63,6 @@ public class AssetViewer extends Page {
         return username;
     }
 
-    public ResultSet getAsset() {
-        return Asset;
-    }
     
     public JButton getbtnEdit() {
         return btnEdit;
