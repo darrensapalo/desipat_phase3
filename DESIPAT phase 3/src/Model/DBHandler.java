@@ -6,13 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import Model.AbstractFactory.DBConnectionFactory;
-import Model.Template.Query;
 import Model.Template.AddActivityLogQuery;
 import Model.Template.AddPreviousOwnerQuery;
 import Model.Template.DeleteAssetQuery;
 import Model.Template.GetPreviousOwnerQuery;
-import Model.Template.FetchUserIdQuery;
 import Model.Template.ListAssetQuery;
+import Model.Template.Query;
 import Model.Template.ViewAssetQuery;
 
 /**
