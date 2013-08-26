@@ -4,6 +4,7 @@
  */
 package Controller;
 
+import View.LoginMenu;
 import View.Page;
 import View.MainMenu;
 import View.ModifyAsset;
@@ -118,7 +119,7 @@ public class MainMenuHandler implements ActionListener {
                             
 
                             
-                            if (m.getUserType() == "custodian"){
+                            if (m.getUserType().equalsIgnoreCase("custodian")){
                                 
                             	CustodianModifyAssetDecorator Decor = new CustodianModifyAssetDecorator(edit);
                                 edit = Decor.getForm();
@@ -128,7 +129,7 @@ public class MainMenuHandler implements ActionListener {
                                 
                                 
                             }
-                            else if (m.getUserType() == "owner"){
+                            else if (m.getUserType().equalsIgnoreCase("owner")){
                                 editing = (ModifyAsset)edit;
                                 edit = editing;
                                 
@@ -152,6 +153,7 @@ public class MainMenuHandler implements ActionListener {
                         
                         AssetViewer a = (AssetViewer) view;
                         a.addActionListener(new AssetViewerHandler(a));
+                        a.setAssetID(n);
                         
                         ControllerUtility.SetValues(a, b.viewAsset(n), b.getPreviousOwner(n), m.getUserType(), m.getLbName().getText());
                         view=a;
@@ -162,7 +164,8 @@ public class MainMenuHandler implements ActionListener {
                     }
                     else if(e.getSource().equals(m.getBtLogout())){
                         form = new LoginBuilder();
-                        Page login = PageDirector.buildPage(form);
+                        Page login = PageDirector.buildPage(new LoginBuilder());
+                		login.addActionListener(new LoginMenuHandler((LoginMenu) login));
                         
                         m.dispose();
                         
@@ -170,26 +173,7 @@ public class MainMenuHandler implements ActionListener {
                         login.setLocationRelativeTo(null);
                     }
                     else if(e.getSource().equals(m.getBtRefresh())){
-                        
-                        ResultSet assetList = b.getAssetList(m.getUserType(), m.getLbName().getText());
-                        
-                        Vector<String> res = new Vector<String>();
-                        
-                        m.getAssetIDs().removeAllElements();
-                        
-                    try {
-                        while (assetList.next()) {
-                        res.add(assetList.getString("assetname")+", Type: "+assetList.getString("assettype"));
-                        m.getAssetIDs().add(assetList.getString("assetID"));
-                        
-                        }
-                    } catch (SQLException ex) {
-                        Logger.getLogger(MainMenuHandler.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                
-                    
-                    
-      m.getListOfAsset().setListData(res);
+                        ControllerUtility.Update(b);
                     }
                     
                 }

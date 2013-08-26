@@ -17,6 +17,7 @@ public class ConcreteButtonFactory implements AbstractButtonFactory{
     @Override
     public JButton createButton(String text, ActionListener al) {
         JButton b = new JButton(text);
+        b.setFocusable(false);
         b.addActionListener(al);
         return b;
     }

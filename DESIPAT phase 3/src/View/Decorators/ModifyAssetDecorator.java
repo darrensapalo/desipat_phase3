@@ -8,6 +8,7 @@ import Controller.ModifyAssetEditHandler;
 import View.Page;
 import View.ModifyAsset;
 
+import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -104,7 +105,17 @@ public class ModifyAssetDecorator extends AbstractDecorator {
                 ma.setAssetID(asset.getInt("assetid"));
                 ma.setPreviousOwnerID(asset.getInt("asset_ownerid"));
                 ma.getTfOwner().setEnabled(true);
-                
+
+                ModifyAssetEditHandler mae = new ModifyAssetEditHandler(ma);
+                while (ma.getBtnAddEdit().getActionListeners().length > 0)
+                	ma.getBtnAddEdit().removeActionListener(ma.getBtnAddEdit().getActionListeners()[0]);
+                ma.getBtnAddEdit().addActionListener(mae);           
+                   
+                  
+                 ma.pack();
+                 
+                 
+                 return ma;
             } catch (ParseException ex) {
                 Logger.getLogger(ModifyAssetDecorator.class.getName()).log(Level.SEVERE, null, ex);
                 ex.printStackTrace();
@@ -117,15 +128,14 @@ public class ModifyAssetDecorator extends AbstractDecorator {
             Logger.getLogger(ModifyAssetDecorator.class.getName()).log(Level.SEVERE, null, ex);
             ex.printStackTrace();
         }
+        
+        return null;
        
-       ModifyAssetEditHandler mae = new ModifyAssetEditHandler(ma);
-       ma.getBtnAddEdit().removeActionListener(ma.getBtnAddEdit().getActionListeners()[0]);
-       ma.getBtnAddEdit().addActionListener(mae);           
-          
-         
-        ma.pack();
-        
-        
-        return ma;
     }
+
+	@Override
+	public void addActionListener(ActionListener listener) {
+		// TODO Auto-generated method stub
+		
+	}
 }

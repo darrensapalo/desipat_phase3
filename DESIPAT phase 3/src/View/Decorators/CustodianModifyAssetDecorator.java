@@ -9,6 +9,7 @@ import View.Page;
 import View.MainMenu;
 import View.ModifyAsset;
 
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 /**
@@ -47,4 +48,10 @@ public class CustodianModifyAssetDecorator extends AbstractDecorator {
         toD = cma;
         return toD;
     }
+
+	@Override
+	public void addActionListener(ActionListener listener) {
+		// TODO Auto-generated method stub
+		
+	}
 }
