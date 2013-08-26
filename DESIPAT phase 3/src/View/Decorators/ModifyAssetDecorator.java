@@ -8,6 +8,7 @@ import Controller.ModifyAssetEditHandler;
 import View.Page;
 import View.ModifyAsset;
 
+import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -128,4 +129,10 @@ public class ModifyAssetDecorator extends AbstractDecorator {
         
         return ma;
     }
+
+	@Override
+	public void addActionListener(ActionListener listener) {
+		// TODO Auto-generated method stub
+		
+	}
 }

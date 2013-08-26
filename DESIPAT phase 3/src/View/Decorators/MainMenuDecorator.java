@@ -4,6 +4,8 @@
  */
 package View.Decorators;
 
+import java.awt.event.ActionListener;
+
 import View.Page;
 import View.MainMenu;
 
@@ -36,4 +38,10 @@ public class MainMenuDecorator extends AbstractDecorator {
         toD = m;
         return toD;
     }
+
+	@Override
+	public void addActionListener(ActionListener listener) {
+		// TODO Auto-generated method stub
+		
+	}
 }
