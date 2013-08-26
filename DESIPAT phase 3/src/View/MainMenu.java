@@ -4,9 +4,6 @@
  */
 package View;
 
-import Controller.ControllerUtility;
-
-import java.sql.ResultSet;
 import java.util.Vector;
 
 import javax.swing.JButton;
