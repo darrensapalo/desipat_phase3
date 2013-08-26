@@ -26,24 +26,19 @@ public class TestingMain {
     public static void main(String args[]){
         
         //MAINMENU
-         AbstractPageBuilder builder = new MainMenuBuilder();
-         PageDirector f = new PageDirector();
-         f.buildPage(builder);
-         Page mainmenu = f.construct();
+         Page mainmenu = PageDirector.buildPage(new MainMenuBuilder());
          mainmenu.setVisible(true);
          mainmenu.setLocationRelativeTo(null);
          
          
          //REGISTER
-         builder = new RegisterBuilder();
-         f.buildPage(builder);
-         Page register = f.construct();
+         
+         Page register = PageDirector.buildPage(new RegisterBuilder());
          register.setVisible(true);
          register.setLocationRelativeTo(null);
          
          //DECORATOR MAINMENU
-         Page Deco = new MainMenuDecorator(mainmenu);
-         mainmenu = Deco.getForm();
+         mainmenu = new MainMenuDecorator(mainmenu);
          mainmenu.setVisible(true);
          mainmenu.setLocationRelativeTo(null);
          

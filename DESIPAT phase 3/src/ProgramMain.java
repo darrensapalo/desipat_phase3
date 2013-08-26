@@ -15,10 +15,7 @@ public class ProgramMain {
 
 	public static void main(String args[]) {
 		
-		PageDirector f = new PageDirector();
-		f.buildPage(new LoginBuilder());
-		
-		Page login = f.construct();
+		Page login = PageDirector.buildPage(new LoginBuilder());
 		login.setLocationRelativeTo(null);
 		login.setVisible(true);
 	}
