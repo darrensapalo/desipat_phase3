@@ -42,8 +42,6 @@ public class TestingMain {
          mainmenu.setVisible(true);
          mainmenu.setLocationRelativeTo(null);
          
-         
-         
-         
+
     }
 }

@@ -15,7 +15,7 @@ import Model.Strategy.AddCustodian;
 import Model.Strategy.AddOwner;
 import Model.Template.Query;
 import Model.Template.addAssetQuery;
-import Model.Template.addUserQuery;
+import Model.Template.AddUserQuery;
 import Model.Template.editAssetQuery;
 import View.AssetViewer;
 import View.MainMenu;
@@ -136,7 +136,7 @@ public class ControllerUtility {
 		}
 
 		try {
-			Query addUser = new addUserQuery(r, regStrategy.getTable(),
+			Query addUser = new AddUserQuery(r, regStrategy.getTable(),
 					regStrategy.getColumns());
 			addUser.createQuery();
 

@@ -3,6 +3,7 @@ package Model;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import Model.Template.AddUserQuery;
 import Model.Template.Query;
 import Model.Template.UserLoginQuery;
 
@@ -20,8 +21,12 @@ public abstract class User {
 	}
 	
 	public abstract void addToDatabase();
-	public abstract boolean login();
+	protected void addToDatabase(String userType) {
+		Query addUserQuery = new AddUserQuery(this, userType);
+		DBHandler.executeQuery(addUserQuery);
+	}
 	
+	public abstract boolean login();
 	protected boolean login(String userType) {
 		Query loginQuery = new UserLoginQuery(username, password, userType);
 		ResultSet rs = DBHandler.executeQuery(loginQuery);
