@@ -173,26 +173,7 @@ public class MainMenuHandler implements ActionListener {
                         login.setLocationRelativeTo(null);
                     }
                     else if(e.getSource().equals(m.getBtRefresh())){
-                        
-                        ResultSet assetList = b.getAssetList(m.getUserType(), m.getLbName().getText());
-                        
-                        Vector<String> res = new Vector<String>();
-                        
-                        m.getAssetIDs().removeAllElements();
-                        
-                    try {
-                        while (assetList.next()) {
-                        res.add(assetList.getString("assetname")+", Type: "+assetList.getString("assettype"));
-                        m.getAssetIDs().add(assetList.getString("assetID"));
-                        
-                        }
-                    } catch (SQLException ex) {
-                        Logger.getLogger(MainMenuHandler.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                
-                    
-                    
-      m.getListOfAsset().setListData(res);
+                        ControllerUtility.Update(b);
                     }
                     
                 }

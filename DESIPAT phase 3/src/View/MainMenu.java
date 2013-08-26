@@ -20,7 +20,9 @@ import javax.swing.JSeparator;
  */
 
 public class MainMenu extends Page {
-    /**
+    public static MainMenu Instance;
+	
+	/**
      * Creates new form MainMenu
      */
     private String userType;
@@ -28,6 +30,10 @@ public class MainMenu extends Page {
     private int userID;
     private Vector<String> assetIDs = new Vector<String>();
 
+    public MainMenu(){
+    	Instance = this;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
