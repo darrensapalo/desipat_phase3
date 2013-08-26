@@ -5,6 +5,7 @@
 package Controller;
 
 
+import Model.DBHandler;
 import View.Page;
 import View.ModifyAsset;
 import View.AssetViewer;
@@ -44,8 +45,10 @@ public class AssetViewerHandler implements ActionListener {
     		// Build the current page with the necessary components
            Page edit = PageDirector.buildPage(new ModifyAssetBuilder());
            
+           DBHandler d = new DBHandler();
+           
             // "Decorate" the current page with the asset's information for viewing 
-           Page Deco = new ModifyAssetDecorator(edit, assetViewer.getAsset());
+           Page Deco = new ModifyAssetDecorator(edit, d.viewAsset(assetViewer.getAssetID()));
            edit = Deco;
            
            // Set the page's current user, user type, and asset owner id

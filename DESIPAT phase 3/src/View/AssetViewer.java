@@ -3,17 +3,6 @@
  * and open the template in the editor.
  */
 package View;
-
-
-import Controller.ControllerUtility;
-import Model.DBHandler;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -31,12 +20,7 @@ public class AssetViewer extends Page {
      */
     
     private Integer userID;
-    private DBHandler db;
-    
-    
-    public void setValuesTHATNEEDTOBEREPLACED2(ResultSet Asset, ResultSet prevOwners, String UserType, String UserName) {
-    	ControllerUtility.SetValues(this, Asset, prevOwners, UserType, UserName);
-    }
+    private int AssetID;
         
    
     
@@ -409,4 +393,17 @@ public class AssetViewer extends Page {
     private javax.swing.JLabel lbType;
     private javax.swing.JList listPreviousOwners;
     // End of variables declaration//GEN-END:variables
+
+
+	public void setUserID(Integer userID) {
+		this.userID = userID;
+	}
+
+	public int getAssetID() {
+		return AssetID;
+	}
+
+	public void setAssetID(int assetID) {
+		AssetID = assetID;
+	}
 }
