@@ -4,12 +4,8 @@
  */
 package Controller;
 
-import View.Page;
 import View.Register;
-import View.LoginMenu;
 import Model.DBHandler;
-import View.Builders.AbstractPageBuilder;
-import View.Builders.LoginBuilder;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,7 +31,7 @@ public class RegisterHandler implements ActionListener {
                 if(r.getDecipheredPassword(r.getPfConfirmPassword()).equals(r.getDecipheredPassword(r.getPfPassword())))
                 { 
                     DBHandler b = new DBHandler();
-                    if (b.addUser(r) == false){
+                    if (ControllerUtility.AddUser(b, r) == false){
                         r.setLbError("This User is already registered.");
                     }
                     else{
@@ -59,7 +55,7 @@ public class RegisterHandler implements ActionListener {
                 if(r.getDecipheredPassword(r.getPfConfirmPassword()).equals(r.getDecipheredPassword(r.getPfPassword())))
                 { 
                     DBHandler b = new DBHandler();
-                    if (b.addUser(r) == false){
+                    if (ControllerUtility.AddUser(b, r) == false){
                         r.setLbError("This User is already registered.");
                     }
                     else{
