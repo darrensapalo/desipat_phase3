@@ -177,7 +177,4 @@ public class ControllerUtility {
 			m.getListOfAsset().setListData(res);
 		}
 	}
-
-
-
 }

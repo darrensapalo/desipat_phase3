@@ -16,6 +16,8 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import Model.Bean.Asset;
+
 /**
  *
  * @author Jan
@@ -39,7 +41,7 @@ public class AssetViewer extends Page {
     }
 
     
-    public void SetValues(ResultSet Asset, ResultSet prevOwners, String UserType, String UserName){
+    public void SetValues(Asset asset, ResultSet prevOwners, String UserType, String UserName){
         setUsername(UserName);
         setUserType(UserType);
 
@@ -47,7 +49,6 @@ public class AssetViewer extends Page {
 
         try{ 
             while (prevOwners.next()) {
-
                 String oFirstname = prevOwners.getString("ofirstname");
                 String oLastname = prevOwners.getString("olastname");
                 res.add(oFirstname+" "+oLastname);
@@ -58,43 +59,38 @@ public class AssetViewer extends Page {
         }
 
         getListPreviousOwners().setListData(res);       
+ 
+        getLbAssetName().setText(asset.getAssetName());
+        getLbAssetID().setText(asset.getAssetID());
+        String oFirstname = asset.getOFirstName();
+        String oLastname = asset.getOLastName();
+        getLbOwner().setText(oFirstname+" "+oLastname);
+        String cFirstname = asset.getCFirstName();
+        String cLastname = asset.getCLastName();
+        if(cFirstname == null)
+            getLbCustodian().setText("N/A");
+        else
+            getLbCustodian().setText(cFirstname+" "+cLastname);
+        getLbType().setText(asset.getAssetType());
+        getLbDate().setText(asset.getDateAcquired());
+        getLbRetention().setText(asset.getRetentionPeriod());
+        getLbMaintenance().setText(asset.getMainSched());
+        getLbFinancial().setText(asset.getFinancial());
+        getLbConfidentiality().setText(asset.getConfidentiality());
+        getLbAvailability().setText(asset.getAvailability());
+        getLbIntegrity().setText(asset.getIntegrity());
+        getLbClassification().setText(asset.getClassification());
+        getLbStorage().setText(asset.getStorage());
 
-        try
-        {
-            Asset.next();
-            getLbAssetName().setText((Asset.getString("assetname")));
-            getLbAssetID().setText((Asset.getString("assetid")));
-            String oFirstname = Asset.getString("ofirstname");
-            String oLastname = Asset.getString("olastname");
-            getLbOwner().setText(oFirstname+" "+oLastname);
-            String cFirstname = Asset.getString("cfirstname");
-            String cLastname = Asset.getString("clastname");
-            if(cFirstname == null)
-                getLbCustodian().setText("N/A");
-            else
-                getLbCustodian().setText(cFirstname+" "+cLastname);
-            getLbType().setText((Asset.getString("assettype")));
-            getLbDate().setText(Asset.getString("dateacquired"));
-            getLbRetention().setText((Asset.getString("retentionperiod")));
-            getLbMaintenance().setText((Asset.getString("mainsched")));
-            getLbFinancial().setText((Asset.getString("financialval")));
-            getLbConfidentiality().setText((Asset.getString("confidentialityval")));
-            getLbAvailability().setText((Asset.getString("availabilityval")));
-            getLbIntegrity().setText((Asset.getString("integrityval")));
-            getLbClassification().setText((Asset.getString("classification")));
-            getLbStorage().setText((Asset.getString("storagelocation")));
+        setUserID(asset.getOwnerId());
 
-            setUserID(Asset.getInt("asset_ownerid"));
-
-            if(res.isEmpty()){
-                getLbPreviousOwner().setText("N/A");
-            }
-            else
-                getLbPreviousOwner().setText(res.lastElement());
-
-        }catch(SQLException s){
-            System.out.println(s);
+        if(res.isEmpty()){
+            getLbPreviousOwner().setText("N/A");
         }
+        else
+            getLbPreviousOwner().setText(res.lastElement());
+
+
 
         setVisible(true);
         setLocationRelativeTo(null);

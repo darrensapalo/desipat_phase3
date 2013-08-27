@@ -10,7 +10,9 @@ import View.MainMenu;
 import View.ModifyAsset;
 import View.AssetViewer;
 import View.DeleteAsset;
+import Model.AssetModel;
 import Model.DBHandler;
+import Model.Bean.Asset;
 import View.Builders.AbstractPageBuilder;
 import View.Builders.AssetViewerBuilder;
 import View.Builders.DeleteAssetBuilder;
@@ -154,7 +156,8 @@ public class MainMenuHandler implements ActionListener {
                         AssetViewer a = (AssetViewer) view;
                         a.addActionListener(new AssetViewerHandler(a));
                         a.setAssetID(n);
-                        
+                        AssetModel am = new AssetModel();
+                        Asset asset = am.getAsset(b.viewAsset(n));
                         
                         a.SetValues(b.viewAsset(n), b.getPreviousOwner(n), m.getUserType(), m.getLbName().getText());
                         view=a;
