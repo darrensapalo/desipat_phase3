@@ -3,9 +3,9 @@ package Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Model.Custodian;
+import Model.CustodianModel;
 import Model.DBHandler;
-import Model.Owner;
+import Model.OwnerModel;
 import Model.UserModel;
 import View.Page;
 import View.LoginMenu;
@@ -40,11 +40,11 @@ public class LoginMenuHandler implements ActionListener {
 			
 			switch (userType) {
 			case "owner":
-				userModel = new Owner(loginMenu.getUsernameField().getText(), loginMenu.getDecipheredPassword(loginMenu.getPasswordField()));
+				userModel = new OwnerModel(loginMenu.getUsernameField().getText(), loginMenu.getDecipheredPassword(loginMenu.getPasswordField()));
 				break;
 				
 			case "custodian":
-				userModel = new Custodian(loginMenu.getUsernameField().getText(), loginMenu.getDecipheredPassword(loginMenu.getPasswordField()));
+				userModel = new CustodianModel(loginMenu.getUsernameField().getText(), loginMenu.getDecipheredPassword(loginMenu.getPasswordField()));
 				break;
 			}
 			

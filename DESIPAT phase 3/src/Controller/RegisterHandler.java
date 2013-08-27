@@ -3,8 +3,8 @@ package Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Model.Custodian;
-import Model.Owner;
+import Model.CustodianModel;
+import Model.OwnerModel;
 import Model.UserModel;
 import View.Register;
 
@@ -43,10 +43,10 @@ public class RegisterHandler implements ActionListener {
 			}
 			
 			if (registrationPage.getRbOwner().isSelected()) {	
-				userModel = new Owner();
+				userModel = new OwnerModel();
 			}
 			else if (registrationPage.getRbCustodian().isSelected()) {
-				userModel = new Custodian();
+				userModel = new CustodianModel();
 			}
 			
 			userModel.setFirstName(firstName);

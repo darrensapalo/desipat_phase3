@@ -9,7 +9,7 @@ import Model.Template.FetchUserIdQuery;
 import Model.Template.Query;
 import Model.Template.UserLoginQuery;
 
-public abstract class User {
+public class User {
     
     protected int id;
     protected String firstName;
@@ -25,7 +25,6 @@ public abstract class User {
         this.password = password;
     }
 
-    
     /*
      * Getters/Setters
      */
