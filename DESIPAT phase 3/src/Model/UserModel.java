@@ -24,7 +24,7 @@ public abstract class UserModel {
 	public abstract boolean addToDatabase();
 	protected boolean addToDatabase(String userType) {
 		try {
-			Query addUserQuery = new AddUserQuery(this, userType, user.getUserColumns());
+			Query addUserQuery = new AddUserQuery(user, userType, user.getUserColumns());
 			DBHandler.executeUpdate(addUserQuery);
 			return true;
 		}
