@@ -3,10 +3,11 @@ package Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Model.Custodian;
+import Model.CustodianModel;
 import Model.DBHandler;
-import Model.Owner;
-import Model.User;
+import Model.OwnerModel;
+import Model.UserModel;
+import Model.Bean.User;
 import View.Page;
 import View.LoginMenu;
 import View.MainMenu;
@@ -27,7 +28,7 @@ public class LoginMenuHandler implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		User user = null;
+		UserModel userModel = null;
 		DBHandler b = new DBHandler();
 
 		// Checks if the user wants to login or to register a new user account
@@ -37,19 +38,20 @@ public class LoginMenuHandler implements ActionListener {
 			String userType = loginMenu.getUserType().toLowerCase();
 			
 			// Initialize user depending on type
-			
+			User user = new User(loginMenu.getUsernameField().getText(), loginMenu.getDecipheredPassword(loginMenu.getPasswordField()));
+            
 			switch (userType) {
 			case "owner":
-				user = new Owner(loginMenu.getUsernameField().getText(), loginMenu.getDecipheredPassword(loginMenu.getPasswordField()));
+			    userModel = new OwnerModel(user);
 				break;
 				
 			case "custodian":
-				user = new Custodian(loginMenu.getUsernameField().getText(), loginMenu.getDecipheredPassword(loginMenu.getPasswordField()));
+				userModel = new CustodianModel(user);
 				break;
 			}
 			
 			
-			if (user.login()) {
+			if (userModel.login()) {
 				loginMenu.dispose();
 				MainMenu mm = (MainMenu) PageDirector.buildPage(new MainMenuBuilder());
 				mm.addActionListener(new MainMenuHandler(mm));

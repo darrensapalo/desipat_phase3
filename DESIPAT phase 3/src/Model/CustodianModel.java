@@ -1,20 +1,21 @@
 package Model;
 
+import Model.Bean.User;
 import Model.Strategy.AddCustodian;
 
-public class Custodian extends User {
+public class CustodianModel extends UserModel {
 
-	public Custodian() {
+	public CustodianModel() {
 		super();
 	}
 	
-	public Custodian(String username, String password) {
-		super(username, password);
+	public CustodianModel(User user) {
+		super(user);
 	}
 	
 	@Override
 	public boolean addToDatabase() {
-		this.setUserColumns(new AddCustodian().getColumns());
+		user.setUserColumns(new AddCustodian().getColumns());
 		return super.addToDatabase("custodian");
 	}
 	

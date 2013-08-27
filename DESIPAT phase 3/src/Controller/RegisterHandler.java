@@ -3,9 +3,9 @@ package Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Model.Custodian;
-import Model.Owner;
-import Model.User;
+import Model.CustodianModel;
+import Model.OwnerModel;
+import Model.UserModel;
 import View.Register;
 
 /**
@@ -20,7 +20,7 @@ public class RegisterHandler implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		User user = null;
+		UserModel userModel = null;
 		
 		if (e.getSource().equals(registrationPage.getBtSignUp())) {
 			String firstName = registrationPage.getFirstNameField().getText().trim();
@@ -43,17 +43,17 @@ public class RegisterHandler implements ActionListener {
 			}
 			
 			if (registrationPage.getRbOwner().isSelected()) {	
-				user = new Owner();
+				userModel = new OwnerModel();
 			}
 			else if (registrationPage.getRbCustodian().isSelected()) {
-				user = new Custodian();
+				userModel = new CustodianModel();
 			}
 			
-			user.setFirstName(firstName);
-			user.setLastName(lastName);
-			user.setUsername(username);
-			user.setPassword(password1);
-			if (user.addToDatabase()) {
+			userModel.setFirstName(firstName);
+			userModel.setLastName(lastName);
+			userModel.setUsername(username);
+			userModel.setPassword(password1);
+			if (userModel.addToDatabase()) {
 				registrationPage.displayInformationMessage(
 						"Thank you for registering " + firstName + " " + lastName + ".");
 				registrationPage.dispose();

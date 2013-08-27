@@ -1,21 +1,22 @@
 package Model;
 
+import Model.Bean.User;
 import Model.Strategy.AddOwner;
 
-public class Owner extends User {
+public class OwnerModel extends UserModel {
 
-	public Owner() {
+	public OwnerModel() {
 		super();
 	}
 
 	
-	public Owner(String username, String password) {
-		super(username, password);
+	public OwnerModel(User user) {
+		super(user);
 	}
 	
 	@Override
 	public boolean addToDatabase() {
-		this.setUserColumns(new AddOwner().getColumns());
+	    user.setUserColumns(new AddOwner().getColumns());
 		return super.addToDatabase("owner");
 	}
 
