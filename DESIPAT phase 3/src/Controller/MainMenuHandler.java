@@ -159,7 +159,7 @@ public class MainMenuHandler implements ActionListener {
                         AssetModel am = new AssetModel();
                         Asset asset = am.getAsset(b.viewAsset(n));
                         
-                        a.SetValues(b.viewAsset(n), b.getPreviousOwner(n), m.getUserType(), m.getLbName().getText());
+                        a.SetValues(asset, b.getPreviousOwner(n), m.getUserType(), m.getLbName().getText());
                         view=a;
                         view.setVisible(true);
                         

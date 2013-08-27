@@ -18,7 +18,9 @@ public abstract class UserModel {
 	public UserModel(User user) {
 	    this.user = user;
 	}
-
+	
+	
+	
 	public abstract boolean addToDatabase();
 	protected boolean addToDatabase(String userType) {
 		try {
