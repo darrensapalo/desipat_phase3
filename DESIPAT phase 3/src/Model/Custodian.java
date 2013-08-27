@@ -2,7 +2,7 @@ package Model;
 
 import Model.Strategy.AddCustodian;
 
-public class Custodian extends User {
+public class Custodian extends UserModel {
 
 	public Custodian() {
 		super();

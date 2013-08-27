@@ -2,7 +2,7 @@ package Model;
 
 import Model.Strategy.AddOwner;
 
-public class Owner extends User {
+public class Owner extends UserModel {
 
 	public Owner() {
 		super();

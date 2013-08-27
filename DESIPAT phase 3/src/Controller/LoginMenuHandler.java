@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import Model.Custodian;
 import Model.DBHandler;
 import Model.Owner;
-import Model.User;
+import Model.UserModel;
 import View.Page;
 import View.LoginMenu;
 import View.MainMenu;
@@ -27,7 +27,7 @@ public class LoginMenuHandler implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		User user = null;
+		UserModel userModel = null;
 		DBHandler b = new DBHandler();
 
 		// Checks if the user wants to login or to register a new user account
@@ -40,16 +40,16 @@ public class LoginMenuHandler implements ActionListener {
 			
 			switch (userType) {
 			case "owner":
-				user = new Owner(loginMenu.getUsernameField().getText(), loginMenu.getDecipheredPassword(loginMenu.getPasswordField()));
+				userModel = new Owner(loginMenu.getUsernameField().getText(), loginMenu.getDecipheredPassword(loginMenu.getPasswordField()));
 				break;
 				
 			case "custodian":
-				user = new Custodian(loginMenu.getUsernameField().getText(), loginMenu.getDecipheredPassword(loginMenu.getPasswordField()));
+				userModel = new Custodian(loginMenu.getUsernameField().getText(), loginMenu.getDecipheredPassword(loginMenu.getPasswordField()));
 				break;
 			}
 			
 			
-			if (user.login()) {
+			if (userModel.login()) {
 				loginMenu.dispose();
 				MainMenu mm = (MainMenu) PageDirector.buildPage(new MainMenuBuilder());
 				mm.addActionListener(new MainMenuHandler(mm));
@@ -57,9 +57,9 @@ public class LoginMenuHandler implements ActionListener {
 				
 				ControllerUtility.SetValues((MainMenu)mainMenuForm, userType, 
 						b.getAssetList(userType, loginMenu.getUsernameField().getText()), 
-						user.getUsername(), 
-						user.getPassword(), 
-						user.getId());
+						userModel.getUsername(), 
+						userModel.getPassword(), 
+						userModel.getId());
 				
 				
 				if (userType.equals("custodian")) {
