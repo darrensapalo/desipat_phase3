@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import Model.CustodianModel;
 import Model.OwnerModel;
 import Model.UserModel;
+import Model.Bean.User;
 import View.Register;
 
 /**
@@ -41,18 +42,21 @@ public class RegisterHandler implements ActionListener {
 			else {
 				registrationPage.setErrorMessage("");
 			}
-			
+			User user = new User();
+            
 			if (registrationPage.getRbOwner().isSelected()) {	
-				userModel = new OwnerModel();
+				userModel = new OwnerModel(user);
 			}
 			else if (registrationPage.getRbCustodian().isSelected()) {
-				userModel = new CustodianModel();
+				userModel = new CustodianModel(user);
 			}
 			
-			userModel.setFirstName(firstName);
-			userModel.setLastName(lastName);
-			userModel.setUsername(username);
-			userModel.setPassword(password1);
+			user.setFirstName(firstName);
+			user.setLastName(lastName);
+			user.setUsername(username);
+			user.setPassword(password1);
+			
+			
 			if (userModel.addToDatabase()) {
 				registrationPage.displayInformationMessage(
 						"Thank you for registering " + firstName + " " + lastName + ".");
