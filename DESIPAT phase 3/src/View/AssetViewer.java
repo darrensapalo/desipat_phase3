@@ -4,6 +4,11 @@
  */
 package View;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -33,6 +38,69 @@ public class AssetViewer extends Page {
         
     }
 
+    
+    public void SetValues(ResultSet Asset, ResultSet prevOwners, String UserType, String UserName){
+        setUsername(UserName);
+        setUserType(UserType);
+
+        Vector<String> res = new Vector<String>();
+
+        try{ 
+            while (prevOwners.next()) {
+
+                String oFirstname = prevOwners.getString("ofirstname");
+                String oLastname = prevOwners.getString("olastname");
+                res.add(oFirstname+" "+oLastname);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);            
+        }
+
+        getListPreviousOwners().setListData(res);       
+
+        try
+        {
+            Asset.next();
+            getLbAssetName().setText((Asset.getString("assetname")));
+            getLbAssetID().setText((Asset.getString("assetid")));
+            String oFirstname = Asset.getString("ofirstname");
+            String oLastname = Asset.getString("olastname");
+            getLbOwner().setText(oFirstname+" "+oLastname);
+            String cFirstname = Asset.getString("cfirstname");
+            String cLastname = Asset.getString("clastname");
+            if(cFirstname == null)
+                getLbCustodian().setText("N/A");
+            else
+                getLbCustodian().setText(cFirstname+" "+cLastname);
+            getLbType().setText((Asset.getString("assettype")));
+            getLbDate().setText(Asset.getString("dateacquired"));
+            getLbRetention().setText((Asset.getString("retentionperiod")));
+            getLbMaintenance().setText((Asset.getString("mainsched")));
+            getLbFinancial().setText((Asset.getString("financialval")));
+            getLbConfidentiality().setText((Asset.getString("confidentialityval")));
+            getLbAvailability().setText((Asset.getString("availabilityval")));
+            getLbIntegrity().setText((Asset.getString("integrityval")));
+            getLbClassification().setText((Asset.getString("classification")));
+            getLbStorage().setText((Asset.getString("storagelocation")));
+
+            setUserID(Asset.getInt("asset_ownerid"));
+
+            if(res.isEmpty()){
+                getLbPreviousOwner().setText("N/A");
+            }
+            else
+                getLbPreviousOwner().setText(res.lastElement());
+
+        }catch(SQLException s){
+            System.out.println(s);
+        }
+
+        setVisible(true);
+        setLocationRelativeTo(null);
+    }
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -133,7 +201,6 @@ public class AssetViewer extends Page {
         btnEdit.addActionListener(listener);
     }
      
-     
      public void setlistPreviousOwners(JList listPreviousOwners) {
         this.listPreviousOwners = listPreviousOwners;
     }
@@ -201,10 +268,6 @@ public class AssetViewer extends Page {
      public void setlbType(JLabel lbType) {
         this.lbType = lbType;
     }
-     
-     
-     
-     
      
 
     public JButton getEditButton() {

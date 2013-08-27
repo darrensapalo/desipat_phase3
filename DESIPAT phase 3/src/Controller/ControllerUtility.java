@@ -24,11 +24,12 @@ public class ControllerUtility {
 	/**
 	 * This function handles the placement of data into the view for AssetViewer
 	 * @param view the AssetViewer
-	 * @param Asset The asset being viewed
+	 * @param AssetModel The asset being viewed
 	 * @param prevOwners The previous owners of the asset
 	 * @param UserType the kind of user
 	 * @param UserName the username
 	 */
+/*
 	public static void SetValues(AssetViewer view, ResultSet Asset, ResultSet prevOwners, String UserType, String UserName){
 		view.setUsername(UserName);
 		view.setUserType(UserType);
@@ -88,7 +89,7 @@ public class ControllerUtility {
 		view.setVisible(true);
 		view.setLocationRelativeTo(null);
 	}
-
+*/
 	public static void SetValues(MainMenu mainMenu, String userType,
 			ResultSet rAssets, String username, String password, int userID) {
 

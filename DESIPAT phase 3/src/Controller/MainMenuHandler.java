@@ -155,7 +155,8 @@ public class MainMenuHandler implements ActionListener {
                         a.addActionListener(new AssetViewerHandler(a));
                         a.setAssetID(n);
                         
-                        ControllerUtility.SetValues(a, b.viewAsset(n), b.getPreviousOwner(n), m.getUserType(), m.getLbName().getText());
+                        
+                        a.SetValues(b.viewAsset(n), b.getPreviousOwner(n), m.getUserType(), m.getLbName().getText());
                         view=a;
                         view.setVisible(true);
                         
