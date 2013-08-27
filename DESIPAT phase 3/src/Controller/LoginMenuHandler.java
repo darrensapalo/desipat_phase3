@@ -7,6 +7,7 @@ import Model.CustodianModel;
 import Model.DBHandler;
 import Model.OwnerModel;
 import Model.UserModel;
+import Model.Bean.User;
 import View.Page;
 import View.LoginMenu;
 import View.MainMenu;
@@ -37,14 +38,15 @@ public class LoginMenuHandler implements ActionListener {
 			String userType = loginMenu.getUserType().toLowerCase();
 			
 			// Initialize user depending on type
-			
+			User user = new User(loginMenu.getUsernameField().getText(), loginMenu.getDecipheredPassword(loginMenu.getPasswordField()));
+            
 			switch (userType) {
 			case "owner":
-				userModel = new OwnerModel(loginMenu.getUsernameField().getText(), loginMenu.getDecipheredPassword(loginMenu.getPasswordField()));
+			    userModel = new OwnerModel(user);
 				break;
 				
 			case "custodian":
-				userModel = new CustodianModel(loginMenu.getUsernameField().getText(), loginMenu.getDecipheredPassword(loginMenu.getPasswordField()));
+				userModel = new CustodianModel(user);
 				break;
 			}
 			
@@ -57,9 +59,9 @@ public class LoginMenuHandler implements ActionListener {
 				
 				ControllerUtility.SetValues((MainMenu)mainMenuForm, userType, 
 						b.getAssetList(userType, loginMenu.getUsernameField().getText()), 
-						userModel.getUsername(), 
-						userModel.getPassword(), 
-						userModel.getId());
+						user.getUsername(), 
+						user.getPassword(), 
+						user.getId());
 				
 				
 				if (userType.equals("custodian")) {

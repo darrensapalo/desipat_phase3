@@ -1,14 +1,5 @@
 package Model.Bean;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-import Model.AddUserQuery;
-import Model.DBHandler;
-import Model.Template.FetchUserIdQuery;
-import Model.Template.Query;
-import Model.Template.UserLoginQuery;
-
 public class User {
     
     protected int id;
