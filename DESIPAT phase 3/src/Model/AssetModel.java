@@ -8,8 +8,8 @@ import Model.Bean.Asset;
 public class AssetModel {
     public Asset getAsset(ResultSet rs) {
         Asset asset = new Asset();
-        
         try {
+            rs.next();
             asset.setAssetName((rs.getString("assetname")));
      
             asset.setAssetID((rs.getString("assetid")));
@@ -29,6 +29,8 @@ public class AssetModel {
             asset.setIntegrity((rs.getString("integrityval")));
             asset.setClassification((rs.getString("classification")));
             asset.setStorage((rs.getString("storagelocation")));
+            
+            asset.setOwnerId(rs.getInt("asset_ownerid"));
         }
         catch (SQLException e) {
             // TODO Auto-generated catch block

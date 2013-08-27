@@ -40,7 +40,15 @@ public class Asset {
     private String integrity;
     private String classification;
     private String storage;
+    private int ownerId;
     
+    
+    public int getOwnerId() {
+        return ownerId;
+    }
+    public void setOwnerId(int ownerId) {
+        this.ownerId = ownerId;
+    }
     public String getAssetName() {
         return assetName;
     }
