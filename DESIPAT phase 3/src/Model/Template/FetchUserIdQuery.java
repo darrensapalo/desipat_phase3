@@ -4,13 +4,15 @@ package Model.Template;
  * 
  * @author Renz
  */
-public class getUserIDQuery extends Query {
+public class FetchUserIdQuery extends Query {
 
-	String userType, userName;
+	String username, userType;
 
-	public getUserIDQuery(String uType, String uName) {
-		userType = uType;
-		userName = uName;
+	public FetchUserIdQuery(String username, String userType) {
+		this.username = username;
+		this.userType = userType;
+		
+		this.createQuery();
 	}
 
 	String[] tablesUsed = { "owner", "custodian" };
@@ -69,9 +71,9 @@ public class getUserIDQuery extends Query {
 	@Override
 	String addWhere() {
 		if (userType.equalsIgnoreCase("Owner"))
-			return "WHERE owner_username = '" + userName + "'";
+			return "WHERE owner_username = '" + username + "'";
 		if (userType.equalsIgnoreCase("Custodian"))
-			return "WHERE custodian_username = '" + userName + "'";
+			return "WHERE custodian_username = '" + username + "'";
 
 		return null;
 	}

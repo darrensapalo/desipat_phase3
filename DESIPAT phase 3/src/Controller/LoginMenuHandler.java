@@ -57,9 +57,9 @@ public class LoginMenuHandler implements ActionListener {
 				
 				ControllerUtility.SetValues((MainMenu)mainMenuForm, userType, 
 						b.getAssetList(userType, loginMenu.getUsernameField().getText()), 
-						loginMenu.getUsernameField().getText(), 
-						loginMenu.getDecipheredPassword(loginMenu.getPasswordField()), 
-						Integer.parseInt(b.getUserID(userType, loginMenu.getUsernameField().getText())));
+						user.getUsername(), 
+						user.getPassword(), 
+						user.getId());
 				
 				
 				if (userType.equals("custodian")) {
@@ -78,7 +78,6 @@ public class LoginMenuHandler implements ActionListener {
 		} 
 		
 		else if (e.getSource().equals(loginMenu.getRegisterButton())) {    // Handler for register button
-		    System.out.println("building register button");
 		    Page registrationForm = PageDirector.buildPage(new RegisterBuilder());
 		    registrationForm.addActionListener(new RegisterHandler((Register) registrationForm));
 			registrationForm.setVisible(true);

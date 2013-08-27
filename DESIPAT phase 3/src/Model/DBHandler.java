@@ -6,14 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import Model.AbstractFactory.DBConnectionFactory;
-import Model.Template.Query;
-import Model.Template.addActivityLogQuery;
-import Model.Template.addPreviousOwnerQuery;
-import Model.Template.deleteAssetQuery;
-import Model.Template.getPreviousOwnerQuery;
-import Model.Template.getUserIDQuery;
+import Model.Template.AddActivityLogQuery;
+import Model.Template.AddPreviousOwnerQuery;
+import Model.Template.DeleteAssetQuery;
+import Model.Template.GetPreviousOwnerQuery;
 import Model.Template.ListAssetQuery;
-import Model.Template.viewAssetQuery;
+import Model.Template.Query;
+import Model.Template.ViewAssetQuery;
 
 /**
  * 
@@ -41,17 +40,18 @@ public class DBHandler {
 		}
 	}
 
-	public static ResultSet executeQuery(Query query) {
+	public static ResultSet executeQuery(Query query) throws SQLException {
 		createConnection();
 		
-		try {
-			PreparedStatement ps = connection.prepareStatement(query.getQuery());
-			return ps.executeQuery();
-		} catch (SQLException ex) {
-			ex.printStackTrace();
-		}
+		PreparedStatement ps = connection.prepareStatement(query.getQuery());
+		return ps.executeQuery();
+	}
+	
+	public static void executeUpdate(Query query) throws SQLException {
+		createConnection();
 		
-		return null;
+		PreparedStatement ps = connection.prepareStatement(query.getQuery());
+		ps.executeUpdate();
 	}
 	/*
 	public boolean userLogin(LoginMenu l, String userType) {
@@ -122,7 +122,7 @@ public class DBHandler {
 		ResultSet rs = null;
 		createConnection();
 		try {
-			Query viewAsset = new viewAssetQuery(assetid);
+			Query viewAsset = new ViewAssetQuery(assetid);
 			viewAsset.createQuery();
 			rs = connection.prepareStatement(viewAsset.getQuery())
 					.executeQuery();
@@ -138,7 +138,7 @@ public class DBHandler {
 		boolean b = false;
 
 		try {
-			Query deleteAsset = new deleteAssetQuery(assetid);
+			Query deleteAsset = new DeleteAssetQuery(assetid);
 			deleteAsset.createQuery();
 			if (connection.prepareStatement(deleteAsset.getQuery())
 					.executeUpdate() == 1) {
@@ -162,7 +162,7 @@ public class DBHandler {
 		boolean b = false;
 
 		try {
-			Query addActivity = new addActivityLogQuery(activityName, userType,
+			Query addActivity = new AddActivityLogQuery(activityName, userType,
 					userName);
 			addActivity.createQuery();
 
@@ -190,7 +190,7 @@ public class DBHandler {
 		boolean b = false;
 
 		try {
-			Query addPreviousOwner = new addPreviousOwnerQuery(assetID,
+			Query addPreviousOwner = new AddPreviousOwnerQuery(assetID,
 					previousOwnerID);
 			addPreviousOwner.createQuery();
 
@@ -214,7 +214,7 @@ public class DBHandler {
 		ResultSet rs = null;
 
 		try {
-			Query getPreviousOwner = new getPreviousOwnerQuery(assetID);
+			Query getPreviousOwner = new GetPreviousOwnerQuery(assetID);
 			getPreviousOwner.createQuery();
 			rs = connection.prepareStatement(getPreviousOwner.getQuery())
 					.executeQuery();
@@ -223,14 +223,14 @@ public class DBHandler {
 		}
 		return rs;
 	}
-
+	/*
 	public String getUserID(String userType, String username) {
 		createConnection();
 		String id = "Error";
 		ResultSet rs = null;
 
 		try {
-			Query getUserID = new getUserIDQuery(userType, username);
+			Query getUserID = new FetchUserIdQuery(userType, username);
 			getUserID.createQuery();
 			rs = connection.prepareStatement(getUserID.getQuery())
 					.executeQuery();
@@ -249,4 +249,5 @@ public class DBHandler {
 		return id;
 
 	}
+	*/
 }

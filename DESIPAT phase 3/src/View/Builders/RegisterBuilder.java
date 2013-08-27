@@ -91,8 +91,8 @@ public class RegisterBuilder extends AbstractPageBuilder{
 								.addComponent(register.getjLabel6()))
 								.addGap(18, 18, 18)
 								.addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-										.addComponent(register.getTfFirst(), javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
-										.addComponent(register.getTfLast(), javax.swing.GroupLayout.Alignment.TRAILING))
+										.addComponent(register.getFirstNameField(), javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+										.addComponent(register.getLastNameField(), javax.swing.GroupLayout.Alignment.TRAILING))
 										.addContainerGap())
 				);
 		jPanel1Layout.setVerticalGroup(
@@ -100,12 +100,12 @@ public class RegisterBuilder extends AbstractPageBuilder{
 				.addGroup(jPanel1Layout.createSequentialGroup()
 						.addContainerGap()
 						.addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-								.addComponent(register.getTfFirst(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+								.addComponent(register.getFirstNameField(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
 								.addComponent(register.getjLabel1()))
 								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 								.addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
 										.addComponent(register.getjLabel6())
-										.addComponent(register.getTfLast(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+										.addComponent(register.getLastNameField(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
 										.addContainerGap())
 				);
 
